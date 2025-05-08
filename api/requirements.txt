@@ -1,0 +1,8 @@
+Flask==2.3.2
+Flask-Cors==4.0.0
+numpy==1.24.3
+opencv-python==4.8.0.76
+tensorflow==2.14.0
+requests==2.31.0
+python-dotenv==1.0.0
+groq==0.4.0
