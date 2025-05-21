@@ -7,5 +7,7 @@ requests==2.31.0
 python-dotenv==1.0.0
 groq==0.4.0
 torch==2.0.1
+torchvision==0.15.2
 transformers==4.31.0
 onnxruntime==1.15.1
+Pillow==9.5.0
