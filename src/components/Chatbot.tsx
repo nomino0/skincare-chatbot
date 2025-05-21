@@ -263,7 +263,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults }) => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 p-2 border rounded"
+            className="flex-1 p-2 text-black font-sans border rounded"
             disabled={isLoading}
           />
           <button

@@ -93,12 +93,12 @@ export default function Home() {
                   <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
                     <h3 className="font-medium text-blue-800">Analysis Results:</h3>
                     <p className="mt-1">
-                      <span className="font-medium text-gray-800">Skin Type:</span> {skinResults.skinType.type} ({skinResults.skinType.confidence.toFixed(2)}%)
+                      <span className="font-medium text-gray-800">Skin Type:</span> <span className="text-gray-600">{skinResults.skinType.type} ({skinResults.skinType.confidence.toFixed(2)}</span>%)
                     </p>
                     {skinResults.skinIssues.length > 0 && (
                       <div className="mt-2">
                         <span className="font-medium text-gray-800">Detected Issues:</span>
-                        <ul className="list-disc pl-5 mt-1">
+                        <ul className=" text-gray-600 list-disc pl-5 mt-1">
                           {skinResults.skinIssues.map((issue, index) => (
                             <li key={index}>
                               {issue.name} ({issue.confidence.toFixed(2)}%)
