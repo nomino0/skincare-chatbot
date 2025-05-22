@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import WebcamCapture from '../components/WebcamCapture';
 import Chatbot from '../components/Chatbot';
 import { analyzeSkin, SkinPredictionResult } from '../services/api';
@@ -9,13 +10,46 @@ import { useAuth } from '@/lib/auth-context';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { getScanHistoryById } from '@/lib/firebase';
 
 export default function Home() {
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [skinResults, setSkinResults] = useState<SkinPredictionResult | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isWebcamActive, setIsWebcamActive] = useState(true);
+  const [isHistoryScan, setIsHistoryScan] = useState<boolean>(false);
+  const searchParams = useSearchParams();
   const { currentUser, loading } = useAuth();
+  
+  // Load scan history data
+  const loadHistoryScan = async (scanId: string) => {
+    if (!currentUser) return;
+    
+    try {
+      setIsWebcamActive(false);
+      setIsAnalyzing(true);
+      
+      const historyData = await getScanHistoryById(currentUser.uid, scanId);
+      
+      if (historyData) {
+        setIsHistoryScan(true);
+        setCapturedImage(null); // We don't have the actual image in history
+        setSkinResults(historyData.skinResults);
+      }
+    } catch (error) {
+      console.error('Error loading scan history:', error);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+  
+  // Check if we're viewing a specific scan from history
+  useEffect(() => {
+    const scanId = searchParams.get('scanId');
+    if (scanId && currentUser) {
+      loadHistoryScan(scanId);
+    }
+  }, [searchParams, currentUser]);
   
   const handleCapture = async (imageSrc: string) => {
     setCapturedImage(imageSrc);
@@ -39,6 +73,11 @@ export default function Home() {
     setCapturedImage(null);
     setSkinResults(null);
     setIsWebcamActive(true);
+  };
+  
+  // Handle new scan request from Chatbot
+  const handleNewScanRequest = () => {
+    handleReset();
   };
 
   if (loading) {
@@ -121,7 +160,7 @@ export default function Home() {
             </h2>
             
             {isWebcamActive ? (
-              <WebcamCapture onCapture={handleCapture} />
+              <WebcamCapture onCapture={handleCapture} onNewScan={handleNewScanRequest} />
             ) : (
               <div className="space-y-4">
                 {capturedImage && (
@@ -136,6 +175,18 @@ export default function Home() {
                         <CheckCircleIcon className="h-5 w-5" />
                       </div>
                     )}
+                  </div>
+                )}
+                
+                {isHistoryScan && skinResults && (
+                  <div className="mb-4 px-4 py-3 bg-primary/10 rounded-lg border border-primary/20 text-sm">
+                    <p className="font-medium flex items-center mb-1">
+                      <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Viewing previous skin analysis
+                    </p>
+                    <p className="text-muted-foreground text-xs">This is a past analysis from your history.</p>
                   </div>
                 )}
                 
@@ -185,7 +236,11 @@ export default function Home() {
           </div>
           
           <div>
-            <Chatbot skinResults={skinResults} />
+            <Chatbot 
+              skinResults={skinResults} 
+              onNewScanRequest={handleNewScanRequest}
+              isHistoryScan={isHistoryScan}
+            />
           </div>
         </div>
       </div>
