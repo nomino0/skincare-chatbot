@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ClientLayout from "@/components/fixed-client-layout";
 
-const inter = Inter({ subsets: ["latin"] });
+// Load the Inter font with specific configuration
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+  fallback: ['system-ui', 'sans-serif']
+});
 
 export const metadata: Metadata = {
   title: "SkinPredict - AI Skin Analysis",
@@ -15,19 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <footer className="bg-gray-100 py-6 mt-12">
-          <div className="container mx-auto px-4 text-center text-gray-600 text-sm">
-            <p>&copy; {new Date().getFullYear()} SkinPredict. All rights reserved.</p>
-            <p className="mt-2">
-              This is a demonstration project. Skin analysis results should not replace professional medical advice.
-            </p>
-          </div>
-        </footer>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <body className={`font-sans ${inter.className}`} suppressHydrationWarning>
+        {children}
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SkinPredictionResult, sendEmail, findNearbyDermatologists, DermatologistResult } from '../services/api';
+import { Button } from '@/components/ui/button';
 
 // Add this import for the knowledge base
 import { skinKnowledgeBase } from '../utils/skinKnowledgeBase';
@@ -205,9 +206,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults }) => {
   };
 
   return (
-    <div className="flex flex-col h-[868px] bg-gray-50 rounded-xl shadow-lg">
+    <div className="flex flex-col h-[868px] bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
       {/* Header */}
-      <div className="bg-blue-600 text-white p-4 rounded-t-xl flex-shrink-0">
+      <div className="bg-primary text-white p-4 rounded-t-xl flex-shrink-0">
         <h2 className="text-lg font-semibold">Skin Assistant</h2>
       </div>
       
@@ -218,19 +219,19 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults }) => {
             key={index}
             className={`${
               message.role === 'assistant' 
-                ? 'ml-2 max-w-[80%] bg-blue-100 text-gray-800 rounded-lg p-3 mb-3' 
-                : 'mr-2 ml-auto max-w-[80%] bg-blue-500 text-white rounded-lg p-3 mb-3'
+                ? 'ml-2 max-w-[80%] bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-lg p-3 mb-3' 
+                : 'mr-2 ml-auto max-w-[80%] bg-primary text-white rounded-lg p-3 mb-3'
             }`}
           >
             <p className="whitespace-pre-line">{message.content}</p>
           </div>
         ))}
         {isLoading && (
-          <div className="ml-2 bg-blue-100 rounded-lg p-3 max-w-[80%] mb-3">
+          <div className="ml-2 bg-slate-100 dark:bg-slate-800 rounded-lg p-3 max-w-[80%] mb-3">
             <div className="flex space-x-2">
-              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+              <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
             </div>
           </div>
         )}
@@ -239,14 +240,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults }) => {
       
       {/* Dermatologists Results */}
       {dermatologists.length > 0 && (
-        <div className="p-4 bg-blue-50 border-t border-blue-100 flex-shrink-0">
-          <h3 className="font-medium text-blue-800 mb-2">Nearby Dermatologists</h3>
+        <div className="p-4 bg-slate-50 dark:bg-slate-800/60 border-t border-slate-200 dark:border-slate-700 flex-shrink-0">
+          <h3 className="font-medium text-primary mb-2">Nearby Dermatologists</h3>
           <div className="overflow-x-auto">
             <div className="flex space-x-4">
               {dermatologists.slice(0, 5).map((doctor, index) => (
-                <div key={index} className="min-w-[200px] p-3 bg-white rounded-lg shadow">
+                <div key={index} className="min-w-[200px] p-3 bg-white dark:bg-slate-900 rounded-lg shadow border border-slate-200 dark:border-slate-700">
                   <p className="font-medium">{doctor.name}</p>
-                  <p className="text-sm text-gray-600">{doctor.vicinity}</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{doctor.vicinity}</p>
                   <p className="text-sm">⭐ {doctor.rating || 'N/A'}</p>
                 </div>
               ))}
@@ -256,23 +257,22 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults }) => {
       )}
       
       {/* Input Area */}
-      <form onSubmit={handleSubmit} className="p-4 border-t flex-shrink-0">
+      <form onSubmit={handleSubmit} className="p-4 border-t border-slate-200 dark:border-slate-800 flex-shrink-0">
         <div className="flex space-x-2">
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 p-2 text-black font-sans border rounded"
+            className="flex-1 p-2 text-slate-900 dark:text-white bg-white dark:bg-slate-800 font-sans border border-slate-300 dark:border-slate-700 rounded-md"
             disabled={isLoading}
           />
-          <button
+          <Button
             type="submit"
-            className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition-colors"
             disabled={isLoading || !inputValue.trim()}
           >
             Send
-          </button>
+          </Button>
         </div>
       </form>
     </div>

@@ -43,3 +43,7 @@ next-env.d.ts
 
 # test
 __tests__
+
+# Ignore firebase config with secrets
+src/lib/firebase.ts
+src/lib/firebase.tsx
