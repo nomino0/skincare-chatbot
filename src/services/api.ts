@@ -90,43 +90,53 @@ const getMockProductRecommendations = (
   gender?: string,
   ageGroup?: string
 ): ProductRecommendation[] => {
-  // Mock data - you'd replace this with actual data
+  // Detect user's country from browser and adjust currency accordingly
+  const userCountry = navigator.language || "en-US";
+  const isTunisia = userCountry.includes("TN") || userCountry.includes("AR") || 
+                    window.location.hostname.endsWith('.tn');
+  
+  // Set currency based on location (default to TND for Tunisia)
+  const currency = isTunisia ? "TND" : "USD";
+  
+  // Price conversion factor (approximate)
+  const priceFactor = currency === "TND" ? 3.1 : 1; // 1 USD ≈ 3.1 TND
+  
+  // Mock data - tailored for Tunisian market and international brands available in Tunisia
   const products: ProductRecommendation[] = [
     // Products for dry skin
     {
       name: "Hydrating Facial Cleanser",
       brand: "CeraVe",
-      price: "14.99",
-      currency: "USD",
+      price: (14.99 * priceFactor).toFixed(2),
+      currency: currency,
       link: "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
       imageUrl: "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/products/facial-cleansers/hydrating-facial-cleanser/700x875/cerave_facial_cleanser_16oz_front-700x875-v2.jpg",
-      description: "Gentle, moisturizing cleanser with ceramides and hyaluronic acid",
+      description: "Gentle, moisturizing cleanser with ceramides and hyaluronic acid" + (isTunisia ? " - Available at Fatales and pharmacies in Tunisia" : ""),
       targetGender: "All",
       targetAgeRange: ["20-29", "30-39", "40-49", "50-59"],
       forSkinType: ["Dry", "Normal"]
-    },
-    // Male-specific products
+    },    // Male-specific products
     {
       name: "Men's Moisturizing Face Cream",
-      brand: "Kiehl's",
-      price: "28.00",
-      currency: "USD",
-      link: "https://www.kiehls.com/skincare/face-moisturizers/facial-fuel-moisturizer/614.html",
-      imageUrl: "https://www.kiehls.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-kiehls-master-catalog/default/dw34709de9/nextgen/men/face-fuel/facial-fuel-energizing-moisture-treatment-for-men-kiehls.jpg",
-      description: "Energizing face moisturizer for men",
+      brand: "Nivea Men",
+      price: (35 * priceFactor).toFixed(2),
+      currency: currency,
+      link: "https://www.nivea.tn/produits/nivea-men-creme-hydratante",
+      imageUrl: "https://www.nivea.tn/-/media/nivea/local/tn/anti-aging/93373-website-master-local_anti-aging-page-phase2_pdp-image_970x1400px_12.png",
+      description: "Energizing face moisturizer for men" + (isTunisia ? " - Available in most supermarkets and pharmacies across Tunisia" : ""),
       targetGender: "Male",
       targetAgeRange: ["20-29", "30-39", "40-49"],
       forSkinType: ["Normal", "Dry"]
     },
     // Products for acne
     {
-      name: "Acne Treatment Gel",
+      name: "Effaclar Duo+ Cream",
       brand: "La Roche-Posay",
-      price: "32.00",
-      currency: "USD",
-      link: "https://www.laroche-posay.us/our-products/acne-oily-skin/face-wash-for-oily-skin/effaclar-duo-acne-treatment-883140500759.html",
-      imageUrl: "https://www.laroche-posay.us/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-lrp-us-master-catalog/default/dw570fc1c5/LRP_Effaclar_Duo_1.7oz_3337875598071_00.jpg",
-      description: "Dual action acne treatment",
+      price: (85 * priceFactor).toFixed(2),
+      currency: currency,
+      link: "https://www.laroche-posay.tn/effaclar/effaclar-duo-creme-anti-imperfections",
+      imageUrl: "https://www.laroche-posay.tn/-/media/project/loreal/brand-sites/lrp/africa-me/north-africa/products/effaclar/effaclar-duo--anti-imperfections/la-roche-posay-face-care-effaclar-duo-anti-imperfections-40ml-3337875598071-front.png",
+      description: "Dual action acne treatment" + (isTunisia ? " - Available at Para pharmacies and Fatales in Tunisia" : ""),
       targetGender: "All",
       targetAgeRange: ["10-19", "20-29"],
       forSkinType: ["Oily", "Combination"],
@@ -134,17 +144,31 @@ const getMockProductRecommendations = (
     },
     // Products for aging skin
     {
-      name: "Retinol Serum",
-      brand: "The Ordinary",
-      price: "7.00",
-      currency: "USD",
-      link: "https://theordinary.com/en-us/retinol-1-in-squalane-100430.html",
-      imageUrl: "https://theordinary.com/dw/image/v2/BFKJ_PRD/on/demandware.static/-/Sites-deciem-master/default/dw1a6c13f4/Images/products/The%20Ordinary/Retinol%201pct%20in%20Squalane%2030ml_Regime_M1.png",
-      description: "Retinol formula for reducing signs of aging",
+      name: "Redermic R Anti-Aging Concentrate",
+      brand: "La Roche-Posay",
+      price: (110 * priceFactor).toFixed(2),
+      currency: currency,
+      link: "https://www.laroche-posay.tn/redermic/redermic-r-creme-anti-age-intensif",
+      imageUrl: "https://www.laroche-posay.tn/-/media/project/loreal/brand-sites/lrp/africa-me/north-africa/products/redermic/redermic-r-anti-aging/la-roche-posay-face-care-redermic-r-30ml-3337872414091-front.png",
+      description: "Retinol formula for reducing signs of aging" + (isTunisia ? " - Found in premium pharmacies and beauty stores in Tunisia" : ""),
       targetGender: "All",
       targetAgeRange: ["30-39", "40-49", "50-59", "60-69"],
       forSkinType: ["All"],
       forSkinIssues: ["Wrinkles", "Fine Lines"]
+    },
+    // Adding Tunisian local brand
+    {
+      name: "Argan Oil Face Serum",
+      brand: "Tunisie Naturelle",
+      price: "49.90",
+      currency: "TND",
+      link: "https://www.facebook.com/Tunisie.Naturelle/",
+      imageUrl: "https://scontent.ftun16-1.fna.fbcdn.net/v/t1.6435-9/123959476_3421100184666921_2298290823891497739_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=8Js5xj5h4ygAX8Zv9kD&_nc_ht=scontent.ftun16-1.fna&oh=00_AfB8DMDa7LdOKQqTRSjh9OQUa6m6RnPzQXUW4GGAgVD11Q&oe=65962A6D",
+      description: "Natural argan oil serum for all skin types - Made in Tunisia with traditional Berber methods",
+      targetGender: "All",
+      targetAgeRange: ["20-29", "30-39", "40-49", "50-59"],
+      forSkinType: ["Dry", "Normal", "Combination"],
+      forSkinIssues: ["Dryness", "Wrinkles"]
     }
   ];
   
@@ -227,5 +251,96 @@ export const findNearbyDermatologists = async (lat: number, lng: number): Promis
   } catch (error) {
     console.error('Error finding dermatologists:', error);
     throw error;
+  }
+};
+
+// Interface for nearby store results
+export interface NearbyStore {
+  name: string;
+  address: string;
+  location: {
+    lat: number;
+    lng: number;
+  };
+  rating: number;
+  user_ratings_total: number;
+  place_id: string;
+  open_now?: boolean;
+  photo_url?: string;
+  store_type: string;
+  products_available: string[];
+}
+
+// Function to find nearby beauty and skincare stores
+export const findNearbyStores = async (
+  lat: number, 
+  lng: number, 
+  radius: number = 5000,
+  productType: string = 'skincare'
+): Promise<NearbyStore[]> => {
+  try {
+    const response = await axios.get(`${API_URL}/nearby-stores`, {
+      params: { 
+        lat, 
+        lng, 
+        radius,
+        product_type: productType
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error finding nearby stores:', error);
+    return [];
+  }
+};
+
+// Interface for nearby product results
+export interface NearbyProduct extends ProductRecommendation {
+  priceCategory: 'Budget' | 'Moderate' | 'Premium';
+  nearbyStores: NearbyStore[];
+  storePhotoUrl?: string;
+}
+
+export interface NearbyProductsResponse {
+  products: NearbyProduct[];
+  groupedByPrice: {
+    Budget: NearbyProduct[];
+    Moderate: NearbyProduct[];
+    Premium: NearbyProduct[];
+  };
+  nearbyStores: NearbyStore[];
+}
+
+// Function to find nearby products grouped by price category
+export const findNearbyProducts = async (
+  lat: number, 
+  lng: number, 
+  skinType: string,
+  skinIssues: string[],
+  gender?: string,
+  ageGroup?: string,
+  radius: number = 5000
+): Promise<NearbyProductsResponse> => {
+  try {
+    const response = await axios.get(`${API_URL}/nearby-products`, {
+      params: { 
+        lat, 
+        lng, 
+        radius,
+        skinType,
+        skinIssues,
+        gender,
+        ageGroup
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error finding nearby products:', error);
+    // Return empty response
+    return {
+      products: [],
+      groupedByPrice: { Budget: [], Moderate: [], Premium: [] },
+      nearbyStores: []
+    };
   }
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { SkinPredictionResult, sendEmail, findNearbyDermatologists, getUserCountry } from '../services/api';
+import { SkinPredictionResult, sendEmail, findNearbyDermatologists, getUserCountry, findNearbyProducts, NearbyProduct, NearbyProductsResponse, getProductRecommendations, ProductRecommendation } from '../services/api';
 import { Button } from '@/components/ui/button';
 import SkinAnalysisChart from './SkinAnalysisChart';
 import { getAuthClient, saveScanHistory, updateChatHistory, getUserScanHistory, getScanHistoryById, ChatMessage } from '../lib/firebase';
@@ -48,6 +48,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [dermatologists, setDermatologists] = useState<DermatologistResult[]>([]);
+  const [nearbyProducts, setNearbyProducts] = useState<NearbyProductsResponse | null>(null);
+  const [showNearbyProducts, setShowNearbyProducts] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null);
   const [selectedSuggestion, setSelectedSuggestion] = useState<string | null>(null);
@@ -127,11 +129,62 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
       } else if (prompt.includes("routine") || prompt.includes("regimen")) {
         // Get a routine response from the knowledge base
         response = skinKnowledgeBase.getRoutine(skinType, skinIssues);
-        suggestions = ['Morning routine', 'Evening routine', 'Weekly treatments'];
-      } else if (prompt.includes("product") || prompt.includes("recommend")) {
-        // Get product recommendations from the knowledge base
+        suggestions = ['Morning routine', 'Evening routine', 'Weekly treatments'];      } else if (prompt.includes("product") || prompt.includes("recommend")) {
+        // Get text recommendations from the knowledge base (as fallback)
         response = skinKnowledgeBase.getProductRecommendations(skinType, skinIssues);
         suggestions = ['Budget options', 'Luxury products', 'Natural ingredients'];
+        
+        try {
+          // Get actual product recommendations with Tunisian currency and localization
+          const realProducts = await getProductRecommendations(
+            "Tunisia", // Set to Tunisia for proper currency
+            skinResults?.skinType.type || '',
+            skinResults?.skinIssues.map(issue => issue.name) || [],
+            skinResults?.demographics?.gender,
+            skinResults?.demographics?.age
+          );
+          
+          // Create product data for visualization
+          const onlineProducts: NearbyProduct[] = realProducts.map(product => {
+            // Determine price category based on price
+            let priceCategory: 'Budget' | 'Moderate' | 'Premium';
+            const price = parseFloat(product.price);
+            
+            if (product.currency === 'TND') {
+              priceCategory = price < 50 ? 'Budget' : price < 100 ? 'Moderate' : 'Premium';
+            } else {
+              priceCategory = price < 15 ? 'Budget' : price < 30 ? 'Moderate' : 'Premium';
+            }
+            
+            return {
+              ...product,
+              priceCategory,
+              nearbyStores: []
+            };
+          });
+          
+          // Group by price
+          const groupedProducts = {
+            Budget: onlineProducts.filter(p => p.priceCategory === 'Budget'),
+            Moderate: onlineProducts.filter(p => p.priceCategory === 'Moderate'),
+            Premium: onlineProducts.filter(p => p.priceCategory === 'Premium')
+          };
+          
+          // Set the state to display products
+          setNearbyProducts({
+            products: onlineProducts,
+            groupedByPrice: groupedProducts,
+            nearbyStores: []
+          });
+          setShowNearbyProducts(true);
+          
+          // Update response for Tunisian products
+          response = "Here are some skincare products available in Tunisia that would work well for your skin type. I've organized them by price category.";
+          
+        } catch (error) {
+          console.error('Error getting Tunisian product recommendations:', error);
+          // Fallback to text response already set above
+        }
       } else if (prompt.includes("doctor") || prompt.includes("dermatologist")) {
         response = "I'd be happy to help you find a dermatologist nearby! I'll need to access your location for that. Is it okay if I access your location?";
         suggestions = ['Yes, share my location', 'Not now'];
@@ -159,29 +212,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
       setIsLoading(false);
     }
   };
-
-  // Get user's location for dermatologist search
-  const getUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lng = position.coords.longitude;
-          setUserLocation({ lat, lng });
-          
-          // Search for dermatologists
-          findDermatologists(lat, lng);
-        },
-        (error) => {
-          console.error('Error getting location:', error);
-          addAssistantMessage("I couldn't access your location. You can try again or search manually for dermatologists in your area.");
-        }
-      );
-    } else {
-      addAssistantMessage("Location services are not supported by your browser. You can try searching for dermatologists manually.");
-    }
-  };
-
   // Find dermatologists
   const findDermatologists = async (lat: number, lng: number) => {
     try {
@@ -198,6 +228,147 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
     }
   };
 
+  // Find nearby products with skin profile
+  const findNearbyProductsForSkin = async (lat: number, lng: number) => {
+    try {
+      setIsLoading(true);
+      addAssistantMessage("Searching for skincare products near you that match your skin profile...");
+      
+      const results = await findNearbyProducts(
+        lat, 
+        lng, 
+        skinResults?.skinType.type || '', 
+        skinResults?.skinIssues.map(issue => issue.name) || [],
+        skinResults?.demographics?.gender,
+        skinResults?.demographics?.age
+      );
+      
+      if (results.products.length > 0) {
+        setNearbyProducts(results);
+        setShowNearbyProducts(true);
+        
+        // Give a friendly message about the products
+        let budgetCount = results.groupedByPrice.Budget.length;
+        let moderateCount = results.groupedByPrice.Moderate.length;
+        let premiumCount = results.groupedByPrice.Premium.length;
+        
+        let message = `I've found ${results.products.length} skincare products near you that would work well for your ${skinResults?.skinType.type || ''} skin!`;
+        
+        if (budgetCount > 0 && moderateCount > 0 && premiumCount > 0) {
+          message += ` I've grouped them by price range so you can find options that fit your budget.`;
+        } else if (budgetCount > 0) {
+          message += ` There are some great budget-friendly options available.`;
+        } else if (premiumCount > 0) {
+          message += ` There are some premium products that would be excellent for your skin concerns.`;
+        }
+        
+        addAssistantMessage(message, false, ['Show budget options', 'Show premium options', 'Close']);
+      } else {
+        addAssistantMessage(
+          "I couldn't find any specific products near you that match your skin profile. Would you like to see some online options instead?",
+          false,
+          ['Show online options', 'Tell me more about my skin type']
+        );
+      }
+    } catch (error) {
+      console.error('Error finding nearby products:', error);
+      addAssistantMessage(
+        "I'm having trouble finding products near you right now. Would you like to see some general recommendations instead?",
+        false,
+        ['Show general recommendations', 'Try again later']
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  // Find nearby stores with skincare products
+  const findSkinCareStores = async (lat: number, lng: number, productType: string = 'skincare') => {
+    try {
+      const results = await findNearbyProducts(lat, lng, skinResults?.skinType.type || '', skinResults?.skinIssues.map(issue => issue.name) || []);
+      
+      if (results.products.length > 0) {
+        // Extract unique stores from products
+        const uniqueStores = Array.from(
+          new Set(
+            results.products
+              .filter(product => product.nearbyStores && product.nearbyStores.length > 0)
+              .flatMap(product => product.nearbyStores || [])
+              .map(store => store.place_id)
+          )
+        );
+        
+        const stores = results.products
+          .flatMap(product => product.nearbyStores || [])
+          .filter((store, index, self) => 
+            index === self.findIndex(s => s.place_id === store.place_id)
+          );
+        
+        let storeMessage = `I've found ${stores.length} stores near you that carry skincare products. Here are some options:\n\n`;
+        
+        // Add the top 3 stores to the message
+        stores.slice(0, 3).forEach((store, index) => {
+          storeMessage += `${index + 1}. **${store.name}**\n`;
+          storeMessage += `   📍 ${store.address || 'Address unavailable'}\n`;
+          if (store.rating) {
+            storeMessage += `   ⭐ Rating: ${store.rating}/5 (${store.user_ratings_total || 'N/A'} reviews)\n`;
+          }
+          storeMessage += `   ${store.open_now ? '✅ Open now' : '❌ Currently closed'}\n`;
+          storeMessage += '\n';
+        });
+        
+        addAssistantMessage(
+          storeMessage,
+          false, 
+          ['Get directions', 'More stores', 'Product recommendations']
+        );
+      } else {
+        addAssistantMessage(
+          "I couldn't find any skincare stores in your immediate area. Would you like to try online shopping instead?",
+          false,
+          ['Online shopping options', 'Expand search radius']
+        );
+      }
+    } catch (error) {
+      console.error('Error finding nearby stores:', error);
+      addAssistantMessage(
+        "I'm having trouble finding stores near you right now. Would you like to see some online product recommendations instead?",
+        false,
+        ['Show online options', 'Try again later']
+      );
+    }
+  };  // Enhanced getUserLocation to support both dermatologists and products searches
+  const getUserLocation = (searchType: 'dermatologists' | 'products' = 'dermatologists') => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          setUserLocation({ lat, lng });
+          
+          // Determine which search to perform
+          if (searchType === 'dermatologists') {
+            findDermatologists(lat, lng);
+          } else {
+            findNearbyProductsForSkin(lat, lng);
+          }
+        },
+        (error) => {
+          console.error('Error getting location:', error);
+          addAssistantMessage(
+            `I couldn't access your location. You can try again or explore online options instead.`,
+            false,
+            ['Try again', 'Online options']
+          );
+        }
+      );
+    } else {
+      addAssistantMessage(
+        `Location services are not supported by your browser. Would you like to see online product recommendations instead?`,
+        false,
+        ['Online options', 'Show product recommendations']
+      );
+    }  };
+
   // Add a message from the assistant
   const addAssistantMessage = (content: string, showAnalysis: boolean = false, suggestions: string[] = []) => {
     setMessages(prevMessages => [
@@ -209,13 +380,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
         suggestions
       }
     ]);
-  };
-  // Handle user message
-  const handleUserMessage = (userMessage: string) => {
+  };  // Handle user message
+  const handleUserMessage = async (userMessage: string) => {
     setInputValue('');
     
-    // Check if we have scan results before responding
-    if (!hasScanResults && !userMessage.toLowerCase().includes('how does this work') && !userMessage.toLowerCase().includes('what can you help with')) {
+    // Check if we have scan results before responding (except for general questions)
+    if (!hasScanResults && 
+        !userMessage.toLowerCase().includes('how does this work') && 
+        !userMessage.toLowerCase().includes('what can you help with')) {
       addAssistantMessage(
         "I need to analyze your skin before I can give personalized advice. Please take a face scan first.",
         false,
@@ -224,7 +396,218 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
       return;
     }
     
-    // Process message normally
+    // Check for specific requests before sending to LLM
+    const lowerCaseMessage = userMessage.toLowerCase();
+    
+    // Check if user is asking about nearby dermatologists
+    if (lowerCaseMessage.includes('dermatologist') && 
+        (lowerCaseMessage.includes('near') || lowerCaseMessage.includes('nearby') || 
+         lowerCaseMessage.includes('find') || lowerCaseMessage.includes('local'))) {
+      addAssistantMessage("I'd be happy to help you find a dermatologist nearby! I'll need to access your location for that. Is it okay if I access your location?");
+      return;
+    }
+      // Check if user is asking about nearby products or stores
+    if ((lowerCaseMessage.includes('product') || lowerCaseMessage.includes('buy') || 
+         lowerCaseMessage.includes('purchase') || lowerCaseMessage.includes('where') || 
+         lowerCaseMessage.includes('nearby') || lowerCaseMessage.includes('local') ||
+         lowerCaseMessage.includes('recommend') || lowerCaseMessage.includes('skincare')) && 
+        (lowerCaseMessage.includes('near') || lowerCaseMessage.includes('nearby') || 
+         lowerCaseMessage.includes('find') || lowerCaseMessage.includes('where can i') || 
+         lowerCaseMessage.includes('available') || lowerCaseMessage.includes('get'))) {
+      
+      if (nearbyProducts) {
+        // We already have product data, just show it
+        setShowNearbyProducts(true);
+        addAssistantMessage("Here are the skincare products I recommend for your skin profile that are available nearby:", false,
+          ['Show budget options', 'Show premium options', 'Close']);
+        return;
+      } else {
+        // Need to get location and search for products
+        addAssistantMessage("I can help you find skincare products nearby that match your skin profile! I'll need to access your location for that. Is it okay if I access your location?", false,
+          ['Yes, share my location', 'No, show online options']);
+        return;
+      }
+    }
+      // Handle direct requests for product categories
+    if (lowerCaseMessage.includes('budget option') || 
+        lowerCaseMessage.includes('cheap product') || 
+        lowerCaseMessage.includes('affordable') ||
+        lowerCaseMessage.includes('show budget options')) {
+      
+      if (nearbyProducts) {
+        // We already have product data, just highlight budget options
+        setShowNearbyProducts(true);
+        addAssistantMessage("Here are some budget-friendly options for your skin type!");
+        return;
+      } else if (userLocation) {
+        // We have location but no products yet
+        findNearbyProductsForSkin(userLocation.lat, userLocation.lng);
+        return;
+      } else {
+        // Need to get location first
+        addAssistantMessage("I'll need your location to find affordable products near you. Is it okay if I access your location?");
+        return;
+      }
+    }
+    
+    if (lowerCaseMessage.includes('premium') || 
+        lowerCaseMessage.includes('high end') || 
+        lowerCaseMessage.includes('luxury') ||
+        lowerCaseMessage.includes('show premium options')) {
+      
+      if (nearbyProducts) {
+        // We already have product data, just highlight premium options
+        setShowNearbyProducts(true);
+        addAssistantMessage("Here are some premium options for your skin type!");
+        return;
+      } else if (userLocation) {
+        // We have location but no products yet
+        findNearbyProductsForSkin(userLocation.lat, userLocation.lng);
+        return;
+      } else {
+        // Need to get location first
+        addAssistantMessage("I'll need your location to find premium products near you. Is it okay if I access your location?");
+        return;
+      }
+    }
+      // Handle showing moderate price products
+    if (lowerCaseMessage.includes('moderate') || 
+        lowerCaseMessage.includes('mid-range') || 
+        lowerCaseMessage.includes('medium price') ||
+        lowerCaseMessage.includes('show moderate options')) {
+      
+      if (nearbyProducts) {
+        // We already have product data, just highlight moderate options
+        setShowNearbyProducts(true);
+        addAssistantMessage("Here are some moderately priced options for your skin type!");
+        return;
+      } else if (userLocation) {
+        // We have location but no products yet
+        findNearbyProductsForSkin(userLocation.lat, userLocation.lng);
+        return;
+      } else {
+        // Need to get location first
+        addAssistantMessage("I'll need your location to find moderately priced products near you. Is it okay if I access your location?");
+        return;
+      }
+    }
+      // Handle online options
+    if (lowerCaseMessage.includes('online') || 
+        lowerCaseMessage.includes('internet') || 
+        lowerCaseMessage.includes('website') ||
+        lowerCaseMessage.includes('shop online') ||
+        lowerCaseMessage.includes('no, show online options') ||
+        lowerCaseMessage.includes('show online options') ||
+        lowerCaseMessage.includes('recommend products')) {
+      
+      // First, show a loading message
+      addAssistantMessage("Let me find some skincare products available in Tunisia that would work well for your skin type...");
+      
+      try {
+        // Get actual product recommendations with Tunisian currency and localization
+        const skinType = skinResults?.skinType.type || '';
+        const skinIssues = skinResults?.skinIssues.map(issue => issue.name) || [];
+        const gender = skinResults?.demographics?.gender;
+        const ageGroup = skinResults?.demographics?.age;
+        
+        // Get product recommendations from our mock API (which now has Tunisian products)
+        const realProducts = await getProductRecommendations(
+          "Tunisia", // Explicitly set to Tunisia
+          skinType,
+          skinIssues,
+          gender,
+          ageGroup
+        );
+        
+        // Create proper NearbyProducts data
+        const onlineProducts: NearbyProduct[] = realProducts.map(product => {
+          // Determine price category based on price
+          let priceCategory: 'Budget' | 'Moderate' | 'Premium';
+          const price = parseFloat(product.price);
+          
+          if (product.currency === 'TND') {
+            priceCategory = price < 50 ? 'Budget' : price < 100 ? 'Moderate' : 'Premium';
+          } else {
+            priceCategory = price < 15 ? 'Budget' : price < 30 ? 'Moderate' : 'Premium';
+          }
+          
+          return {
+            ...product,
+            priceCategory,
+            nearbyStores: []
+          };
+        });
+        
+        // Group by price
+        const groupedProducts = {
+          Budget: onlineProducts.filter(p => p.priceCategory === 'Budget'),
+          Moderate: onlineProducts.filter(p => p.priceCategory === 'Moderate'),
+          Premium: onlineProducts.filter(p => p.priceCategory === 'Premium')
+        };
+        
+        // Set the state to display products
+        setNearbyProducts({
+          products: onlineProducts,
+          groupedByPrice: groupedProducts,
+          nearbyStores: []
+        });
+        setShowNearbyProducts(true);
+        
+        // Add assistant message
+        addAssistantMessage(
+          "Here are some products available in Tunisia that would work well for your skin type! I've organized them by price category.",
+          false,
+          ['Tell me more about these products', 'How should I use these?', 'Find local stores']
+        );
+        
+      } catch (error) {
+        console.error('Error getting product recommendations:', error);
+        
+        // Fallback to text recommendations from knowledge base
+        const skinType = skinResults?.skinType.type.toLowerCase() || '';
+        const skinIssues = skinResults?.skinIssues.map(issue => issue.name.toLowerCase()) || [];
+        let response = skinKnowledgeBase.getProductRecommendations(skinType, skinIssues);
+        addAssistantMessage(response, false, 
+          ['Tell me more about these products', 'How should I use these?', 'Find local stores']);
+      }
+      
+      return;
+    }
+    
+    // Handle close request for products display
+    if (lowerCaseMessage.includes('close') && showNearbyProducts) {
+      setShowNearbyProducts(false);
+      addAssistantMessage("I've closed the product recommendations. Is there anything else you'd like to know about your skin?");
+      return;
+    }    // Check if user agreed to share location for products
+    if ((lowerCaseMessage.includes('yes') || lowerCaseMessage.includes('sure') || 
+         lowerCaseMessage.includes('okay') || lowerCaseMessage.includes('ok')) && 
+        (lowerCaseMessage.includes('location') || lowerCaseMessage.includes('share') || 
+         lowerCaseMessage.includes('access') || lowerCaseMessage === 'yes, share my location') && 
+        (messages[messages.length-1]?.content?.includes('skincare products nearby') ||
+         messages[messages.length-1]?.content?.includes('products near you') ||
+         messages[messages.length-1]?.content?.includes('find affordable products') ||
+         messages[messages.length-1]?.content?.includes('find premium products') ||
+         messages[messages.length-1]?.content?.includes('find moderately priced products'))) {
+      // User agreed to share location for products
+      getUserLocation('products');
+      addAssistantMessage("Thank you! I'm searching for skincare products near you that match your skin profile...");
+      return;
+    }
+    
+    // Check if user agreed to share location for dermatologists
+    if ((lowerCaseMessage.includes('yes') || lowerCaseMessage.includes('sure') || 
+         lowerCaseMessage.includes('okay') || lowerCaseMessage.includes('ok')) && 
+        (lowerCaseMessage.includes('location') || lowerCaseMessage.includes('share') || 
+         lowerCaseMessage.includes('access') || lowerCaseMessage === 'yes, share my location') && 
+        messages[messages.length-1]?.content?.includes('dermatologist nearby')) {
+      // User agreed to share location for dermatologists
+      getUserLocation('dermatologists');
+      addAssistantMessage("Thank you! I'm searching for dermatologists near you...");
+      return;
+    }
+    
+    // Process message with LLM for other cases
     generateLLMResponse(userMessage);
     
     // Save chat history after each message if we have scan results
@@ -276,15 +659,24 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
     setIsViewingHistory(false);
     setShowHistoryPanel(false);
   };
-
   // Save the current chat session to Firebase
   const saveChatSession = async () => {
-    if (!skinResults || !currentScanId) return;
+    if (!skinResults || !currentScanId) {
+      console.log('Cannot save chat session - missing data:', { 
+        hasSkinResults: !!skinResults, 
+        hasCurrentScanId: !!currentScanId 
+      });
+      return;
+    }
     
     const auth = getAuthClient();
-    if (!auth?.currentUser) return;
+    if (!auth?.currentUser) {
+      console.log('Cannot save chat session - no authenticated user');
+      return;
+    }
     
     const userId = auth.currentUser.uid;
+    console.log('Saving chat session for scan:', currentScanId);
     
     // Format messages for Firestore
     const firestoreMessages = messages.map(msg => ({
@@ -297,7 +689,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
     
     // Update the chat history in Firestore
     try {
-      await updateChatHistory(userId, currentScanId, firestoreMessages);
+      const success = await updateChatHistory(userId, currentScanId, firestoreMessages);
+      if (success) {
+        console.log('Chat history updated successfully');
+      } else {
+        console.error('Failed to update chat history');
+      }
     } catch (error) {
       console.error('Error saving chat session:', error);
     }
@@ -363,7 +760,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
         if (auth?.currentUser) {
           try {
             console.log('Attempting to save scan for user:', auth.currentUser.uid);
-            console.log('Skin results to save:', skinResults);
+            console.log('Skin results:', skinResults);
             
             const initialMessages = [
               {
@@ -382,16 +779,18 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
             );
             
             if (result) {
-              console.log('Scan saved successfully:', result);
+              console.log('Scan saved successfully with ID:', result.scanId);
               setCurrentScanId(result.scanId);
             } else {
               console.error('Failed to save scan - no result returned');
             }
           } catch (error) {
             console.error('Error saving initial scan:', error);
+            // Show user-friendly error message
+            addAssistantMessage("I'm having trouble saving your scan data. Please check your internet connection and try again.");
           }
         } else {
-          console.error('No authenticated user found when trying to save scan');
+          console.error('No authenticated user found');
         }
       };
       
@@ -401,6 +800,71 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
       generateLLMResponse("Analyze these skin results and provide a friendly summary", skinResults);
     }
   }, [skinResults, isViewingHistory, isHistoryScan, currentScanId]);
+  
+  // Helper function to get online product recommendations with proper currency and localization
+  const getOnlineProductRecommendations = async () => {
+    try {
+      const skinType = skinResults?.skinType.type || '';
+      const skinIssues = skinResults?.skinIssues.map(issue => issue.name) || [];
+      const gender = skinResults?.demographics?.gender;
+      const ageGroup = skinResults?.demographics?.age;
+      
+      // Try to get actual product recommendations from API with proper localization
+      const realProducts = await getProductRecommendations(
+        "Tunisia", // Set to Tunisia for proper currency
+        skinType,
+        skinIssues,
+        gender,
+        ageGroup
+      );
+      
+      // Convert to NearbyProduct format
+      const onlineProducts: NearbyProduct[] = realProducts.map(product => {
+        // Determine price category based on price
+        let priceCategory: 'Budget' | 'Moderate' | 'Premium';
+        const price = parseFloat(product.price);
+        
+        if (product.currency === 'TND') {
+          priceCategory = price < 50 ? 'Budget' : price < 100 ? 'Moderate' : 'Premium';
+        } else {
+          priceCategory = price < 15 ? 'Budget' : price < 30 ? 'Moderate' : 'Premium';
+        }
+        
+        return {
+          ...product,
+          priceCategory,
+          nearbyStores: []
+        };
+      });
+      
+      // Group by price
+      const groupedProducts = {
+        Budget: onlineProducts.filter(p => p.priceCategory === 'Budget'),
+        Moderate: onlineProducts.filter(p => p.priceCategory === 'Moderate'),
+        Premium: onlineProducts.filter(p => p.priceCategory === 'Premium')
+      };
+      
+      // Set the state to display products
+      setNearbyProducts({
+        products: onlineProducts,
+        groupedByPrice: groupedProducts,
+        nearbyStores: []
+      });
+      setShowNearbyProducts(true);
+      
+      return {
+        success: true,
+        message: "Here are some product recommendations for your skin type available in Tunisia! I've organized them by price category."
+      };
+    } catch (error) {
+      console.error('Error getting real product recommendations:', error);
+      return {
+        success: false,
+        message: "I couldn't find localized product recommendations. Here are some general options that might work for your skin type."
+      };
+    }
+  };
+  
   return (
     <div className="flex flex-col h-[80vh] bg-background rounded-xl shadow-lg futuristic-panel overflow-hidden">
       {/* Header */}
@@ -605,6 +1069,159 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
           </Button>
         </div>
       </form>
+        {/* Nearby Products Display - New Component */}
+      {showNearbyProducts && nearbyProducts && (
+        <div className="p-4 border-t border-border flex-shrink-0">
+          <h3 className="font-medium gradient-text mb-2">Recommended Products Near You</h3>
+          <NearbyProductsDisplay 
+            products={nearbyProducts} 
+            onClose={() => setShowNearbyProducts(false)} 
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
+// NearbyProductsDisplay component to show products classified by price
+interface NearbyProductsDisplayProps {
+  products: NearbyProductsResponse;
+  onClose: () => void;
+}
+
+const NearbyProductsDisplay: React.FC<NearbyProductsDisplayProps> = ({ products, onClose }) => {
+  const [activeCategory, setActiveCategory] = useState<'Budget' | 'Moderate' | 'Premium'>('Moderate');
+  
+  const categories = [
+    { value: 'Budget', label: '💰 Budget' },
+    { value: 'Moderate', label: '💰💰 Moderate' },
+    { value: 'Premium', label: '💰💰💰 Premium' }
+  ] as const;
+  
+  // Check if the active category has any products, if not switch to one that does
+  useEffect(() => {
+    if (products.groupedByPrice[activeCategory].length === 0) {
+      // Find the first category that has products
+      const categoryWithProducts = categories.find(
+        category => products.groupedByPrice[category.value].length > 0
+      );
+      
+      if (categoryWithProducts) {
+        setActiveCategory(categoryWithProducts.value);
+      }
+    }
+  }, [products, activeCategory]);
+  
+  return (
+    <div className="nearby-products-container mt-4 p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+      <div className="flex justify-between items-center mb-3">
+        <h3 className="text-lg font-medium">Recommended Products Near You</h3>
+        <button 
+          onClick={onClose}
+          className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </button>
+      </div>
+      
+      {/* Price category tabs */}
+      <div className="flex border-b mb-4">
+        {categories.map(category => (
+          <button 
+            key={category.value}
+            className={`py-2 px-4 ${activeCategory === category.value 
+              ? 'border-b-2 border-blue-500 font-medium text-blue-600 dark:text-blue-400' 
+              : 'text-gray-600 dark:text-gray-400'}`}
+            onClick={() => setActiveCategory(category.value)}
+            disabled={products.groupedByPrice[category.value].length === 0}
+          >
+            {category.label}
+            {products.groupedByPrice[category.value].length > 0 && (
+              <span className="ml-1 text-xs">({products.groupedByPrice[category.value].length})</span>
+            )}
+          </button>
+        ))}
+      </div>
+      
+      {/* Product grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-auto max-h-96">
+        {products.groupedByPrice[activeCategory].length > 0 ? (
+          products.groupedByPrice[activeCategory].map((product, index) => (
+            <div key={index} className="product-card border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              {/* Product image */}
+              <div className="h-40 bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+                {product.imageUrl ? (
+                  <img 
+                    src={product.imageUrl} 
+                    alt={`${product.brand} ${product.name}`} 
+                    className="object-contain h-full w-full"
+                  />
+                ) : (
+                  <div className="text-gray-400">No image</div>
+                )}
+              </div>
+              
+              {/* Product info */}
+              <div className="p-3">
+                <div className="font-medium text-sm text-gray-500 dark:text-gray-400">{product.brand}</div>
+                <h4 className="font-bold">{product.name}</h4>
+                <div className="text-lg font-bold text-blue-600 dark:text-blue-400 mt-1">
+                  {product.currency}{product.price}
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">{product.description}</p>
+                
+                {/* Store availability */}
+                {product.nearbyStores && product.nearbyStores.length > 0 && (
+                  <div className="mt-2">
+                    <div className="text-sm font-medium mb-1">Available at:</div>
+                    {product.nearbyStores.slice(0, 2).map((store, storeIndex) => (
+                      <div key={storeIndex} className="flex items-center text-sm mb-1">
+                        <span className="mr-1">📍</span>
+                        <a 
+                          href={`https://www.google.com/maps/place/?q=place_id:${store.place_id}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline truncate"
+                        >
+                          {store.name}
+                        </a>
+                        {store.open_now !== undefined && (
+                          <span className={`ml-1 text-xs ${store.open_now ? 'text-green-500' : 'text-red-500'}`}>
+                            {store.open_now ? '(Open)' : '(Closed)'}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+                
+                {/* Product link button */}
+                {product.link && (
+                  <a 
+                    href={product.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 block w-full text-center py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                  >
+                    Buy Now
+                  </a>
+                )}
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="col-span-2 text-center py-8 text-gray-500 dark:text-gray-400">
+            No products found in this price category near you.
+          </div>
+        )}
+      </div>
+      
+      {/* Footer note */}
+      <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+        Note: Product availability may vary. Check store websites for confirmed stock.
+      </div>
     </div>
   );
 };
