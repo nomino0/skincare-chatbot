@@ -149,6 +149,91 @@ body {
   animation: fade-in 0.3s ease-out;
 }
 
+/* Markdown content styles - Story format */
+.markdown-content {
+  line-height: 1.8;
+  color: #374151;
+}
+
+.markdown-content p {
+  margin: 1em 0;
+  text-align: left;
+}
+
+.markdown-content strong {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.markdown-content em {
+  font-style: italic;
+  color: #6b7280;
+}
+
+.markdown-content ul, .markdown-content ol {
+  margin: 1em 0;
+  padding-left: 2em;
+  text-align: left;
+}
+
+.markdown-content li {
+  margin: 0.5em 0;
+}
+
+.markdown-content code {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+  padding: 0.2em 0.5em;
+  border-radius: 0.25em;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content pre {
+  background-color: #f9fafb;
+  padding: 1.5em;
+  border-radius: 0.75em;
+  overflow-x: auto;
+  margin: 1em 0;
+  border: 1px solid #e5e7eb;
+}
+
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+  margin: 1.5em 0 0.75em 0;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: left;
+}
+
+.markdown-content h1 {
+  font-size: 1.75em;
+}
+
+.markdown-content h2 {
+  font-size: 1.5em;
+}
+
+.markdown-content h3 {
+  font-size: 1.25em;
+}
+
+/* Remove table styles to prevent table-like appearance */
+.markdown-content table {
+  display: none;
+}
+
+/* Swiper pagination */
+.swiper-pagination-bullet {
+  background: #FF69B4 !important;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 24px !important;
+  border-radius: 8px;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

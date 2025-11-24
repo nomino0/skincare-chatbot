@@ -32,25 +32,26 @@ const WebcamCapture: React.FC<WebcamCaptureProps> = ({ onCapture, onNewScan }) =
       const imageSrc = webcamRef.current.getScreenshot();
       if (imageSrc) {
         onCapture(imageSrc);
+        onNewScan(); // Clear chat history after successful capture
       }
       setIsCapturing(false);
       setCountdown(null);
     }
-  }, [webcamRef, onCapture]);
+  }, [webcamRef, onCapture, onNewScan]);
+  
   const startCountdown = () => {
     setIsCapturing(true);
     setCountdown(3);
-    onNewScan(); // Clear chat history for new scan
   };
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       setIsUploading(true);
-      onNewScan(); // Clear chat history for new scan
       const reader = new FileReader();
       reader.onloadend = () => {
         const result = reader.result as string;
         onCapture(result);
+        onNewScan(); // Clear chat history after successful upload
         setIsUploading(false);
       };
       reader.onerror = () => {
@@ -188,24 +189,35 @@ const WebcamCapture: React.FC<WebcamCaptureProps> = ({ onCapture, onNewScan }) =
         <>
           <div 
             className="flex flex-col items-center justify-center w-full h-64 border-2 border-border border-dashed rounded-lg mb-4 cursor-pointer bg-background/40 hover:bg-background/60 transition-all duration-300 futuristic-panel" 
-            onClick={triggerFileInput}
+            onClick={!isUploading ? triggerFileInput : undefined}
           >
-            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-              <div className="relative mb-3">
-                <svg className="w-12 h-12 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            {isUploading ? (
+              <div className="flex flex-col items-center justify-center">
+                <svg className="animate-spin h-12 w-12 text-primary mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                  <div className="w-6 h-6 rounded-full bg-primary animate-ping"></div>
-                </div>
+                <p className="text-sm font-medium text-primary">Uploading image...</p>
+                <p className="text-xs text-muted-foreground mt-1">Please wait</p>
               </div>
-              <p className="mb-2 text-sm text-foreground">
-                <span className="font-semibold">Click to upload</span> or drag and drop
-              </p>
-              <p className="text-xs text-muted-foreground">
-                PNG, JPG or JPEG (MAX. 5MB)
-              </p>
-            </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                <div className="relative mb-3">
+                  <svg className="w-12 h-12 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                    <div className="w-6 h-6 rounded-full bg-primary animate-ping"></div>
+                  </div>
+                </div>
+                <p className="mb-2 text-sm text-foreground">
+                  <span className="font-semibold">Click to upload</span> or drag and drop
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  PNG, JPG or JPEG (MAX. 5MB)
+                </p>
+              </div>
+            )}
           </div>
           
           <input 
@@ -228,7 +240,7 @@ const WebcamCapture: React.FC<WebcamCaptureProps> = ({ onCapture, onNewScan }) =
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Processing...
+                Uploading Image...
               </div>
             ) : (
               <div className="flex items-center">

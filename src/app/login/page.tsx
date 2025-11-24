@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/lib/auth-context';
-import { signIn, signInWithGoogle } from '@/lib/firebase';
+import { signInWithEmail, signInWithGoogle } from '@/services/auth';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AuthGuard } from '@/components/AuthGuard';
@@ -26,22 +25,16 @@ function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    setLoading(true);    try {
-      await signIn(email, password);
+    setLoading(true);
+
+    try {
+      await signInWithEmail(email, password);
+      
       const redirectPath = localStorage.getItem('redirectAfterLogin') || '/';
-      localStorage.removeItem('redirectAfterLogin'); // Clear after use
-      router.push(redirectPath);    } catch (err: any) {
-      let errorMessage = 'Failed to log in';
-      if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
-        errorMessage = 'Invalid email or password';
-      } else if (err.code === 'auth/too-many-requests') {
-        errorMessage = 'Too many failed login attempts. Please try again later.';
-      } else if (err.code === 'auth/user-disabled') {
-        errorMessage = 'This account has been disabled. Please contact support.';
-      } else if (err.code === 'auth/network-request-failed') {
-        errorMessage = 'Network error. Please check your internet connection.';
-      }
-      setError(errorMessage);
+      localStorage.removeItem('redirectAfterLogin');
+      router.push(redirectPath);
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred. Please try again.');
       setLoading(false);
     }
   };
@@ -49,14 +42,15 @@ function LoginForm() {
   const handleGoogleSignIn = async () => {
     setError(null);
     setLoading(true);
-      try {
+
+    try {
       await signInWithGoogle();
+      
       const redirectPath = localStorage.getItem('redirectAfterLogin') || '/';
-      localStorage.removeItem('redirectAfterLogin'); // Clear after use
+      localStorage.removeItem('redirectAfterLogin');
       router.push(redirectPath);
     } catch (err: any) {
-      console.error("Google sign-in error:", err);
-      setError('Failed to sign in with Google. Please try again.');
+      setError(err.message || 'An unexpected error occurred. Please try again.');
       setLoading(false);
     }
   };

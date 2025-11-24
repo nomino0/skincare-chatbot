@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { signUp, signInWithGoogle } from '@/lib/firebase';
+import { signUpWithEmail, signInWithGoogle } from '@/services/auth';
 import { useAuth } from '@/lib/auth-context';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { AuthGuard } from '@/components/AuthGuard';
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -21,10 +21,11 @@ export default function SignUpPage() {
     // If user is already logged in, redirect
     if (currentUser) {
       const redirectPath = localStorage.getItem('redirectAfterLogin') || '/';
-      localStorage.removeItem('redirectAfterLogin'); // Clear after use
+      localStorage.removeItem('redirectAfterLogin');
       router.push(redirectPath);
     }
   }, [currentUser, router]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -39,24 +40,16 @@ export default function SignUpPage() {
       return;
     }
     
-    setLoading(true);    try {
-      await signUp(email, password);
+    setLoading(true);
+
+    try {
+      await signUpWithEmail(email, password, displayName);
+
       const redirectPath = localStorage.getItem('redirectAfterLogin') || '/';
-      localStorage.removeItem('redirectAfterLogin'); // Clear after use
-      router.push(redirectPath);    } catch (err: any) {
-      let errorMessage = 'Failed to create account';
-      if (err.code === 'auth/email-already-in-use') {
-        errorMessage = 'This email address is already in use';
-      } else if (err.code === 'auth/invalid-email') {
-        errorMessage = 'Invalid email address';
-      } else if (err.code === 'auth/weak-password') {
-        errorMessage = 'Password is too weak';
-      } else if (err.code === 'auth/operation-not-allowed') {
-        errorMessage = 'Account creation is disabled at this time';
-      } else if (err.code === 'auth/network-request-failed') {
-        errorMessage = 'Network error. Please check your internet connection.';
-      }
-      setError(errorMessage);
+      localStorage.removeItem('redirectAfterLogin');
+      router.push(redirectPath);
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred. Please try again.');
       setLoading(false);
     }
   };
@@ -66,12 +59,12 @@ export default function SignUpPage() {
     
     try {
       await signInWithGoogle();
+
       const redirectPath = localStorage.getItem('redirectAfterLogin') || '/';
-      localStorage.removeItem('redirectAfterLogin'); // Clear after use
+      localStorage.removeItem('redirectAfterLogin');
       router.push(redirectPath);
     } catch (err: any) {
-      console.error("Google sign-in error:", err);
-      setError('Failed to sign in with Google. Please try again.');
+      setError(err.message || 'An unexpected error occurred. Please try again.');
       setLoading(false);
     }
   };
@@ -102,6 +95,21 @@ export default function SignUpPage() {
           )}
           
           <div className="space-y-4 rounded-md shadow-sm">
+            <div>
+              <label htmlFor="displayName" className="sr-only">
+                Display Name
+              </label>
+              <input
+                id="displayName"
+                name="displayName"
+                type="text"
+                autoComplete="name"
+                className="relative block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 dark:bg-slate-800 dark:text-white dark:ring-slate-700 dark:placeholder:text-slate-400 dark:focus:ring-blue-500"
+                placeholder="Display Name (optional)"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+              />
+            </div>
             <div>
               <label htmlFor="email-address" className="sr-only">
                 Email address

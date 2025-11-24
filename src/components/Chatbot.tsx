@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { SkinPredictionResult, sendEmail, findNearbyDermatologists, getUserCountry, findNearbyProducts, NearbyProduct, NearbyProductsResponse, getProductRecommendations, ProductRecommendation } from '../services/api';
+import { SkinPredictionResult, sendEmail, findNearbyDermatologists, getUserCountry, findNearbyProducts, NearbyProduct, NearbyProductsResponse, getProductRecommendations, ProductRecommendation, chatWithAssistant, ChatMessage as APIChatMessage, ChatResponse } from '../services/api';
 import { Button } from '@/components/ui/button';
 import SkinAnalysisChart from './SkinAnalysisChart';
-import { getAuthClient, saveScanHistory, updateChatHistory, getUserScanHistory, getScanHistoryById, ChatMessage } from '../lib/firebase';
+import { getAuthClient, saveScanHistory, updateChatHistory, getUserScanHistory, getScanHistoryById, ChatMessage as FirebaseChatMessage } from '../lib/firebase';
 import { Timestamp } from 'firebase/firestore';
-
-// Add this import for the knowledge base
-import { skinKnowledgeBase } from '../utils/skinKnowledgeBase';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -38,13 +38,7 @@ interface ChatbotProps {
 }
 
 const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHistoryScan = false }) => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: 'assistant',
-      content: 'Hello! I am Hasna, your dermatology assistant. I can help analyze your skin and provide personalized skincare recommendations. Please take a face scan to get started.',
-      suggestions: ['How does this work?', 'What can you help with?']
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [dermatologists, setDermatologists] = useState<DermatologistResult[]>([]);
@@ -86,153 +80,141 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Function to generate responses using the LLM
+  // Function to generate responses using the backend AI service
   const generateLLMResponse = async (prompt: string, context?: any) => {
     setIsLoading(true);
     try {
-      // In a real implementation, this would call your backend API to use GROQ
-      // For now, we'll simulate a response
+      // Get user location for context
+      let userLocation;
+      try {
+        userLocation = await getUserCountry();
+      } catch (error) {
+        console.log('Could not get user location for context');
+      }
       
-      // Build context for the LLM
-      const skinType = skinResults?.skinType.type.toLowerCase() || '';
-      const skinIssues = skinResults?.skinIssues.map(issue => issue.name.toLowerCase()) || [];
+      // Convert messages to API format
+      const conversationHistory: APIChatMessage[] = messages.map(msg => ({
+        role: msg.role,
+        content: msg.content,
+        timestamp: msg.timestamp?.toISOString()
+      }));
       
-      let response = "";
-      let showAnalysis = false;
-      let suggestions: string[] = [];
-      
-      // Just for demo purposes - in reality this would be handled by the LLM
-      // This simulates what the LLM would do with the knowledge base
-      if (prompt.includes("skin results") || prompt.includes("analyze my skin")) {
-        // Initial analysis response
-        showAnalysis = true;
-        
-        if (skinResults?.ai_response) {
-          response = `${skinResults.ai_response}`;
-        } else {
-          response = `I've completed your skin analysis, and here's what I found! Your primary skin type is ${skinResults?.skinType.type}.`;
-          
-          if (skinIssues.length > 0) {
-            response += ` I've also identified some specific concerns that we can address together.`;
-          } else {
-            response += ` I'm pleased to report that your skin looks quite healthy with no significant concerns detected!`;
-          }
-        }
-        
-        // Add suggestions after analysis
-        suggestions = [
-          'Recommend products',
-          'Suggest a routine',
-          'Find a dermatologist',
-          'Tell me more about my skin type'
-        ];
-      } else if (prompt.includes("routine") || prompt.includes("regimen")) {
-        // Get a routine response from the knowledge base
-        response = skinKnowledgeBase.getRoutine(skinType, skinIssues);
-        suggestions = ['Morning routine', 'Evening routine', 'Weekly treatments'];      } else if (prompt.includes("product") || prompt.includes("recommend")) {
-        // Get text recommendations from the knowledge base (as fallback)
-        response = skinKnowledgeBase.getProductRecommendations(skinType, skinIssues);
-        suggestions = ['Budget options', 'Luxury products', 'Natural ingredients'];
-        
-        try {
-          // Get actual product recommendations with Tunisian currency and localization
-          const realProducts = await getProductRecommendations(
-            "Tunisia", // Set to Tunisia for proper currency
-            skinResults?.skinType.type || '',
-            skinResults?.skinIssues.map(issue => issue.name) || [],
-            skinResults?.demographics?.gender,
-            skinResults?.demographics?.age
+      // Handle special actions based on the prompt
+      if (prompt.includes("doctor") || prompt.includes("dermatologist")) {
+        if (prompt.toLowerCase().includes("yes, share my location")) {
+          getUserLocation();
+          return;
+        } else if (!prompt.toLowerCase().includes("not now")) {
+          // Ask for location permission first
+          addAssistantMessage(
+            "I'd be happy to help you find a dermatologist nearby! I'll need to access your location for that. Is it okay if I access your location?",
+            false,
+            ['Yes, share my location', 'Not now']
           );
-          
-          // Create product data for visualization
-          const onlineProducts: NearbyProduct[] = realProducts.map(product => {
-            // Determine price category based on price
-            let priceCategory: 'Budget' | 'Moderate' | 'Premium';
-            const price = parseFloat(product.price);
-            
-            if (product.currency === 'TND') {
-              priceCategory = price < 50 ? 'Budget' : price < 100 ? 'Moderate' : 'Premium';
-            } else {
-              priceCategory = price < 15 ? 'Budget' : price < 30 ? 'Moderate' : 'Premium';
-            }
-            
-            return {
-              ...product,
-              priceCategory,
-              nearbyStores: []
-            };
-          });
-          
-          // Group by price
-          const groupedProducts = {
-            Budget: onlineProducts.filter(p => p.priceCategory === 'Budget'),
-            Moderate: onlineProducts.filter(p => p.priceCategory === 'Moderate'),
-            Premium: onlineProducts.filter(p => p.priceCategory === 'Premium')
-          };
-          
-          // Set the state to display products
-          setNearbyProducts({
-            products: onlineProducts,
-            groupedByPrice: groupedProducts,
-            nearbyStores: []
-          });
-          setShowNearbyProducts(true);
-          
-          // Update response for Tunisian products
-          response = "Here are some skincare products available in Tunisia that would work well for your skin type. I've organized them by price category.";
-          
-        } catch (error) {
-          console.error('Error getting Tunisian product recommendations:', error);
-          // Fallback to text response already set above
+          return;
         }
-      } else if (prompt.includes("doctor") || prompt.includes("dermatologist")) {
-        response = "I'd be happy to help you find a dermatologist nearby! I'll need to access your location for that. Is it okay if I access your location?";
-        suggestions = ['Yes, share my location', 'Not now'];
-      } else if (prompt.toLowerCase().includes("yes, share my location")) {
-        // User agreed to share location
-        getUserLocation();
-        response = "Thank you! I'm searching for dermatologists near you...";
-      } else {
-        // General conversation - this would be handled more naturally by the LLM
-        response = skinKnowledgeBase.getGeneralResponse(prompt, skinType, skinIssues);
-        suggestions = ['Tell me about my skin', 'Skincare tips', 'Product recommendations'];      }
+      }
       
-      addAssistantMessage(response, showAnalysis, suggestions);
+      // Call the backend chat API for expert responses
+      const chatResponse = await chatWithAssistant(
+        prompt,
+        conversationHistory,
+        skinResults || undefined,
+        userLocation
+      );
+      
+      // Determine if we should show analysis
+      let showAnalysis = false;
+      if (prompt.includes("skin results") || prompt.includes("analyze my skin")) {
+        showAnalysis = true;
+      }
+      
+      // Add the AI response
+      addAssistantMessage(
+        chatResponse.response,
+        showAnalysis,
+        chatResponse.suggestions || []
+      );
+      
+      // If there are product recommendations in the response, display them
+      if (chatResponse.productRecommendations && chatResponse.productRecommendations.length > 0) {
+        const onlineProducts: NearbyProduct[] = chatResponse.productRecommendations.map(product => {
+          // Determine price category based on price
+          let priceCategory: 'Budget' | 'Moderate' | 'Premium';
+          const price = parseFloat(product.price);
+          
+          if (product.currency === 'TND') {
+            priceCategory = price < 50 ? 'Budget' : price < 100 ? 'Moderate' : 'Premium';
+          } else {
+            priceCategory = price < 15 ? 'Budget' : price < 30 ? 'Moderate' : 'Premium';
+          }
+          
+          return {
+            ...product,
+            priceCategory,
+            nearbyStores: []
+          };
+        });
+        
+        // Group by price
+        const groupedProducts = {
+          Budget: onlineProducts.filter(p => p.priceCategory === 'Budget'),
+          Moderate: onlineProducts.filter(p => p.priceCategory === 'Moderate'),
+          Premium: onlineProducts.filter(p => p.priceCategory === 'Premium')
+        };
+        
+        // Set the state to display products
+        setNearbyProducts({
+          products: onlineProducts,
+          groupedByPrice: groupedProducts,
+          nearbyStores: []
+        });
+        setShowNearbyProducts(true);
+      }
       
       // Save chat history after each assistant response
-      if (hasScanResults && currentScanId && !isHistoryScan) {
+      if (skinResults && currentScanId && !isHistoryScan) {
         setTimeout(() => {
           saveChatSession();
-        }, 500); // Small delay to ensure the new message is included
+        }, 500);
       }
+      
     } catch (error) {
-      console.error('Error generating LLM response:', error);
-      addAssistantMessage("I seem to be having a technical hiccup. Could we try that again?");
+      console.error('Error getting AI response:', error);
+      // Fallback message when backend is unavailable
+      addAssistantMessage(
+        "I'm currently updating my knowledge base to provide you with the most current skincare advice and product recommendations. Please try again in a moment, or feel free to ask about general skincare topics!",
+        false,
+        ['Try again', 'General skincare tips', 'About my skin']
+      );
     } finally {
       setIsLoading(false);
     }
   };
-  // Find dermatologists
+  // Find dermatologists - using AI response instead of hardcoded
   const findDermatologists = async (lat: number, lng: number) => {
     try {
       const results = await findNearbyDermatologists(lat, lng);
       setDermatologists(results);
-      if (results.length > 0) {
-        addAssistantMessage(`I've found ${results.length} dermatologists near you. Here are the top options:`, false, ['Make an appointment', 'See more options']);
-      } else {
-        addAssistantMessage("I couldn't find any dermatologists in your immediate area. Try expanding your search radius or consult your healthcare provider for a referral.");
-      }
+      
+      // Use AI to generate response about dermatologist search results
+      const context = `Found ${results.length} dermatologists near user location (${lat}, ${lng})`;
+      generateLLMResponse(`Please provide a helpful response about the dermatologist search results. ${context}`);
+      
     } catch (error) {
       console.error('Error finding dermatologists:', error);
-      addAssistantMessage("I'm having trouble finding dermatologists right now. Please try again later or search online for dermatologists in your area.");
+      // Use AI for error response
+      generateLLMResponse("There was an issue finding dermatologists. Please provide helpful guidance for finding dermatological care.");
     }
   };
 
-  // Find nearby products with skin profile
+  // Find nearby products with skin profile - using AI response instead of hardcoded
   const findNearbyProductsForSkin = async (lat: number, lng: number) => {
     try {
       setIsLoading(true);
-      addAssistantMessage("Searching for skincare products near you that match your skin profile...");
+      
+      // Use AI to announce search start
+      generateLLMResponse(`User has requested to find skincare products nearby. I'm now searching for products near their location that match their skin profile.`);
       
       const results = await findNearbyProducts(
         lat, 
@@ -247,36 +229,17 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
         setNearbyProducts(results);
         setShowNearbyProducts(true);
         
-        // Give a friendly message about the products
-        let budgetCount = results.groupedByPrice.Budget.length;
-        let moderateCount = results.groupedByPrice.Moderate.length;
-        let premiumCount = results.groupedByPrice.Premium.length;
-        
-        let message = `I've found ${results.products.length} skincare products near you that would work well for your ${skinResults?.skinType.type || ''} skin!`;
-        
-        if (budgetCount > 0 && moderateCount > 0 && premiumCount > 0) {
-          message += ` I've grouped them by price range so you can find options that fit your budget.`;
-        } else if (budgetCount > 0) {
-          message += ` There are some great budget-friendly options available.`;
-        } else if (premiumCount > 0) {
-          message += ` There are some premium products that would be excellent for your skin concerns.`;
-        }
-        
-        addAssistantMessage(message, false, ['Show budget options', 'Show premium options', 'Close']);
+        // Use AI to describe the found products
+        const productContext = `Found ${results.products.length} skincare products nearby. Budget: ${results.groupedByPrice.Budget.length}, Moderate: ${results.groupedByPrice.Moderate.length}, Premium: ${results.groupedByPrice.Premium.length}`;
+        generateLLMResponse(`Please provide a helpful response about the product search results. ${productContext} for user with ${skinResults?.skinType.type || ''} skin`);
       } else {
-        addAssistantMessage(
-          "I couldn't find any specific products near you that match your skin profile. Would you like to see some online options instead?",
-          false,
-          ['Show online options', 'Tell me more about my skin type']
-        );
+        // Use AI for no products found response
+        generateLLMResponse("No specific products were found nearby that match the user's skin profile. Please suggest alternatives like online options.");
       }
     } catch (error) {
       console.error('Error finding nearby products:', error);
-      addAssistantMessage(
-        "I'm having trouble finding products near you right now. Would you like to see some general recommendations instead?",
-        false,
-        ['Show general recommendations', 'Try again later']
-      );
+      // Use AI for error response
+      generateLLMResponse("There was an issue finding nearby products. Please suggest alternative ways to find suitable skincare products.");
     } finally {
       setIsLoading(false);
     }
@@ -510,7 +473,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
         const gender = skinResults?.demographics?.gender;
         const ageGroup = skinResults?.demographics?.age;
         
-        // Get product recommendations from our mock API (which now has Tunisian products)
+        // Get product recommendations from our backend API
         const realProducts = await getProductRecommendations(
           "Tunisia", // Explicitly set to Tunisia
           skinType,
@@ -563,12 +526,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
       } catch (error) {
         console.error('Error getting product recommendations:', error);
         
-        // Fallback to text recommendations from knowledge base
-        const skinType = skinResults?.skinType.type.toLowerCase() || '';
-        const skinIssues = skinResults?.skinIssues.map(issue => issue.name.toLowerCase()) || [];
-        let response = skinKnowledgeBase.getProductRecommendations(skinType, skinIssues);
+        // Fallback message when product service is unavailable
+        const response = "I'm currently updating my product database with the latest recommendations and pricing. Please try again in a moment for real-time product suggestions with current availability!";
         addAssistantMessage(response, false, 
-          ['Tell me more about these products', 'How should I use these?', 'Find local stores']);
+          ['Try again', 'Chat about skincare', 'Find dermatologist']);
       }
       
       return;
@@ -685,7 +646,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
       showAnalysis: msg.showAnalysis || false,
       suggestions: msg.suggestions || [],
       timestamp: Timestamp.now() // Use Firebase Timestamp
-    })) as ChatMessage[];
+    })) as FirebaseChatMessage[];
     
     // Update the chat history in Firestore
     try {
@@ -736,6 +697,19 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
       onNewScanRequest();
     }
   };
+
+  // Generate initial AI greeting on component mount
+  useEffect(() => {
+    if (messages.length === 0 && !isViewingHistory) {
+      // Use a simple hardcoded greeting instead of calling the API
+      setMessages([{
+        role: 'assistant',
+        content: 'Hi! I\'m Hasna, your dermatology assistant. Upload a face scan and I\'ll help you understand your skin better!',
+        suggestions: ['How does this work?', 'What can you help with?']
+      }]);
+    }
+  }, [isViewingHistory]);
+  
   // Add skin analysis results as a message when they become available
   useEffect(() => {
     if (skinResults && !isViewingHistory) {
@@ -747,7 +721,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
         // Just update the UI state
         setCurrentScanId(Date.now().toString());
         generateLLMResponse("Analyze these skin results and provide a friendly summary", skinResults);
-        return;
+        return; // Exit early to prevent double execution
       }
       
       // Generate a scan ID if we don't have one
@@ -770,7 +744,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
                 suggestions: [],
                 timestamp: Timestamp.now()
               }
-            ] as ChatMessage[];
+            ] as FirebaseChatMessage[];
             
             const result = await saveScanHistory(
               auth.currentUser.uid,
@@ -786,8 +760,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
             }
           } catch (error) {
             console.error('Error saving initial scan:', error);
-            // Show user-friendly error message
-            addAssistantMessage("I'm having trouble saving your scan data. Please check your internet connection and try again.");
+            // Use AI to handle save errors
+            generateLLMResponse("There was an issue saving the skin scan data. Please provide helpful guidance for the user.");
           }
         } else {
           console.error('No authenticated user found');
@@ -796,10 +770,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
       
       saveInitialScan();
       
-      // Use the LLM to generate a natural response based on the skin results
+      // AI response generated for new scans only (this line is reached only when isHistoryScan is false)
       generateLLMResponse("Analyze these skin results and provide a friendly summary", skinResults);
     }
-  }, [skinResults, isViewingHistory, isHistoryScan, currentScanId]);
+  }, [skinResults, isViewingHistory, isHistoryScan]);
   
   // Helper function to get online product recommendations with proper currency and localization
   const getOnlineProductRecommendations = async () => {
@@ -947,8 +921,26 @@ const Chatbot: React.FC<ChatbotProps> = ({ skinResults, onNewScanRequest, isHist
                 } max-w-[85%]`}
               >
                 {/* Message content */}
-                <div className="whitespace-pre-line">
-                  {message.content}
+                <div className="prose prose-sm max-w-none dark:prose-invert
+                  prose-headings:font-bold prose-headings:text-foreground
+                  prose-p:text-foreground prose-p:leading-relaxed
+                  prose-strong:text-foreground prose-strong:font-semibold
+                  prose-ul:text-foreground prose-ol:text-foreground
+                  prose-li:text-foreground prose-li:my-1
+                  prose-a:text-primary hover:prose-a:underline
+                  prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+                  prose-pre:bg-muted prose-pre:text-foreground
+                  prose-table:border-collapse prose-table:border prose-table:border-border
+                  prose-th:border prose-th:border-border prose-th:bg-muted/50 prose-th:px-4 prose-th:py-2 prose-th:text-left prose-th:font-semibold
+                  prose-td:border prose-td:border-border prose-td:px-4 prose-td:py-2
+                  prose-blockquote:border-l-primary prose-blockquote:bg-muted/30 prose-blockquote:pl-4
+                ">
+                  <ReactMarkdown 
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
+                  >
+                    {message.content}
+                  </ReactMarkdown>
                 </div>
                 
                 {/* Skin analysis visualization */}

@@ -130,7 +130,7 @@ const SkinAnalysisChart: React.FC<SkinAnalysisChartProps> = ({ skinResults }) =>
       'sensitive': 'text-rose-600'
     };
     
-    return types[skinType.toLowerCase()] || 'text-primary';
+    return skinType ? (types[skinType.toLowerCase()] || 'text-primary') : 'text-primary';
   };
   
   // If no skin issues, display a different message

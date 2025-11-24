@@ -1,13 +1,40 @@
-Flask==2.3.2
-Flask-Cors==4.0.0
+# Core Flask dependencies
+Flask==2.3.3
+Flask-CORS==4.0.0
+
+# AI/ML Dependencies
+tensorflow==2.13.0
+torch==2.0.1
+torchvision==0.15.2
 numpy==1.24.3
-opencv-python==4.8.0.76
-tensorflow==2.14.0
+opencv-python==4.8.1.78
+Pillow==10.0.1
+
+# API and HTTP
 requests==2.31.0
 python-dotenv==1.0.0
 groq==0.4.0
-torch==2.0.1
-torchvision==0.15.2
+
+# Web Scraping
+beautifulsoup4==4.12.2
+
+# Email
+email-validator==2.0.0
+
+# Utilities
+python-dateutil==2.8.2
+urllib3==2.0.7
+
+# Development Dependencies (optional)
+pytest==7.4.2
+pytest-flask==1.2.0
+black==23.9.1
+flake8==6.1.0
+
+# Production Dependencies (optional)
+gunicorn==21.2.0
+redis==5.0.1
+
+# Legacy dependencies (can be removed if not needed)
 transformers==4.31.0
 onnxruntime==1.15.1
-Pillow==9.5.0

@@ -1,0 +1,1575 @@
+2025-09-12 11:26:13,380 - app - INFO - Initializing utilities...
+2025-09-12 11:26:13,416 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 11:26:13,417 - app - INFO - Initializing AI models...
+2025-09-12 11:26:13,418 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 11:26:15,043 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 11:26:15,048 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 11:26:15,049 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 11:26:15,050 - app - INFO - Initializing business services...
+2025-09-12 11:26:15,051 - app - INFO - All services initialized successfully
+2025-09-12 11:26:15,056 - app - INFO - All API blueprints registered successfully
+2025-09-12 11:26:15,056 - app - INFO - SkinPredict API application created successfully
+2025-09-12 11:26:15,057 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 11:26:15,057 - __main__ - INFO - Debug mode: True
+2025-09-12 11:26:15,058 - __main__ - INFO - Environment: development
+2025-09-12 11:26:15,113 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.229.181:5000
+2025-09-12 11:26:15,114 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-12 11:26:15,118 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 11:30:02,774 - app - INFO - Initializing utilities...
+2025-09-12 11:30:02,812 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 11:30:02,812 - app - INFO - Initializing AI models...
+2025-09-12 11:30:02,813 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 11:30:04,305 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 11:30:04,311 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 11:30:04,312 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 11:30:04,313 - app - INFO - Initializing business services...
+2025-09-12 11:30:04,314 - app - INFO - All services initialized successfully
+2025-09-12 11:30:04,320 - app - INFO - All API blueprints registered successfully
+2025-09-12 11:30:04,320 - app - INFO - SkinPredict API application created successfully
+2025-09-12 11:30:04,321 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 11:30:04,321 - __main__ - INFO - Debug mode: True
+2025-09-12 11:30:04,321 - __main__ - INFO - Environment: development
+2025-09-12 11:30:04,360 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.229.181:5000
+2025-09-12 11:30:04,360 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-12 11:30:04,364 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 14:48:33,765 - app - INFO - Initializing utilities...
+2025-09-12 14:48:33,827 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 14:48:33,827 - app - INFO - Initializing AI models...
+2025-09-12 14:48:33,828 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 14:48:35,625 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 14:48:35,631 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 14:48:35,632 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 14:48:35,632 - app - INFO - Initializing business services...
+2025-09-12 14:48:35,633 - app - INFO - All services initialized successfully
+2025-09-12 14:48:35,638 - app - INFO - All API blueprints registered successfully
+2025-09-12 14:48:35,639 - app - INFO - SkinPredict API application created successfully
+2025-09-12 14:48:35,639 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 14:48:35,640 - __main__ - INFO - Debug mode: True
+2025-09-12 14:48:35,640 - __main__ - INFO - Environment: development
+2025-09-12 14:48:36,580 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.229.181:5000
+2025-09-12 14:48:36,581 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-12 14:48:36,586 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 14:48:54,308 - app - INFO - Initializing utilities...
+2025-09-12 14:48:54,344 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 14:48:54,344 - app - INFO - Initializing AI models...
+2025-09-12 14:48:54,345 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 14:48:56,095 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 14:48:56,101 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 14:48:56,102 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 14:48:56,102 - app - INFO - Initializing business services...
+2025-09-12 14:48:56,103 - app - INFO - All services initialized successfully
+2025-09-12 14:48:56,108 - app - INFO - All API blueprints registered successfully
+2025-09-12 14:48:56,109 - app - INFO - SkinPredict API application created successfully
+2025-09-12 14:48:56,109 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 14:48:56,110 - __main__ - INFO - Debug mode: True
+2025-09-12 14:48:56,111 - __main__ - INFO - Environment: development
+2025-09-12 14:48:56,134 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 14:48:56,146 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 14:52:27,035 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-09-12 14:52:29,437 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 14:52:54,604 - app - INFO - Initializing utilities...
+2025-09-12 14:52:54,655 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 14:52:54,656 - app - INFO - Initializing AI models...
+2025-09-12 14:52:54,657 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 14:52:57,435 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 14:52:57,447 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 14:52:57,471 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 14:52:57,472 - app - INFO - Initializing business services...
+2025-09-12 14:52:57,473 - app - INFO - All services initialized successfully
+2025-09-12 14:52:57,486 - app - INFO - All API blueprints registered successfully
+2025-09-12 14:52:57,487 - app - INFO - SkinPredict API application created successfully
+2025-09-12 14:52:57,488 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 14:52:57,488 - __main__ - INFO - Debug mode: True
+2025-09-12 14:52:57,488 - __main__ - INFO - Environment: development
+2025-09-12 14:52:57,521 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 14:52:57,555 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 14:53:18,203 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:53:18] "[33mOPTIONS /analyze HTTP/1.1[0m" 404 -
+2025-09-12 15:18:57,111 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:18:57] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:18:58,446 - app.utils.image_processing - INFO - Face detected and cropped: 208x208 at (139, 147)
+2025-09-12 15:19:02,017 - app.services.analysis_service - WARNING - FairFace model not loaded
+2025-09-12 15:19:02,019 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:19:02] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:19:02,494 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:19:02] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:19:02,524 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:19:02] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:19:04,111 - app.utils.groq_client - ERROR - GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:19:04,111 - app.utils.groq_client - ERROR - Unexpected error: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:19:04,112 - app.services.chat_service - ERROR - Error generating chat response: Unexpected error in GROQ API call: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:19:04,113 - app.routes.chat_routes - ERROR - Chat error: Failed to generate response: Unexpected error in GROQ API call: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:19:04,118 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:19:04] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -
+2025-09-12 15:19:04,120 - app.utils.groq_client - ERROR - GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:19:04,121 - app.utils.groq_client - ERROR - Unexpected error: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:19:04,123 - app.services.chat_service - ERROR - Error generating chat response: Unexpected error in GROQ API call: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:19:04,124 - app.routes.chat_routes - ERROR - Chat error: Failed to generate response: Unexpected error in GROQ API call: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:19:04,129 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:19:04] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -
+2025-09-12 15:20:49,379 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:20:49] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:20:49,684 - app.utils.image_processing - INFO - Face detected and cropped: 228x228 at (109, 97)
+2025-09-12 15:20:49,849 - app.services.analysis_service - WARNING - FairFace model not loaded
+2025-09-12 15:20:49,850 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:20:49] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:20:49,943 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:20:49] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:20:51,240 - app.utils.groq_client - ERROR - GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:20:51,240 - app.utils.groq_client - ERROR - Unexpected error: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:20:51,241 - app.services.chat_service - ERROR - Error generating chat response: Unexpected error in GROQ API call: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:20:51,242 - app.routes.chat_routes - ERROR - Chat error: Failed to generate response: Unexpected error in GROQ API call: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:20:51,244 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:20:51] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -
+2025-09-12 15:20:51,263 - app.utils.groq_client - ERROR - GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:20:51,265 - app.utils.groq_client - ERROR - Unexpected error: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:20:51,266 - app.services.chat_service - ERROR - Error generating chat response: Unexpected error in GROQ API call: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:20:51,266 - app.routes.chat_routes - ERROR - Chat error: Failed to generate response: Unexpected error in GROQ API call: GROQ API error 404: {"error":{"message":"Unknown request URL: POST /v1/chat/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/","type":"invalid_request_error","code":"unknown_url"}}
+
+2025-09-12 15:20:51,271 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:20:51] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -
+2025-09-12 15:21:58,270 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\groq_client.py', reloading
+2025-09-12 15:22:02,112 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:22:38,899 - app - INFO - Initializing utilities...
+2025-09-12 15:22:39,005 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:22:39,012 - app - INFO - Initializing AI models...
+2025-09-12 15:22:39,015 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:22:43,304 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:22:43,317 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:22:43,327 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:22:43,328 - app - INFO - Initializing business services...
+2025-09-12 15:22:43,334 - app - INFO - All services initialized successfully
+2025-09-12 15:22:43,352 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:22:43,368 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:22:43,368 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:22:43,374 - __main__ - INFO - Debug mode: True
+2025-09-12 15:22:43,378 - __main__ - INFO - Environment: development
+2025-09-12 15:22:43,415 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:22:43,439 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:27:18,915 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\analysis_service.py', reloading
+2025-09-12 15:27:20,471 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:27:38,928 - app - INFO - Initializing utilities...
+2025-09-12 15:27:38,962 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:27:38,962 - app - INFO - Initializing AI models...
+2025-09-12 15:27:38,963 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:27:40,679 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:27:40,685 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:27:40,686 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:27:40,686 - app - INFO - Initializing business services...
+2025-09-12 15:27:40,687 - app - INFO - All services initialized successfully
+2025-09-12 15:27:40,695 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:27:40,696 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:27:40,696 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:27:40,697 - __main__ - INFO - Debug mode: True
+2025-09-12 15:27:40,697 - __main__ - INFO - Environment: development
+2025-09-12 15:27:40,724 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:27:40,738 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:29:25,367 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:29:25] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:29:26,821 - app.utils.image_processing - INFO - Face detected and cropped: 206x206 at (113, 136)
+2025-09-12 15:29:34,653 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-12 15:29:34,654 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:29:34] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:29:35,114 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:29:35] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:29:35,146 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:29:35] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:29:36,321 - app.utils.groq_client - ERROR - GROQ API error 400: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-12 15:29:36,322 - app.utils.groq_client - ERROR - Unexpected error: GROQ API error 400: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-12 15:29:36,323 - app.services.chat_service - ERROR - Error generating chat response: Unexpected error in GROQ API call: GROQ API error 400: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-12 15:29:36,324 - app.routes.chat_routes - ERROR - Chat error: Failed to generate response: Unexpected error in GROQ API call: GROQ API error 400: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-12 15:29:36,326 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:29:36] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -
+2025-09-12 15:29:36,332 - app.utils.groq_client - ERROR - GROQ API error 400: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-12 15:29:36,333 - app.utils.groq_client - ERROR - Unexpected error: GROQ API error 400: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-12 15:29:36,334 - app.services.chat_service - ERROR - Error generating chat response: Unexpected error in GROQ API call: GROQ API error 400: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-12 15:29:36,335 - app.routes.chat_routes - ERROR - Chat error: Failed to generate response: Unexpected error in GROQ API call: GROQ API error 400: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-12 15:29:36,338 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:29:36] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -
+2025-09-12 15:37:44,318 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\groq_client.py', reloading
+2025-09-12 15:37:45,796 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:38:05,314 - app - INFO - Initializing utilities...
+2025-09-12 15:38:05,358 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:38:05,358 - app - INFO - Initializing AI models...
+2025-09-12 15:38:05,359 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:38:07,017 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:38:07,022 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:38:07,023 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:38:07,023 - app - INFO - Initializing business services...
+2025-09-12 15:38:07,024 - app - INFO - All services initialized successfully
+2025-09-12 15:38:07,030 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:38:07,030 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:38:07,031 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:38:07,031 - __main__ - INFO - Debug mode: True
+2025-09-12 15:38:07,031 - __main__ - INFO - Environment: development
+2025-09-12 15:38:07,053 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:38:07,064 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:38:28,311 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-09-12 15:38:29,844 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:38:43,726 - app - INFO - Initializing utilities...
+2025-09-12 15:38:43,759 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:38:43,759 - app - INFO - Initializing AI models...
+2025-09-12 15:38:43,760 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:38:45,077 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:38:45,083 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:38:45,084 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:38:45,085 - app - INFO - Initializing business services...
+2025-09-12 15:38:45,085 - app - INFO - All services initialized successfully
+2025-09-12 15:38:45,091 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:38:45,092 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:38:45,092 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:38:45,093 - __main__ - INFO - Debug mode: True
+2025-09-12 15:38:45,093 - __main__ - INFO - Environment: development
+2025-09-12 15:38:45,111 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:38:45,162 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:39:31,379 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:39:31] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 15:41:04,150 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\analysis_service.py', reloading
+2025-09-12 15:41:06,184 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:41:25,111 - app - INFO - Initializing utilities...
+2025-09-12 15:41:25,154 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:41:25,155 - app - INFO - Initializing AI models...
+2025-09-12 15:41:25,156 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:41:26,746 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:41:26,757 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:41:26,758 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:41:26,759 - app - INFO - Initializing business services...
+2025-09-12 15:41:26,760 - app - INFO - All services initialized successfully
+2025-09-12 15:41:26,767 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:41:26,768 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:41:26,768 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:41:26,769 - __main__ - INFO - Debug mode: True
+2025-09-12 15:41:26,769 - __main__ - INFO - Environment: development
+2025-09-12 15:41:26,792 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:41:26,804 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:41:52,212 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:41:52] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:41:54,274 - app.utils.image_processing - INFO - Face detected and cropped: 207x207 at (113, 127)
+2025-09-12 15:41:56,947 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-12 15:41:56,949 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:41:56] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:41:57,439 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:41:57] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:41:57,469 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:41:57] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:42:02,093 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:42:02] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 15:42:02,095 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:42:02] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 15:47:36,804 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-09-12 15:47:37,965 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:47:57,787 - app - INFO - Initializing utilities...
+2025-09-12 15:47:57,835 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:47:57,836 - app - INFO - Initializing AI models...
+2025-09-12 15:47:57,836 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:47:59,886 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:47:59,893 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:47:59,894 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:47:59,895 - app - INFO - Initializing business services...
+2025-09-12 15:47:59,895 - app - INFO - All services initialized successfully
+2025-09-12 15:47:59,900 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:47:59,901 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:47:59,901 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:47:59,902 - __main__ - INFO - Debug mode: True
+2025-09-12 15:47:59,902 - __main__ - INFO - Environment: development
+2025-09-12 15:47:59,921 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:47:59,932 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:48:19,155 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-09-12 15:48:20,567 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:48:34,429 - app - INFO - Initializing utilities...
+2025-09-12 15:48:34,462 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:48:34,462 - app - INFO - Initializing AI models...
+2025-09-12 15:48:34,463 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:48:35,837 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:48:35,843 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:48:35,843 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:48:35,844 - app - INFO - Initializing business services...
+2025-09-12 15:48:35,845 - app - INFO - All services initialized successfully
+2025-09-12 15:48:35,851 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:48:35,851 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:48:35,852 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:48:35,852 - __main__ - INFO - Debug mode: True
+2025-09-12 15:48:35,852 - __main__ - INFO - Environment: development
+2025-09-12 15:48:35,867 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:48:35,878 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:48:59,582 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-09-12 15:49:00,974 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:49:15,040 - app - INFO - Initializing utilities...
+2025-09-12 15:49:15,076 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:49:15,077 - app - INFO - Initializing AI models...
+2025-09-12 15:49:15,078 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:49:16,810 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:49:16,822 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:49:16,823 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:49:16,824 - app - INFO - Initializing business services...
+2025-09-12 15:49:16,825 - app - INFO - All services initialized successfully
+2025-09-12 15:49:16,831 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:49:16,831 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:49:16,833 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:49:16,833 - __main__ - INFO - Debug mode: True
+2025-09-12 15:49:16,833 - __main__ - INFO - Environment: development
+2025-09-12 15:49:16,848 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:49:16,859 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:49:48,368 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-09-12 15:49:49,745 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 15:50:04,773 - app - INFO - Initializing utilities...
+2025-09-12 15:50:04,812 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 15:50:04,813 - app - INFO - Initializing AI models...
+2025-09-12 15:50:04,813 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:50:06,210 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 15:50:06,216 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 15:50:06,217 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 15:50:06,217 - app - INFO - Initializing business services...
+2025-09-12 15:50:06,218 - app - INFO - All services initialized successfully
+2025-09-12 15:50:06,224 - app - INFO - All API blueprints registered successfully
+2025-09-12 15:50:06,225 - app - INFO - SkinPredict API application created successfully
+2025-09-12 15:50:06,225 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 15:50:06,226 - __main__ - INFO - Debug mode: True
+2025-09-12 15:50:06,226 - __main__ - INFO - Environment: development
+2025-09-12 15:50:06,244 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 15:50:06,260 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 15:53:54,401 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:53:54] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-12 15:55:33,554 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:55:33] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:55:34,715 - app.utils.image_processing - INFO - Face detected and cropped: 220x220 at (106, 103)
+2025-09-12 15:55:37,356 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-12 15:55:37,357 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:55:37] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 15:55:37,551 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:55:37] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:55:37,872 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-09-12 15:55:37,913 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-09-12 15:55:42,339 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:55:42] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 15:55:43,728 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:55:43] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 15:57:22,692 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:57:22] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 15:57:22,943 - app.services.chat_service - INFO - Classified intent: product_recommendation
+2025-09-12 15:57:28,143 - app.services.product_service - INFO - Getting LIVE product recommendations for: Dry skin, issues: ['Acne', 'Redness', 'Bags'], location: United States
+2025-09-12 15:57:28,144 - app.services.product_service - WARNING - Web scraping failed: 'WebScraper' object has no attribute 'scrape_sephora_live'
+2025-09-12 15:57:28,145 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 15:57:28] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 16:00:22,312 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-09-12 16:00:24,825 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 16:00:47,712 - app - INFO - Initializing utilities...
+2025-09-12 16:00:47,757 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 16:00:47,758 - app - INFO - Initializing AI models...
+2025-09-12 16:00:47,759 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:00:49,354 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 16:00:49,360 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:00:49,361 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 16:00:49,362 - app - INFO - Initializing business services...
+2025-09-12 16:00:49,362 - app - INFO - All services initialized successfully
+2025-09-12 16:00:49,368 - app - INFO - All API blueprints registered successfully
+2025-09-12 16:00:49,368 - app - INFO - SkinPredict API application created successfully
+2025-09-12 16:00:49,369 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 16:00:49,369 - __main__ - INFO - Debug mode: True
+2025-09-12 16:00:49,369 - __main__ - INFO - Environment: development
+2025-09-12 16:00:49,391 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 16:00:49,401 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 16:00:50,695 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:00:50] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 16:00:51,359 - app.utils.image_processing - INFO - Face detected and cropped: 217x217 at (86, 119)
+2025-09-12 16:00:53,341 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-12 16:00:53,342 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:00:53] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 16:00:53,791 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:00:53] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 16:00:53,823 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:00:53] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 16:00:54,045 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-09-12 16:00:54,109 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-09-12 16:00:58,452 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:00:58] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 16:00:58,711 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:00:58] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 16:04:22,006 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:04:22] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 16:04:22,292 - app.utils.image_processing - INFO - Face detected and cropped: 201x201 at (113, 149)
+2025-09-12 16:04:22,451 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-12 16:04:22,452 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:04:22] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 16:04:22,561 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:04:22] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 16:04:22,870 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-09-12 16:04:27,760 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:04:27] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 16:06:07,938 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:06:07] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 16:06:08,194 - app.services.chat_service - INFO - Classified intent: routine_advice
+2025-09-12 16:06:14,944 - app.services.product_service - INFO - Getting LIVE product recommendations for: Dry skin, issues: ['Acne', 'Redness', 'Bags'], location: United States
+2025-09-12 16:06:14,945 - app.services.product_service - WARNING - Web scraping failed: 'WebScraper' object has no attribute 'scrape_sephora_live'
+2025-09-12 16:06:14,946 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:06:14] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 16:07:00,592 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:07:00] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 16:07:00,846 - app.services.chat_service - INFO - Classified intent: general_skincare
+2025-09-12 16:07:07,190 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:07:07] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 16:14:59,988 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-09-12 16:15:01,318 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 16:15:19,034 - app - INFO - Initializing utilities...
+2025-09-12 16:15:19,070 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 16:15:19,071 - app - INFO - Initializing AI models...
+2025-09-12 16:15:19,071 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:15:20,529 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 16:15:20,538 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:15:20,539 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 16:15:20,540 - app - INFO - Initializing business services...
+2025-09-12 16:15:20,541 - app - INFO - All services initialized successfully
+2025-09-12 16:15:20,546 - app - INFO - All API blueprints registered successfully
+2025-09-12 16:15:20,546 - app - INFO - SkinPredict API application created successfully
+2025-09-12 16:15:20,547 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 16:15:20,548 - __main__ - INFO - Debug mode: True
+2025-09-12 16:15:20,548 - __main__ - INFO - Environment: development
+2025-09-12 16:15:20,569 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 16:15:20,579 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 16:16:58,262 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-09-12 16:16:59,828 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 16:17:17,024 - app - INFO - Initializing utilities...
+2025-09-12 16:17:17,064 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 16:17:17,065 - app - INFO - Initializing AI models...
+2025-09-12 16:17:17,066 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:17:18,543 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 16:17:18,550 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:17:18,551 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 16:17:18,552 - app - INFO - Initializing business services...
+2025-09-12 16:17:18,553 - app - INFO - All services initialized successfully
+2025-09-12 16:17:18,559 - app - INFO - All API blueprints registered successfully
+2025-09-12 16:17:18,559 - app - INFO - SkinPredict API application created successfully
+2025-09-12 16:17:18,560 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 16:17:18,560 - __main__ - INFO - Debug mode: True
+2025-09-12 16:17:18,560 - __main__ - INFO - Environment: development
+2025-09-12 16:17:18,577 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 16:17:18,593 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 16:17:19,702 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:17:19] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 16:17:20,651 - app.utils.image_processing - INFO - Face detected and cropped: 126x126 at (161, 176)
+2025-09-12 16:17:22,589 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-12 16:17:22,590 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:17:22] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 16:17:22,738 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:17:22] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-09-12 16:17:23,055 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-09-12 16:17:26,324 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 16:17:26] "POST /api/chat HTTP/1.1" 200 -
+2025-09-12 16:31:02,114 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-09-12 16:31:03,363 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 16:31:20,186 - app - INFO - Initializing utilities...
+2025-09-12 16:31:20,223 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 16:31:20,223 - app - INFO - Initializing AI models...
+2025-09-12 16:31:20,224 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:31:21,573 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 16:31:21,581 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:31:21,582 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 16:31:21,582 - app - INFO - Initializing business services...
+2025-09-12 16:31:21,583 - app - INFO - All services initialized successfully
+2025-09-12 16:31:21,588 - app - INFO - All API blueprints registered successfully
+2025-09-12 16:31:21,588 - app - INFO - SkinPredict API application created successfully
+2025-09-12 16:31:21,589 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 16:31:21,589 - __main__ - INFO - Debug mode: True
+2025-09-12 16:31:21,590 - __main__ - INFO - Environment: development
+2025-09-12 16:31:21,611 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 16:31:21,622 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 16:37:47,380 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-09-12 16:37:49,049 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 16:38:03,200 - app - INFO - Initializing utilities...
+2025-09-12 16:38:03,240 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 16:38:03,241 - app - INFO - Initializing AI models...
+2025-09-12 16:38:03,242 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:38:04,604 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 16:38:04,609 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 16:38:04,610 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 16:38:04,611 - app - INFO - Initializing business services...
+2025-09-12 16:38:04,612 - app - INFO - All services initialized successfully
+2025-09-12 16:38:04,618 - app - INFO - All API blueprints registered successfully
+2025-09-12 16:38:04,619 - app - INFO - SkinPredict API application created successfully
+2025-09-12 16:38:04,619 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 16:38:04,620 - __main__ - INFO - Debug mode: True
+2025-09-12 16:38:04,620 - __main__ - INFO - Environment: development
+2025-09-12 16:38:04,635 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 16:38:04,649 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 17:08:43,163 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-09-12 17:08:44,928 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 17:56:40,476 - app - INFO - Initializing utilities...
+2025-09-12 17:56:40,550 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-12 17:56:40,551 - app - INFO - Initializing AI models...
+2025-09-12 17:56:40,551 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 17:56:42,469 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-12 17:56:42,477 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-12 17:56:42,478 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-12 17:56:42,479 - app - INFO - Initializing business services...
+2025-09-12 17:56:42,479 - app - INFO - All services initialized successfully
+2025-09-12 17:56:42,486 - app - INFO - All API blueprints registered successfully
+2025-09-12 17:56:42,486 - app - INFO - SkinPredict API application created successfully
+2025-09-12 17:56:42,487 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-12 17:56:42,487 - __main__ - INFO - Debug mode: True
+2025-09-12 17:56:42,488 - __main__ - INFO - Environment: development
+2025-09-12 17:56:42,515 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 17:56:42,526 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-12 18:02:52,328 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 18:02:52] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 18:02:54,306 - app.utils.image_processing - INFO - Face detected and cropped: 221x221 at (74, 115)
+2025-09-12 18:03:00,590 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-12 18:03:00,591 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 18:03:00] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-12 18:03:47,198 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 18:03:47] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-12 18:03:47,577 - app.utils.image_processing - INFO - Face detected and cropped: 222x222 at (96, 201)
+2025-09-12 18:03:48,043 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-12 18:03:48,047 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 18:03:48] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-19 00:26:52,643 - app - INFO - Initializing utilities...
+2025-09-19 00:26:52,854 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-19 00:26:52,855 - app - INFO - Initializing AI models...
+2025-09-19 00:26:52,855 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-19 00:26:55,414 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-19 00:26:55,426 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-19 00:26:55,434 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-19 00:26:55,436 - app - INFO - Initializing business services...
+2025-09-19 00:26:55,437 - app - INFO - All services initialized successfully
+2025-09-19 00:26:55,456 - app - INFO - All API blueprints registered successfully
+2025-09-19 00:26:55,468 - app - INFO - SkinPredict API application created successfully
+2025-09-19 00:26:55,483 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-19 00:26:55,494 - __main__ - INFO - Debug mode: True
+2025-09-19 00:26:55,501 - __main__ - INFO - Environment: development
+2025-09-19 00:26:56,555 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.20:5000
+2025-09-19 00:26:56,556 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-19 00:26:56,561 - werkzeug - INFO -  * Restarting with stat
+2025-09-19 00:27:20,705 - app - INFO - Initializing utilities...
+2025-09-19 00:27:20,753 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-19 00:27:20,754 - app - INFO - Initializing AI models...
+2025-09-19 00:27:20,756 - app.models.skin_analysis_model - INFO - Attempting to load model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-19 00:27:22,578 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-19 00:27:22,584 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-09-19 00:27:22,585 - app.models.fairface_model - WARNING - FairFace model not found at: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\fairface_models\res34_fair_align_multi_7_20190809.pt
+2025-09-19 00:27:22,586 - app - INFO - Initializing business services...
+2025-09-19 00:27:22,587 - app - INFO - All services initialized successfully
+2025-09-19 00:27:22,596 - app - INFO - All API blueprints registered successfully
+2025-09-19 00:27:22,596 - app - INFO - SkinPredict API application created successfully
+2025-09-19 00:27:22,597 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-09-19 00:27:22,597 - __main__ - INFO - Debug mode: True
+2025-09-19 00:27:22,598 - __main__ - INFO - Environment: development
+2025-09-19 00:27:22,615 - werkzeug - WARNING -  * Debugger is active!
+2025-09-19 00:27:22,632 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-09-19 00:31:33,250 - werkzeug - INFO - 127.0.0.1 - - [19/Sep/2025 00:31:33] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-09-19 00:31:34,460 - app.utils.image_processing - INFO - Face detected and cropped: 283x283 at (87, 17)
+2025-09-19 00:31:37,811 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-09-19 00:31:37,814 - werkzeug - INFO - 127.0.0.1 - - [19/Sep/2025 00:31:37] "POST /api/analyze HTTP/1.1" 200 -
+2025-09-19 00:32:54,876 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\server_optimized.py', reloading
+2025-09-19 00:32:57,272 - werkzeug - INFO -  * Restarting with stat
+2025-09-19 00:51:04,712 - app - INFO - Initializing utilities...
+2025-09-19 00:51:04,749 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-19 00:51:04,750 - __main__ - ERROR - Failed to start server: type object 'DevelopmentConfig' has no attribute 'EXTERNAL_API_TIMEOUT'
+2025-09-19 00:52:05,712 - app - INFO - Initializing utilities...
+2025-09-19 00:52:05,749 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-19 00:52:05,750 - app - INFO - Initializing AI models...
+2025-09-19 00:52:05,750 - __main__ - ERROR - Failed to start server: type object 'DevelopmentConfig' has no attribute 'MODEL_PATHS'
+2025-09-19 00:53:45,585 - app - INFO - Initializing utilities...
+2025-09-19 00:53:45,619 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-09-19 00:53:45,619 - app - INFO - Initializing AI models...
+2025-09-19 00:53:45,620 - __main__ - ERROR - Failed to start server: type object 'DevelopmentConfig' has no attribute 'MODEL_CONFIDENCE_THRESHOLD'
+2025-11-23 23:28:24,708 - app - INFO - Initializing utilities...
+2025-11-23 23:28:24,832 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-23 23:28:24,832 - app - INFO - Initializing AI models...
+2025-11-23 23:28:24,833 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:28:24,834 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-23 23:28:24,834 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:28:24,834 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-23 23:28:24,835 - app - INFO - Initializing business services...
+2025-11-23 23:28:24,835 - app - INFO - All services initialized successfully
+2025-11-23 23:28:24,840 - app - INFO - All API blueprints registered successfully
+2025-11-23 23:28:24,840 - app - INFO - SkinPredict API application created successfully
+2025-11-23 23:28:24,840 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-23 23:28:24,841 - __main__ - INFO - Debug mode: True
+2025-11-23 23:28:24,841 - __main__ - INFO - Environment: development
+2025-11-23 23:28:25,783 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-23 23:28:25,784 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-23 23:28:25,794 - werkzeug - INFO -  * Restarting with stat
+2025-11-23 23:28:34,071 - app - INFO - Initializing utilities...
+2025-11-23 23:28:34,121 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-23 23:28:34,123 - app - INFO - Initializing AI models...
+2025-11-23 23:28:34,125 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:28:34,125 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-23 23:28:34,126 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:28:34,127 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-23 23:28:34,127 - app - INFO - Initializing business services...
+2025-11-23 23:28:34,128 - app - INFO - All services initialized successfully
+2025-11-23 23:28:34,139 - app - INFO - All API blueprints registered successfully
+2025-11-23 23:28:34,139 - app - INFO - SkinPredict API application created successfully
+2025-11-23 23:28:34,140 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-23 23:28:34,140 - __main__ - INFO - Debug mode: True
+2025-11-23 23:28:34,140 - __main__ - INFO - Environment: development
+2025-11-23 23:28:34,175 - werkzeug - WARNING -  * Debugger is active!
+2025-11-23 23:28:34,198 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-23 23:31:16,529 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:31:16] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-23 23:31:17,274 - app.utils.image_processing - INFO - Face detected and cropped: 223x223 at (116, 104)
+2025-11-23 23:31:17,286 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-23 23:31:17,287 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:31:17] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-23 23:31:17,501 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:31:17] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:31:17,812 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-23 23:31:24,283 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:31:24] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:35:40,199 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:35:40] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-23 23:35:40,475 - app.utils.image_processing - INFO - Face detected and cropped: 230x230 at (128, 103)
+2025-11-23 23:35:40,477 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-23 23:35:40,478 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:35:40] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-23 23:35:40,646 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:35:40] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:35:40,966 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-23 23:35:46,028 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:35:46] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:38:00,105 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:38:00] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-23 23:38:00,401 - app.utils.image_processing - INFO - Face detected and cropped: 219x219 at (100, 141)
+2025-11-23 23:38:00,403 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-23 23:38:00,404 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:38:00] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-23 23:38:00,485 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:38:00] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:38:00,797 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-23 23:38:07,037 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:38:07] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:38:25,341 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:38:25] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:38:25,653 - app.services.chat_service - INFO - Classified intent: routine_advice
+2025-11-23 23:38:34,530 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:38:34] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:40:36,859 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:40:36] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:40:37,124 - app.services.chat_service - INFO - Classified intent: casual_conversation
+2025-11-23 23:40:37,125 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:40:37] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:40:47,489 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:40:47] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:40:48,066 - app.services.chat_service - INFO - Classified intent: product_recommendation
+2025-11-23 23:40:54,582 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:40:54] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:41:18,710 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:41:18] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:41:18,965 - app.services.chat_service - INFO - Classified intent: ingredient_inquiry
+2025-11-23 23:41:26,081 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:41:26] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:45:24,930 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-11-23 23:45:25,743 - werkzeug - INFO -  * Restarting with stat
+2025-11-23 23:45:35,945 - app - INFO - Initializing utilities...
+2025-11-23 23:45:35,993 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-23 23:45:35,993 - app - INFO - Initializing AI models...
+2025-11-23 23:45:35,994 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:45:35,995 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-23 23:45:35,995 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:45:35,996 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-23 23:45:35,996 - app - INFO - Initializing business services...
+2025-11-23 23:45:35,997 - app - INFO - All services initialized successfully
+2025-11-23 23:45:36,006 - app - INFO - All API blueprints registered successfully
+2025-11-23 23:45:36,006 - app - INFO - SkinPredict API application created successfully
+2025-11-23 23:45:36,006 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-23 23:45:36,007 - __main__ - INFO - Debug mode: True
+2025-11-23 23:45:36,007 - __main__ - INFO - Environment: development
+2025-11-23 23:45:36,043 - werkzeug - WARNING -  * Debugger is active!
+2025-11-23 23:45:36,057 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-23 23:45:56,925 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:45:56] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:45:57,171 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-23 23:46:00,387 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:46:00] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:46:16,678 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:46:16] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:46:17,031 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-23 23:46:17,049 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-23 23:46:24,728 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:46:24] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:46:24,939 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:46:24] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:47:03,785 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-11-23 23:47:04,740 - werkzeug - INFO -  * Restarting with stat
+2025-11-23 23:47:12,722 - app - INFO - Initializing utilities...
+2025-11-23 23:47:12,811 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-23 23:47:12,812 - app - INFO - Initializing AI models...
+2025-11-23 23:47:12,812 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:47:12,813 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-23 23:47:12,814 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:47:12,814 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-23 23:47:12,815 - app - INFO - Initializing business services...
+2025-11-23 23:47:12,815 - app - INFO - All services initialized successfully
+2025-11-23 23:47:12,822 - app - INFO - All API blueprints registered successfully
+2025-11-23 23:47:12,823 - app - INFO - SkinPredict API application created successfully
+2025-11-23 23:47:12,823 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-23 23:47:12,824 - __main__ - INFO - Debug mode: True
+2025-11-23 23:47:12,824 - __main__ - INFO - Environment: development
+2025-11-23 23:47:12,849 - werkzeug - WARNING -  * Debugger is active!
+2025-11-23 23:47:12,863 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-23 23:48:15,791 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-11-23 23:48:16,505 - werkzeug - INFO -  * Restarting with stat
+2025-11-23 23:48:24,022 - app - INFO - Initializing utilities...
+2025-11-23 23:48:24,060 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-23 23:48:24,060 - app - INFO - Initializing AI models...
+2025-11-23 23:48:24,061 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:48:24,061 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-23 23:48:24,061 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:48:24,062 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-23 23:48:24,063 - app - INFO - Initializing business services...
+2025-11-23 23:48:24,063 - app - INFO - All services initialized successfully
+2025-11-23 23:48:24,069 - app - INFO - All API blueprints registered successfully
+2025-11-23 23:48:24,070 - app - INFO - SkinPredict API application created successfully
+2025-11-23 23:48:24,070 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-23 23:48:24,070 - __main__ - INFO - Debug mode: True
+2025-11-23 23:48:24,071 - __main__ - INFO - Environment: development
+2025-11-23 23:48:24,098 - werkzeug - WARNING -  * Debugger is active!
+2025-11-23 23:48:24,115 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-23 23:49:06,040 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-11-23 23:49:06,939 - werkzeug - INFO -  * Restarting with stat
+2025-11-23 23:49:14,709 - app - INFO - Initializing utilities...
+2025-11-23 23:49:14,747 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-23 23:49:14,748 - app - INFO - Initializing AI models...
+2025-11-23 23:49:14,749 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:49:14,750 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-23 23:49:14,750 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-23 23:49:14,752 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-23 23:49:14,753 - app - INFO - Initializing business services...
+2025-11-23 23:49:14,753 - app - INFO - All services initialized successfully
+2025-11-23 23:49:14,758 - app - INFO - All API blueprints registered successfully
+2025-11-23 23:49:14,758 - app - INFO - SkinPredict API application created successfully
+2025-11-23 23:49:14,759 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-23 23:49:14,759 - __main__ - INFO - Debug mode: True
+2025-11-23 23:49:14,759 - __main__ - INFO - Environment: development
+2025-11-23 23:49:14,788 - werkzeug - WARNING -  * Debugger is active!
+2025-11-23 23:49:14,800 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-23 23:49:34,208 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:49:34] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:49:34,480 - app.services.chat_service - INFO - Classified intent: general_skincare
+2025-11-23 23:49:37,442 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:49:37] "POST /api/chat HTTP/1.1" 200 -
+2025-11-23 23:49:51,932 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:49:51] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-23 23:49:52,293 - app.services.chat_service - INFO - Classified intent: general_skincare
+2025-11-23 23:49:55,052 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 23:49:55] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:23:31,231 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:23:31] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:23:31,498 - app.services.chat_service - INFO - Classified intent: general_skincare
+2025-11-24 00:23:36,348 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:23:36] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:29:08,877 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\routes\\analysis_routes.py', reloading
+2025-11-24 00:29:10,415 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 00:29:22,559 - app - INFO - Initializing utilities...
+2025-11-24 00:29:22,612 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 00:29:22,612 - app - INFO - Initializing AI models...
+2025-11-24 00:29:22,613 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 00:29:22,614 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 00:29:22,614 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 00:29:22,615 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 00:29:22,615 - app - INFO - Initializing business services...
+2025-11-24 00:29:22,616 - app - INFO - All services initialized successfully
+2025-11-24 00:29:22,628 - app - INFO - All API blueprints registered successfully
+2025-11-24 00:29:22,629 - app - INFO - SkinPredict API application created successfully
+2025-11-24 00:29:22,629 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 00:29:22,630 - __main__ - INFO - Debug mode: True
+2025-11-24 00:29:22,630 - __main__ - INFO - Environment: development
+2025-11-24 00:29:22,677 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 00:29:22,696 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 00:39:58,897 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:39:58] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:39:59,143 - app.services.chat_service - INFO - Classified intent: routine_advice
+2025-11-24 00:40:00,678 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:40:00] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:40:28,972 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:40:28] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:40:29,282 - app.services.chat_service - INFO - Classified intent: casual_conversation
+2025-11-24 00:40:29,283 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:40:29] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:43:05,534 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:43:05] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 00:43:06,459 - app.utils.image_processing - INFO - Face detected and cropped: 144x144 at (61, 63)
+2025-11-24 00:43:06,461 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 00:43:06,463 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:43:06] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 00:43:06,669 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:43:06] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:43:06,998 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 00:43:11,592 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:43:11] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:46:30,431 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-11-24 00:46:31,333 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 00:46:41,928 - app - INFO - Initializing utilities...
+2025-11-24 00:46:41,975 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 00:46:41,976 - app - INFO - Initializing AI models...
+2025-11-24 00:46:41,977 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 00:46:41,978 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 00:46:41,978 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 00:46:41,980 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 00:46:41,981 - app - INFO - Initializing business services...
+2025-11-24 00:46:41,981 - app - INFO - All services initialized successfully
+2025-11-24 00:46:41,987 - app - INFO - All API blueprints registered successfully
+2025-11-24 00:46:41,987 - app - INFO - SkinPredict API application created successfully
+2025-11-24 00:46:41,988 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 00:46:41,988 - __main__ - INFO - Debug mode: True
+2025-11-24 00:46:41,988 - __main__ - INFO - Environment: development
+2025-11-24 00:46:42,015 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 00:46:42,030 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 00:47:26,323 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:47:26] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 00:47:27,220 - app.utils.image_processing - INFO - Face detected and cropped: 231x231 at (102, 128)
+2025-11-24 00:47:27,222 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 00:47:27,223 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:47:27] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 00:47:27,302 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:47:27] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:47:27,612 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 00:47:32,037 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:47:32] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:48:14,805 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:48:14] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:48:15,112 - app.services.chat_service - INFO - Classified intent: routine_advice
+2025-11-24 00:48:17,802 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:48:17] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:48:55,862 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:48:55] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:48:56,173 - app.services.chat_service - INFO - Classified intent: product_recommendation
+2025-11-24 00:49:06,392 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:49:06] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:49:21,595 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:49:21] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:49:21,911 - app.services.chat_service - INFO - Classified intent: product_recommendation
+2025-11-24 00:49:24,301 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:49:24] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:55:14,663 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-11-24 00:55:15,307 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 00:55:23,526 - app - INFO - Initializing utilities...
+2025-11-24 00:55:23,562 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 00:55:23,562 - app - INFO - Initializing AI models...
+2025-11-24 00:55:23,563 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 00:55:23,563 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 00:55:23,564 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 00:55:23,565 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 00:55:23,566 - app - INFO - Initializing business services...
+2025-11-24 00:55:23,567 - app - INFO - All services initialized successfully
+2025-11-24 00:55:23,572 - app - INFO - All API blueprints registered successfully
+2025-11-24 00:55:23,573 - app - INFO - SkinPredict API application created successfully
+2025-11-24 00:55:23,573 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 00:55:23,573 - __main__ - INFO - Debug mode: True
+2025-11-24 00:55:23,574 - __main__ - INFO - Environment: development
+2025-11-24 00:55:23,598 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 00:55:23,612 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 00:57:25,385 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:57:25] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 00:57:26,351 - app.utils.image_processing - WARNING - No faces detected in image
+2025-11-24 00:57:26,352 - app.services.analysis_service - ERROR - Error in skin analysis: No face detected in the image
+2025-11-24 00:57:26,352 - app.routes.analysis_routes - ERROR - Error in skin analysis: Analysis failed: No face detected in the image
+Traceback (most recent call last):
+  File "D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\app\services\analysis_service.py", line 68, in analyze_skin
+    raise ValueError("No face detected in the image")
+ValueError: No face detected in the image
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\app\routes\analysis_routes.py", line 42, in analyze_skin
+    results = analysis_service.analyze_skin(image_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\app\services\analysis_service.py", line 89, in analyze_skin
+    raise ValueError(f"Analysis failed: {e}")
+ValueError: Analysis failed: No face detected in the image
+2025-11-24 00:57:26,357 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:57:26] "[35m[1mPOST /api/analyze HTTP/1.1[0m" 500 -
+2025-11-24 00:57:35,981 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:57:35] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 00:57:36,323 - app.utils.image_processing - WARNING - No faces detected in image
+2025-11-24 00:57:36,323 - app.services.analysis_service - ERROR - Error in skin analysis: No face detected in the image
+2025-11-24 00:57:36,324 - app.routes.analysis_routes - ERROR - Error in skin analysis: Analysis failed: No face detected in the image
+Traceback (most recent call last):
+  File "D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\app\services\analysis_service.py", line 68, in analyze_skin
+    raise ValueError("No face detected in the image")
+ValueError: No face detected in the image
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\app\routes\analysis_routes.py", line 42, in analyze_skin
+    results = analysis_service.analyze_skin(image_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\app\services\analysis_service.py", line 89, in analyze_skin
+    raise ValueError(f"Analysis failed: {e}")
+ValueError: Analysis failed: No face detected in the image
+2025-11-24 00:57:36,330 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:57:36] "[35m[1mPOST /api/analyze HTTP/1.1[0m" 500 -
+2025-11-24 00:58:30,701 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:58:30] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 00:58:31,036 - app.utils.image_processing - INFO - Face detected and cropped: 234x234 at (108, 128)
+2025-11-24 00:58:31,038 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 00:58:31,039 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:58:31] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 00:58:31,271 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:58:31] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:58:31,584 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 00:58:38,517 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:58:38] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:58:57,612 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:58:57] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:58:57,920 - app.services.chat_service - INFO - Classified intent: routine_advice
+2025-11-24 00:59:05,269 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:59:05] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 00:59:38,613 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:59:38] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 00:59:38,925 - app.services.chat_service - INFO - Classified intent: product_recommendation
+2025-11-24 00:59:44,862 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 00:59:44] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 01:00:16,773 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:00:16] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 01:00:17,090 - app.services.chat_service - INFO - Classified intent: product_recommendation
+2025-11-24 01:00:22,769 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:00:22] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 01:04:09,151 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-11-24 01:04:09,748 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:04:17,474 - app - INFO - Initializing utilities...
+2025-11-24 01:04:17,508 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:04:17,509 - app - INFO - Initializing AI models...
+2025-11-24 01:04:17,510 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:04:17,510 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:04:17,510 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:04:17,511 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:04:17,512 - app - INFO - Initializing business services...
+2025-11-24 01:04:17,512 - app - INFO - All services initialized successfully
+2025-11-24 01:04:17,517 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:04:17,517 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:04:17,518 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:04:17,518 - __main__ - INFO - Debug mode: True
+2025-11-24 01:04:17,519 - __main__ - INFO - Environment: development
+2025-11-24 01:04:17,544 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:04:17,557 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:06:29,459 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:06:29] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 01:06:30,351 - app.utils.image_processing - INFO - Face detected and cropped: 253x253 at (109, 129)
+2025-11-24 01:06:30,353 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 01:06:30,354 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:06:30] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 01:06:31,264 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:06:31] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 01:06:31,572 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 01:06:38,855 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:06:38] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 01:14:00,668 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-11-24 01:14:01,335 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:14:10,318 - app - INFO - Initializing utilities...
+2025-11-24 01:14:10,353 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:14:10,353 - app - INFO - Initializing AI models...
+2025-11-24 01:14:10,354 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:14:10,355 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:14:10,355 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:14:10,356 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:14:10,357 - app - INFO - Initializing business services...
+2025-11-24 01:14:10,357 - app - INFO - All services initialized successfully
+2025-11-24 01:14:10,362 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:14:10,362 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:14:10,363 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:14:10,363 - __main__ - INFO - Debug mode: True
+2025-11-24 01:14:10,364 - __main__ - INFO - Environment: development
+2025-11-24 01:14:10,390 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:14:10,403 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:14:54,842 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:14:54] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 01:14:55,103 - app.services.chat_service - INFO - Classified intent: general_skincare
+2025-11-24 01:14:58,238 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:14:58] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 01:15:28,491 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:15:28] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 01:15:29,434 - app.utils.image_processing - INFO - Face detected and cropped: 245x245 at (122, 147)
+2025-11-24 01:15:29,436 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 01:15:29,437 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:15:29] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 01:15:29,506 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:15:29] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 01:15:29,822 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 01:15:33,068 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:15:33] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 01:15:46,345 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:15:46] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 01:15:46,665 - app.services.chat_service - INFO - Classified intent: ingredient_inquiry
+2025-11-24 01:15:52,056 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 01:15:52] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 01:16:56,350 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\utils\\prompt_templates.py', reloading
+2025-11-24 01:16:56,963 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:17:04,804 - app - INFO - Initializing utilities...
+2025-11-24 01:17:04,842 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:17:04,843 - app - INFO - Initializing AI models...
+2025-11-24 01:17:04,843 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:17:04,844 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:17:04,844 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:17:04,845 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:17:04,845 - app - INFO - Initializing business services...
+2025-11-24 01:17:04,845 - app - INFO - All services initialized successfully
+2025-11-24 01:17:04,851 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:17:04,851 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:17:04,851 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:17:04,852 - __main__ - INFO - Debug mode: True
+2025-11-24 01:17:04,852 - __main__ - INFO - Environment: development
+2025-11-24 01:17:04,880 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:17:04,891 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:17:18,074 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-11-24 01:17:18,789 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:17:28,379 - app - INFO - Initializing utilities...
+2025-11-24 01:17:28,424 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:17:28,425 - app - INFO - Initializing AI models...
+2025-11-24 01:17:28,426 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:17:28,427 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:17:28,428 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:17:28,429 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:17:28,429 - app - INFO - Initializing business services...
+2025-11-24 01:17:28,429 - app - INFO - All services initialized successfully
+2025-11-24 01:17:28,439 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:17:28,439 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:17:28,440 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:17:28,441 - __main__ - INFO - Debug mode: True
+2025-11-24 01:17:28,441 - __main__ - INFO - Environment: development
+2025-11-24 01:17:28,480 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:17:28,495 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:24:26,700 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\services\\chat_service.py', reloading
+2025-11-24 01:24:27,855 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:24:36,939 - app - INFO - Initializing utilities...
+2025-11-24 01:24:36,973 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:24:36,973 - app - INFO - Initializing AI models...
+2025-11-24 01:24:36,974 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:24:36,975 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:24:36,975 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:24:36,977 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:24:36,977 - app - INFO - Initializing business services...
+2025-11-24 01:24:36,977 - app - INFO - All services initialized successfully
+2025-11-24 01:24:36,982 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:24:36,983 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:24:36,983 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:24:36,984 - __main__ - INFO - Debug mode: True
+2025-11-24 01:24:36,984 - __main__ - INFO - Environment: development
+2025-11-24 01:24:37,008 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:24:37,020 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:28:40,573 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\config\\config.py', reloading
+2025-11-24 01:28:41,249 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:28:48,747 - app - INFO - Initializing utilities...
+2025-11-24 01:28:48,780 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:28:48,781 - app - INFO - Initializing AI models...
+2025-11-24 01:28:48,781 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:28:48,782 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:28:48,782 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:28:48,783 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:28:48,784 - app - INFO - Initializing business services...
+2025-11-24 01:28:48,784 - app - INFO - All services initialized successfully
+2025-11-24 01:28:48,790 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:28:48,791 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:28:48,791 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:28:48,791 - __main__ - INFO - Debug mode: True
+2025-11-24 01:28:48,792 - __main__ - INFO - Environment: development
+2025-11-24 01:28:48,813 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:28:48,825 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:28:54,972 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\database\\db_manager.py', reloading
+2025-11-24 01:28:55,752 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:29:06,033 - app - INFO - Initializing utilities...
+2025-11-24 01:29:06,068 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:29:06,068 - app - INFO - Initializing AI models...
+2025-11-24 01:29:06,069 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:29:06,070 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:29:06,070 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:29:06,071 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:29:06,071 - app - INFO - Initializing business services...
+2025-11-24 01:29:06,072 - app - INFO - All services initialized successfully
+2025-11-24 01:29:06,078 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:29:06,079 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:29:06,079 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:29:06,080 - __main__ - INFO - Debug mode: True
+2025-11-24 01:29:06,080 - __main__ - INFO - Environment: development
+2025-11-24 01:29:06,104 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:29:06,116 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:30:06,318 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\database\\__init__.py', reloading
+2025-11-24 01:30:07,146 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:30:15,692 - app - INFO - Initializing utilities...
+2025-11-24 01:30:15,733 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:30:15,733 - app - INFO - Initializing AI models...
+2025-11-24 01:30:15,734 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:30:15,735 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:30:15,735 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:30:15,736 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:30:15,737 - app - INFO - Initializing business services...
+2025-11-24 01:30:15,737 - app - INFO - All services initialized successfully
+2025-11-24 01:30:15,742 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:30:15,742 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:30:15,742 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:30:15,742 - __main__ - INFO - Debug mode: True
+2025-11-24 01:30:15,743 - __main__ - INFO - Environment: development
+2025-11-24 01:30:15,769 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:30:15,781 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:30:54,627 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\__init__.py', reloading
+2025-11-24 01:30:55,347 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:36:34,574 - app - INFO - Initializing utilities...
+2025-11-24 01:36:34,612 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:36:34,612 - app - INFO - Initializing AI models...
+2025-11-24 01:36:34,613 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:36:34,613 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:36:34,614 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:36:34,614 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:36:34,615 - app - INFO - Initializing business services...
+2025-11-24 01:36:34,615 - app - INFO - All services initialized successfully
+2025-11-24 01:36:34,622 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:36:34,623 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:36:34,623 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:36:34,623 - __main__ - INFO - Debug mode: True
+2025-11-24 01:36:34,624 - __main__ - INFO - Environment: development
+2025-11-24 01:36:35,552 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-24 01:36:35,552 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 01:36:35,555 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:36:44,950 - app - INFO - Initializing utilities...
+2025-11-24 01:36:45,009 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:36:45,010 - app - INFO - Initializing AI models...
+2025-11-24 01:36:45,011 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:36:45,012 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:36:45,012 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:36:45,013 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:36:45,014 - app - INFO - Initializing business services...
+2025-11-24 01:36:45,017 - app - INFO - All services initialized successfully
+2025-11-24 01:36:45,028 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:36:45,029 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:36:45,034 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:36:45,038 - __main__ - INFO - Debug mode: True
+2025-11-24 01:36:45,041 - __main__ - INFO - Environment: development
+2025-11-24 01:36:45,077 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:36:45,091 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:37:35,161 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\config\\config.py', reloading
+2025-11-24 01:37:36,201 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:37:44,733 - app - INFO - Initializing utilities...
+2025-11-24 01:37:44,786 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:37:44,788 - app - INFO - Initializing AI models...
+2025-11-24 01:37:44,789 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:37:44,790 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:37:44,791 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:37:44,791 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:37:44,792 - app - INFO - Initializing business services...
+2025-11-24 01:37:44,792 - app - INFO - All services initialized successfully
+2025-11-24 01:37:44,802 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:37:44,803 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:37:44,804 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:37:44,804 - __main__ - INFO - Debug mode: True
+2025-11-24 01:37:44,804 - __main__ - INFO - Environment: development
+2025-11-24 01:37:44,843 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:37:44,858 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:37:50,965 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\database\\firebase_service.py', reloading
+2025-11-24 01:37:51,673 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:37:59,729 - app - INFO - Initializing utilities...
+2025-11-24 01:37:59,771 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:37:59,772 - app - INFO - Initializing AI models...
+2025-11-24 01:37:59,773 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:37:59,773 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:37:59,774 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:37:59,774 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:37:59,775 - app - INFO - Initializing business services...
+2025-11-24 01:37:59,776 - app - INFO - All services initialized successfully
+2025-11-24 01:37:59,784 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:37:59,784 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:37:59,785 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:37:59,785 - __main__ - INFO - Debug mode: True
+2025-11-24 01:37:59,785 - __main__ - INFO - Environment: development
+2025-11-24 01:37:59,816 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:37:59,832 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:39:03,994 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\config\\config.py', reloading
+2025-11-24 01:39:04,598 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:39:12,936 - app - INFO - Initializing utilities...
+2025-11-24 01:39:12,973 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:39:12,973 - app - INFO - Initializing AI models...
+2025-11-24 01:39:12,974 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:39:12,979 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:39:12,980 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:39:12,980 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:39:12,981 - app - INFO - Initializing business services...
+2025-11-24 01:39:12,981 - app - INFO - All services initialized successfully
+2025-11-24 01:39:12,987 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:39:12,987 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:39:12,987 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:39:12,988 - __main__ - INFO - Debug mode: True
+2025-11-24 01:39:12,988 - __main__ - INFO - Environment: development
+2025-11-24 01:39:13,004 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:39:13,016 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:39:38,048 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\routes\\analysis_routes.py', reloading
+2025-11-24 01:39:38,861 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:39:46,859 - app - INFO - Initializing utilities...
+2025-11-24 01:39:46,899 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:39:46,899 - app - INFO - Initializing AI models...
+2025-11-24 01:39:46,900 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:39:46,900 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:39:46,901 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:39:46,901 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:39:46,901 - app - INFO - Initializing business services...
+2025-11-24 01:39:46,902 - app - INFO - All services initialized successfully
+2025-11-24 01:39:46,906 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:39:46,906 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:39:46,907 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:39:46,907 - __main__ - INFO - Debug mode: True
+2025-11-24 01:39:46,908 - __main__ - INFO - Environment: development
+2025-11-24 01:39:46,927 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:39:46,939 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:40:05,423 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\routes\\chat_routes.py', reloading
+2025-11-24 01:40:06,123 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 01:40:14,966 - app - INFO - Initializing utilities...
+2025-11-24 01:40:14,998 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 01:40:14,999 - app - INFO - Initializing AI models...
+2025-11-24 01:40:15,000 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:40:15,000 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 01:40:15,001 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 01:40:15,001 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 01:40:15,002 - app - INFO - Initializing business services...
+2025-11-24 01:40:15,002 - app - INFO - All services initialized successfully
+2025-11-24 01:40:15,007 - app - INFO - All API blueprints registered successfully
+2025-11-24 01:40:15,007 - app - INFO - SkinPredict API application created successfully
+2025-11-24 01:40:15,008 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 01:40:15,008 - __main__ - INFO - Debug mode: True
+2025-11-24 01:40:15,009 - __main__ - INFO - Environment: development
+2025-11-24 01:40:15,025 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 01:40:15,038 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 01:40:29,652 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\__init__.py', reloading
+2025-11-24 01:40:30,336 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 02:18:59,240 - app - INFO - Initializing utilities...
+2025-11-24 02:18:59,275 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 02:18:59,276 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 02:18:59,280 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 02:18:59,280 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 02:18:59,281 - app - INFO - Initializing AI models...
+2025-11-24 02:18:59,281 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:18:59,281 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 02:18:59,282 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:18:59,282 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 02:18:59,283 - app - INFO - Initializing business services...
+2025-11-24 02:18:59,283 - app - INFO - All services initialized successfully
+2025-11-24 02:18:59,294 - app - INFO - All API blueprints registered successfully
+2025-11-24 02:18:59,295 - app - INFO - SkinPredict API application created successfully
+2025-11-24 02:18:59,295 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 02:18:59,295 - __main__ - INFO - Debug mode: True
+2025-11-24 02:18:59,296 - __main__ - INFO - Environment: development
+2025-11-24 02:19:00,229 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-24 02:19:00,230 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 02:19:00,234 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 02:19:08,739 - app - INFO - Initializing utilities...
+2025-11-24 02:19:08,772 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 02:19:08,772 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 02:19:08,773 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 02:19:08,774 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 02:19:08,774 - app - INFO - Initializing AI models...
+2025-11-24 02:19:08,775 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:19:08,775 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 02:19:08,776 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:19:08,776 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 02:19:08,777 - app - INFO - Initializing business services...
+2025-11-24 02:19:08,777 - app - INFO - All services initialized successfully
+2025-11-24 02:19:08,785 - app - INFO - All API blueprints registered successfully
+2025-11-24 02:19:08,785 - app - INFO - SkinPredict API application created successfully
+2025-11-24 02:19:08,786 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 02:19:08,786 - __main__ - INFO - Debug mode: True
+2025-11-24 02:19:08,787 - __main__ - INFO - Environment: development
+2025-11-24 02:19:08,806 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 02:19:08,820 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 02:44:05,309 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\routes\\analysis_routes.py', reloading
+2025-11-24 02:44:06,253 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 02:44:17,090 - app - INFO - Initializing utilities...
+2025-11-24 02:44:17,130 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 02:44:17,130 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 02:44:17,131 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 02:44:17,132 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 02:44:17,133 - app - INFO - Initializing AI models...
+2025-11-24 02:44:17,134 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:44:17,135 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 02:44:17,135 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:44:17,136 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 02:44:17,137 - app - INFO - Initializing business services...
+2025-11-24 02:44:17,137 - app - INFO - All services initialized successfully
+2025-11-24 02:44:17,148 - app - INFO - All API blueprints registered successfully
+2025-11-24 02:44:17,148 - app - INFO - SkinPredict API application created successfully
+2025-11-24 02:44:17,149 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 02:44:17,150 - __main__ - INFO - Debug mode: True
+2025-11-24 02:44:17,150 - __main__ - INFO - Environment: development
+2025-11-24 02:44:17,173 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 02:44:17,190 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 02:47:25,033 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\routes\\__init__.py', reloading
+2025-11-24 02:47:25,943 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 02:47:34,105 - app - INFO - Initializing utilities...
+2025-11-24 02:47:34,138 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 02:47:34,138 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 02:47:34,139 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 02:47:34,140 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 02:47:34,140 - app - INFO - Initializing AI models...
+2025-11-24 02:47:34,141 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:47:34,142 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 02:47:34,143 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:47:34,144 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 02:47:34,144 - app - INFO - Initializing business services...
+2025-11-24 02:47:34,145 - app - INFO - All services initialized successfully
+2025-11-24 02:47:34,152 - app - INFO - All API blueprints registered successfully
+2025-11-24 02:47:34,153 - app - INFO - SkinPredict API application created successfully
+2025-11-24 02:47:34,153 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 02:47:34,154 - __main__ - INFO - Debug mode: True
+2025-11-24 02:47:34,154 - __main__ - INFO - Environment: development
+2025-11-24 02:47:34,171 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 02:47:34,182 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 02:47:36,813 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\routes\\__init__.py', reloading
+2025-11-24 02:47:37,547 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 02:47:46,087 - app - INFO - Initializing utilities...
+2025-11-24 02:47:46,137 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 02:47:46,138 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 02:47:46,139 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 02:47:46,139 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 02:47:46,140 - app - INFO - Initializing AI models...
+2025-11-24 02:47:46,140 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:47:46,141 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 02:47:46,141 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:47:46,142 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 02:47:46,142 - app - INFO - Initializing business services...
+2025-11-24 02:47:46,143 - app - INFO - All services initialized successfully
+2025-11-24 02:47:46,153 - app - INFO - All API blueprints registered successfully
+2025-11-24 02:47:46,154 - app - INFO - SkinPredict API application created successfully
+2025-11-24 02:47:46,155 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 02:47:46,155 - __main__ - INFO - Debug mode: True
+2025-11-24 02:47:46,155 - __main__ - INFO - Environment: development
+2025-11-24 02:47:46,174 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 02:47:46,188 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 02:59:15,414 - app - INFO - Initializing utilities...
+2025-11-24 02:59:15,449 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 02:59:15,450 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 02:59:15,450 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 02:59:15,450 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 02:59:15,451 - app - INFO - Initializing AI models...
+2025-11-24 02:59:15,451 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:59:15,451 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 02:59:15,452 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:59:15,453 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 02:59:15,453 - app - INFO - Initializing business services...
+2025-11-24 02:59:15,454 - app - INFO - All services initialized successfully
+2025-11-24 02:59:15,463 - app - INFO - All API blueprints registered successfully
+2025-11-24 02:59:15,464 - app - INFO - SkinPredict API application created successfully
+2025-11-24 02:59:15,464 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 02:59:15,465 - __main__ - INFO - Debug mode: True
+2025-11-24 02:59:15,465 - __main__ - INFO - Environment: development
+2025-11-24 02:59:16,388 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-24 02:59:16,389 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 02:59:16,392 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 02:59:25,039 - app - INFO - Initializing utilities...
+2025-11-24 02:59:25,083 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 02:59:25,084 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 02:59:25,085 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 02:59:25,086 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 02:59:25,086 - app - INFO - Initializing AI models...
+2025-11-24 02:59:25,087 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:59:25,087 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 02:59:25,088 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 02:59:25,089 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 02:59:25,089 - app - INFO - Initializing business services...
+2025-11-24 02:59:25,089 - app - INFO - All services initialized successfully
+2025-11-24 02:59:25,102 - app - INFO - All API blueprints registered successfully
+2025-11-24 02:59:25,103 - app - INFO - SkinPredict API application created successfully
+2025-11-24 02:59:25,103 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 02:59:25,104 - __main__ - INFO - Debug mode: True
+2025-11-24 02:59:25,105 - __main__ - INFO - Environment: development
+2025-11-24 02:59:25,131 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 02:59:25,145 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 03:26:20,524 - app - INFO - Initializing utilities...
+2025-11-24 03:26:20,559 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 03:26:20,559 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 03:26:20,560 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 03:26:20,561 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 03:26:20,561 - app - INFO - Initializing AI models...
+2025-11-24 03:26:20,562 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 03:26:20,563 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 03:26:20,563 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 03:26:20,564 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 03:26:20,564 - app - INFO - Initializing business services...
+2025-11-24 03:26:20,565 - app - INFO - All services initialized successfully
+2025-11-24 03:26:20,575 - app - INFO - All API blueprints registered successfully
+2025-11-24 03:26:20,576 - app - INFO - SkinPredict API application created successfully
+2025-11-24 03:26:20,576 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 03:26:20,577 - __main__ - INFO - Debug mode: True
+2025-11-24 03:26:20,577 - __main__ - INFO - Environment: development
+2025-11-24 03:26:21,508 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-24 03:26:21,509 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 03:26:21,513 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 03:26:31,665 - app - INFO - Initializing utilities...
+2025-11-24 03:26:31,703 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 03:26:31,703 - app - INFO - Initializing Firebase Admin SDK...
+2025-11-24 03:26:31,704 - app.database.firebase_service - ERROR - Failed to initialize Firebase Admin SDK: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. MalformedFraming"
+2025-11-24 03:26:31,704 - app - WARNING - Firebase Admin SDK not initialized - database operations will be disabled
+2025-11-24 03:26:31,704 - app - INFO - Initializing AI models...
+2025-11-24 03:26:31,705 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 03:26:31,706 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 03:26:31,706 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 03:26:31,707 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 03:26:31,707 - app - INFO - Initializing business services...
+2025-11-24 03:26:31,707 - app - INFO - All services initialized successfully
+2025-11-24 03:26:31,719 - app - INFO - All API blueprints registered successfully
+2025-11-24 03:26:31,720 - app - INFO - SkinPredict API application created successfully
+2025-11-24 03:26:31,720 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 03:26:31,720 - __main__ - INFO - Debug mode: True
+2025-11-24 03:26:31,721 - __main__ - INFO - Environment: development
+2025-11-24 03:26:31,738 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 03:26:31,753 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 03:39:50,237 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\config\\config.py', reloading
+2025-11-24 03:39:51,943 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 16:33:36,435 - app - INFO - Initializing utilities...
+2025-11-24 16:33:36,528 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 16:33:36,528 - app - INFO - Initializing AI models...
+2025-11-24 16:33:36,529 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 16:33:36,530 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 16:33:36,530 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 16:33:36,531 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 16:33:36,531 - app - INFO - Initializing business services...
+2025-11-24 16:33:36,532 - app - INFO - All services initialized successfully
+2025-11-24 16:33:36,536 - app - INFO - All API blueprints registered successfully
+2025-11-24 16:33:36,536 - app - INFO - SkinPredict API application created successfully
+2025-11-24 16:33:36,537 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 16:33:36,537 - __main__ - INFO - Debug mode: True
+2025-11-24 16:33:36,538 - __main__ - INFO - Environment: development
+2025-11-24 16:33:37,895 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-24 16:33:37,897 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 16:33:37,903 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 16:33:48,172 - app - INFO - Initializing utilities...
+2025-11-24 16:33:48,212 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 16:33:48,213 - app - INFO - Initializing AI models...
+2025-11-24 16:33:48,214 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 16:33:48,214 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 16:33:48,215 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 16:33:48,216 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 16:33:48,217 - app - INFO - Initializing business services...
+2025-11-24 16:33:48,217 - app - INFO - All services initialized successfully
+2025-11-24 16:33:48,226 - app - INFO - All API blueprints registered successfully
+2025-11-24 16:33:48,227 - app - INFO - SkinPredict API application created successfully
+2025-11-24 16:33:48,227 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 16:33:48,227 - __main__ - INFO - Debug mode: True
+2025-11-24 16:33:48,228 - __main__ - INFO - Environment: development
+2025-11-24 16:33:48,262 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 16:33:48,282 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 16:36:55,991 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:36:55] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 16:36:57,171 - app.utils.image_processing - INFO - Face detected and cropped: 201x201 at (168, 181)
+2025-11-24 16:36:57,180 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 16:36:57,181 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:36:57] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 16:36:57,483 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:36:57] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 16:36:57,793 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 16:37:01,320 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:37:01] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 16:37:30,751 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:37:30] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 16:37:31,065 - app.services.chat_service - INFO - Classified intent: product_recommendation
+2025-11-24 16:37:37,715 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:37:37] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 16:48:34,106 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:48:34] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 16:48:34,373 - app.services.chat_service - INFO - Classified intent: general_skincare
+2025-11-24 16:48:37,888 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:48:37] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 16:48:52,231 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:48:52] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 16:48:52,568 - app.utils.image_processing - INFO - Face detected and cropped: 149x138 at (191, 306)
+2025-11-24 16:48:52,569 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 16:48:52,570 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:48:52] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 16:48:52,808 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:48:52] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 16:48:52,975 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 16:48:55,621 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 16:48:55] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 16:49:07,777 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\routes\\__init__.py', reloading
+2025-11-24 16:49:08,721 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 16:49:19,950 - app - INFO - Initializing utilities...
+2025-11-24 16:49:19,991 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 16:49:19,991 - app - INFO - Initializing AI models...
+2025-11-24 16:49:19,991 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 16:49:19,992 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 16:49:19,993 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 16:49:19,994 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 16:49:19,994 - app - INFO - Initializing business services...
+2025-11-24 16:49:19,995 - app - INFO - All services initialized successfully
+2025-11-24 16:49:20,000 - app - INFO - All API blueprints registered successfully
+2025-11-24 16:49:20,001 - app - INFO - SkinPredict API application created successfully
+2025-11-24 16:49:20,001 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 16:49:20,002 - __main__ - INFO - Debug mode: True
+2025-11-24 16:49:20,002 - __main__ - INFO - Environment: development
+2025-11-24 16:49:20,040 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 16:49:20,055 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 17:02:12,394 - app - INFO - Initializing utilities...
+2025-11-24 17:02:12,427 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 17:02:12,428 - app - INFO - Initializing AI models...
+2025-11-24 17:02:12,428 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:02:12,429 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 17:02:12,429 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:02:12,430 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 17:02:12,431 - app - INFO - Initializing business services...
+2025-11-24 17:02:12,431 - app - INFO - All services initialized successfully
+2025-11-24 17:02:12,436 - app - INFO - All API blueprints registered successfully
+2025-11-24 17:02:12,437 - app - INFO - SkinPredict API application created successfully
+2025-11-24 17:02:12,437 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 17:02:12,437 - __main__ - INFO - Debug mode: True
+2025-11-24 17:02:12,438 - __main__ - INFO - Environment: development
+2025-11-24 17:02:13,360 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-24 17:02:13,361 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 17:02:13,366 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 17:02:22,309 - app - INFO - Initializing utilities...
+2025-11-24 17:02:22,351 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 17:02:22,351 - app - INFO - Initializing AI models...
+2025-11-24 17:02:22,352 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:02:22,352 - app.models.skin_analysis_model - WARNING - Using mock skin analysis model - replace with actual model loading
+2025-11-24 17:02:22,353 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:02:22,353 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 17:02:22,354 - app - INFO - Initializing business services...
+2025-11-24 17:02:22,354 - app - INFO - All services initialized successfully
+2025-11-24 17:02:22,359 - app - INFO - All API blueprints registered successfully
+2025-11-24 17:02:22,360 - app - INFO - SkinPredict API application created successfully
+2025-11-24 17:02:22,361 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 17:02:22,361 - __main__ - INFO - Debug mode: True
+2025-11-24 17:02:22,362 - __main__ - INFO - Environment: development
+2025-11-24 17:02:22,396 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 17:02:22,413 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 17:14:14,782 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:14:14] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 17:14:15,944 - app.utils.image_processing - INFO - Face detected and cropped: 254x254 at (180, 53)
+2025-11-24 17:14:15,957 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 17:14:15,958 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:14:15] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 17:14:16,263 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:14:16] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 17:14:16,584 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 17:14:19,678 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:14:19] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 17:18:09,510 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\models\\skin_analysis_model.py', reloading
+2025-11-24 17:18:10,248 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 17:18:19,432 - app - INFO - Initializing utilities...
+2025-11-24 17:18:19,467 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 17:18:19,467 - app - INFO - Initializing AI models...
+2025-11-24 17:18:39,825 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:18:41,866 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:18:41,867 - app.models.skin_analysis_model - INFO - Model input shape: (None, 224, 224, 3)
+2025-11-24 17:18:41,868 - app.models.skin_analysis_model - INFO - Model output shapes: [(None, 3), (None, 3)]
+2025-11-24 17:18:41,868 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 17:18:41,869 - app - INFO - Initializing business services...
+2025-11-24 17:18:41,869 - app - INFO - All services initialized successfully
+2025-11-24 17:18:41,873 - app - INFO - All API blueprints registered successfully
+2025-11-24 17:18:41,873 - app - INFO - SkinPredict API application created successfully
+2025-11-24 17:18:41,874 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 17:18:41,874 - __main__ - INFO - Debug mode: True
+2025-11-24 17:18:41,874 - __main__ - INFO - Environment: development
+2025-11-24 17:18:41,918 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 17:18:41,930 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 17:20:24,209 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\models\\skin_analysis_model.py', reloading
+2025-11-24 17:20:25,690 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 17:20:33,701 - app - INFO - Initializing utilities...
+2025-11-24 17:20:33,736 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 17:20:33,736 - app - INFO - Initializing AI models...
+2025-11-24 17:20:33,737 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:20:41,201 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-24 17:20:41,209 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:20:41,210 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 17:20:41,210 - app - INFO - Initializing business services...
+2025-11-24 17:20:41,211 - app - INFO - All services initialized successfully
+2025-11-24 17:20:41,216 - app - INFO - All API blueprints registered successfully
+2025-11-24 17:20:41,216 - app - INFO - SkinPredict API application created successfully
+2025-11-24 17:20:41,217 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 17:20:41,217 - __main__ - INFO - Debug mode: True
+2025-11-24 17:20:41,217 - __main__ - INFO - Environment: development
+2025-11-24 17:20:41,242 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 17:20:41,255 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 17:21:36,954 - app - INFO - Initializing utilities...
+2025-11-24 17:21:37,002 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 17:21:37,003 - app - INFO - Initializing AI models...
+2025-11-24 17:21:37,004 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:21:44,396 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-24 17:21:44,403 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:21:44,404 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 17:21:44,404 - app - INFO - Initializing business services...
+2025-11-24 17:21:44,405 - app - INFO - All services initialized successfully
+2025-11-24 17:21:44,410 - app - INFO - All API blueprints registered successfully
+2025-11-24 17:21:44,410 - app - INFO - SkinPredict API application created successfully
+2025-11-24 17:21:44,411 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 17:21:44,411 - __main__ - INFO - Debug mode: True
+2025-11-24 17:21:44,411 - __main__ - INFO - Environment: development
+2025-11-24 17:21:46,550 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-24 17:21:46,551 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 17:21:46,555 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 17:24:01,743 - app - INFO - Initializing utilities...
+2025-11-24 17:24:01,777 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 17:24:01,777 - app - INFO - Initializing AI models...
+2025-11-24 17:24:01,778 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:24:09,121 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-24 17:24:09,128 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:24:09,129 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 17:24:09,129 - app - INFO - Initializing business services...
+2025-11-24 17:24:09,130 - app - INFO - All services initialized successfully
+2025-11-24 17:24:09,134 - app - INFO - All API blueprints registered successfully
+2025-11-24 17:24:09,135 - app - INFO - SkinPredict API application created successfully
+2025-11-24 17:24:09,136 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 17:24:09,137 - __main__ - INFO - Debug mode: True
+2025-11-24 17:24:09,138 - __main__ - INFO - Environment: development
+2025-11-24 17:24:10,095 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+2025-11-24 17:24:10,096 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 17:24:10,099 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 17:24:17,548 - app - INFO - Initializing utilities...
+2025-11-24 17:24:17,587 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 17:24:17,588 - app - INFO - Initializing AI models...
+2025-11-24 17:24:17,588 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:24:24,228 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-24 17:24:24,234 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:24:24,235 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 17:24:24,235 - app - INFO - Initializing business services...
+2025-11-24 17:24:24,236 - app - INFO - All services initialized successfully
+2025-11-24 17:24:24,242 - app - INFO - All API blueprints registered successfully
+2025-11-24 17:24:24,243 - app - INFO - SkinPredict API application created successfully
+2025-11-24 17:24:24,244 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 17:24:24,244 - __main__ - INFO - Debug mode: True
+2025-11-24 17:24:24,245 - __main__ - INFO - Environment: development
+2025-11-24 17:24:24,275 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 17:24:24,294 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-11-24 17:26:33,485 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:26:33] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 17:26:34,478 - app.utils.image_processing - INFO - Face detected and cropped: 254x254 at (180, 53)
+2025-11-24 17:26:37,059 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 17:26:37,061 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:26:37] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 17:26:37,645 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:26:37] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 17:26:37,897 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 17:26:42,958 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:26:42] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 17:29:03,550 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:29:03] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-11-24 17:29:03,860 - app.utils.image_processing - INFO - Face detected and cropped: 254x254 at (180, 53)
+2025-11-24 17:29:04,027 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-11-24 17:29:04,028 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:29:04] "POST /api/analyze HTTP/1.1" 200 -
+2025-11-24 17:29:04,284 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:29:04] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-11-24 17:29:04,596 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-11-24 17:29:09,219 - werkzeug - INFO - 127.0.0.1 - - [24/Nov/2025 17:29:09] "POST /api/chat HTTP/1.1" 200 -
+2025-11-24 17:29:25,857 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\4eme SDIA\\Semester2\\Project\\skinPredict\\front\\api\\app\\models\\skin_analysis_model.py', reloading
+2025-11-24 17:29:27,727 - werkzeug - INFO -  * Restarting with stat
+2025-11-24 17:29:38,776 - app - INFO - Initializing utilities...
+2025-11-24 17:29:38,826 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-11-24 17:29:38,826 - app - INFO - Initializing AI models...
+2025-11-24 17:29:38,828 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:29:48,164 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-24 17:29:48,170 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\4eme SDIA\Semester2\Project\skinPredict\front\api\multitask_skin_model.h5
+2025-11-24 17:29:48,171 - app.models.fairface_model - ERROR - Error loading FairFace model: 'str' object has no attribute 'exists'
+2025-11-24 17:29:48,171 - app - INFO - Initializing business services...
+2025-11-24 17:29:48,172 - app - INFO - All services initialized successfully
+2025-11-24 17:29:48,177 - app - INFO - All API blueprints registered successfully
+2025-11-24 17:29:48,177 - app - INFO - SkinPredict API application created successfully
+2025-11-24 17:29:48,177 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-11-24 17:29:48,178 - __main__ - INFO - Debug mode: True
+2025-11-24 17:29:48,178 - __main__ - INFO - Environment: development
+2025-11-24 17:29:48,217 - werkzeug - WARNING -  * Debugger is active!
+2025-11-24 17:29:48,233 - werkzeug - INFO -  * Debugger PIN: 523-896-134

@@ -163,20 +163,31 @@ export default function Home() {
               <WebcamCapture onCapture={handleCapture} onNewScan={handleNewScanRequest} />
             ) : (
               <div className="space-y-4">
-                {capturedImage && (
-                  <div className="relative">
-                    <img 
-                      src={capturedImage} 
-                      alt="Captured" 
-                      className="w-full rounded-xl border-2 border-slate-300 dark:border-slate-700" 
-                    />
-                    {skinResults && (
-                      <div className="absolute top-2 right-2 bg-green-500 text-white rounded-full p-1">
-                        <CheckCircleIcon className="h-5 w-5" />
+                {/* Show captured image or placeholder */}
+                <div className="relative">
+                  {capturedImage ? (
+                    <>
+                      <img 
+                        src={capturedImage} 
+                        alt="Captured" 
+                        className="w-full rounded-xl border-2 border-slate-300 dark:border-slate-700" 
+                      />
+                      {skinResults && (
+                        <div className="absolute top-2 right-2 bg-green-500 text-white rounded-full p-1">
+                          <CheckCircleIcon className="h-5 w-5" />
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    /* Show placeholder when viewing history or during analysis */
+                    <div className="w-full aspect-square rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center">
+                      <div className="text-center text-slate-400">
+                        <CameraIcon className="h-16 w-16 mx-auto mb-2" />
+                        <p className="text-sm">Image preview unavailable</p>
                       </div>
-                    )}
-                  </div>
-                )}
+                    </div>
+                  )}
+                </div>
                 
                 {isHistoryScan && skinResults && (
                   <div className="mb-4 px-4 py-3 bg-primary/10 rounded-lg border border-primary/20 text-sm">
