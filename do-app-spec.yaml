@@ -1,8 +1,8 @@
-# DigitalOcean App Platform Specification
+# DigitalOcean App Platform Specification (Backend Only)
 # Deploy with: doctl apps create --spec do-app-spec.yaml
 
-name: skinpredict
-region: nyc
+name: skinpredict-api
+region: fra  # Frankfurt (since your Spaces is in fra1)
 
 services:
   # ===========================================
@@ -17,8 +17,7 @@ services:
     instance_size_slug: basic-xs  # 1GB RAM - good for ML model
     http_port: 5000
     routes:
-      - path: /api
-      - path: /health
+      - path: /  # Serve API from root or /api depending on preference, but usually simpler to put at root for API-only apps
     envs:
       - key: FLASK_ENV
         value: production
@@ -37,6 +36,10 @@ services:
       - key: SECRET_KEY
         scope: RUN_TIME
         type: SECRET
+      # Redis for async tasks
+      - key: REDIS_URL
+        scope: RUN_TIME
+        value: redis://${redis.username}:${redis.password}@${redis.hostname}:${redis.port}
     health_check:
       http_path: /health
       initial_delay_seconds: 60
@@ -45,30 +48,6 @@ services:
       success_threshold: 1
       failure_threshold: 3
 
-  # ===========================================
-  # Frontend Service (Next.js)
-  # ===========================================
-  - name: frontend
-    image:
-      registry_type: DOCR
-      repository: skinpredict-frontend
-      tag: latest
-    instance_count: 1
-    instance_size_slug: basic-xxs  # 512MB - sufficient for Next.js
-    http_port: 3000
-    routes:
-      - path: /
-    envs:
-      - key: NEXT_PUBLIC_API_URL
-        value: ${api.PUBLIC_URL}
-      - key: NODE_ENV
-        value: production
-    health_check:
-      http_path: /
-      initial_delay_seconds: 30
-      period_seconds: 30
-      timeout_seconds: 10
-
 # ===========================================
 # Managed Database
 # ===========================================
@@ -76,8 +55,17 @@ databases:
   - name: db
     engine: PG
     version: "15"
-    production: false  # Set to true for production
+    production: false
     cluster_name: skinpredict-db
     db_name: skinpredict
     db_user: skinpredict
-    size: db-s-1vcpu-1gb  # Basic: $15/month
+    size: db-s-1vcpu-1gb
+
+# ===========================================
+# Redis (for Celery)
+# ===========================================
+# Optional: Add Managed Redis if you want async tasks in production
+# Remove if not needed to save cost (~$15/mo)
+# services:
+#   - name: redis
+#     ...
