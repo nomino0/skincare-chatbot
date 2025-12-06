@@ -1863,3 +1863,31 @@ ValueError: Analysis failed: 'NoneType' object has no attribute 'is_model_loaded
 2025-12-06 07:21:42,930 - app.services.chat_service - INFO - Classified intent: skin_analysis
 2025-12-06 07:21:48,091 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:21:48] "POST /api/chat HTTP/1.1" 200 -
 2025-12-06 07:24:32,132 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\5eme SDIA\\Projects\\SkinPredict\\api\\app\\routes\\analysis_routes.py', reloading
+2025-12-06 07:24:34,131 - werkzeug - INFO -  * Restarting with stat
+2025-12-06 07:24:45,807 - app - INFO - Initializing utilities...
+2025-12-06 07:24:45,862 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:24:45,863 - app - INFO - Initializing AI models...
+2025-12-06 07:24:45,864 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:24:56,194 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:24:56,201 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:24:56,202 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:24:56,203 - app - INFO - Initializing business services...
+2025-12-06 07:24:56,204 - app - INFO - All services initialized successfully
+2025-12-06 07:24:56,207 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:24:56,208 - app - INFO - Database initialized successfully
+2025-12-06 07:24:56,214 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:24:56,228 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:24:56,228 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:24:56,229 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:24:56,229 - __main__ - INFO - Debug mode: True
+2025-12-06 07:24:56,230 - __main__ - INFO - Environment: development
+2025-12-06 07:24:56,263 - werkzeug - WARNING -  * Debugger is active!
+2025-12-06 07:24:56,278 - werkzeug - INFO -  * Debugger PIN: 636-306-072
+2025-12-06 07:26:04,697 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:26:04] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-12-06 07:26:05,707 - app.utils.image_processing - INFO - Face detected and cropped: 233x233 at (113, 135)
+2025-12-06 07:26:08,321 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-12-06 07:26:08,326 - app.utils.scan_utils - ERROR - Failed to save scan to database: Could not determine join condition between parent/child tables on relationship User.scans - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+2025-12-06 07:26:08,328 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:26:08] "POST /api/analyze HTTP/1.1" 200 -
+2025-12-06 07:26:08,656 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:26:08] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-12-06 07:26:08,988 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-12-06 07:26:14,037 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:26:14] "POST /api/chat HTTP/1.1" 200 -
