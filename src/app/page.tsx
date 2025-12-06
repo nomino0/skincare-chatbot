@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import WebcamCapture from '../components/WebcamCapture';
 import Chatbot from '../components/Chatbot';
@@ -20,7 +20,26 @@ interface AnalysisError {
   suggestion: string;
 }
 
+// Wrapper component that uses Suspense for useSearchParams
 export default function Home() {
+  return (
+    <Suspense fallback={<HomeLoading />}>
+      <HomeContent />
+    </Suspense>
+  );
+}
+
+// Loading fallback component
+function HomeLoading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-teal-50">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500"></div>
+    </div>
+  );
+}
+
+// Main Home component content
+function HomeContent() {
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [skinResults, setSkinResults] = useState<SkinPredictionResult | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
