@@ -67,78 +67,46 @@ doctl registry create skinpredict-registry
 doctl registry login
 ```
 
-### 5. Build and Push Docker Images
+### 4. Build and Push Docker Images
+You need to build and push both the Backend (API) and Frontend images to your DigitalOcean Container Registry (DOCR).
 
+#### Log in to DigitalOcean Container Registry
 ```bash
-# Tag images for DO registry
-docker build -t registry.digitalocean.com/skinpredict-registry/api:latest ./api
-docker build -t registry.digitalocean.com/skinpredict-registry/frontend:latest -f Dockerfile.frontend .
-
-# Push to registry
-docker push registry.digitalocean.com/skinpredict-registry/api:latest
-docker push registry.digitalocean.com/skinpredict-registry/frontend:latest
+doctl registry login
 ```
 
-### 6. Create App Platform App
+#### A. Build & Push Backend (API)
+```bash
+# Build the backend image
+docker build -t skinpredict-api:latest ./api
 
-Create `do-app-spec.yaml`:
+# Tag it for your DOCR (replace <your-registry-name> with the name from step 4)
+docker tag skinpredict-api:latest registry.digitalocean.com/<your-registry-name>/skinpredict-api:latest
 
-```yaml
-name: skinpredict
-region: nyc
-services:
-  - name: api
-    image:
-      registry_type: DOCR
-      repository: api
-      tag: latest
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    http_port: 5000
-    routes:
-      - path: /api
-    envs:
-      - key: FLASK_ENV
-        value: production
-      - key: DATABASE_URL
-        scope: RUN_TIME
-        type: SECRET
-      - key: GROQ_API_KEY
-        scope: RUN_TIME
-        type: SECRET
-      - key: GOOGLE_MAPS_API_KEY
-        scope: RUN_TIME
-        type: SECRET
-    health_check:
-      http_path: /health
-
-  - name: frontend
-    image:
-      registry_type: DOCR
-      repository: frontend
-      tag: latest
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    http_port: 3000
-    routes:
-      - path: /
-    envs:
-      - key: NEXT_PUBLIC_API_URL
-        value: ${api.PUBLIC_URL}
-
-databases:
-  - name: db
-    engine: PG
-    production: false
-    cluster_name: skinpredict-db
-    db_name: skinpredict
-    db_user: skinpredict
+# Push to DigitalOcean
+docker push registry.digitalocean.com/<your-registry-name>/skinpredict-api:latest
 ```
 
-Deploy:
+#### B. Build & Push Frontend (Next.js)
+```bash
+# Build the frontend image (from root directory, using Dockerfile)
+docker build -t skinpredict-frontend:latest -f Dockerfile .
+
+# Tag it (replace <your-registry-name> with the name from step 4)
+docker tag skinpredict-frontend:latest registry.digitalocean.com/<your-registry-name>/skinpredict-frontend:latest
+
+# Push to DigitalOcean
+docker push registry.digitalocean.com/<your-registry-name>/skinpredict-frontend:latest
+```
+
+### 5. Deploy to App Platform
+Once both images are pushed, deploy using the specification file:
+
 ```bash
 doctl apps create --spec do-app-spec.yaml
 ```
+
+*Note: The first deployment might take 5-10 minutes as it provisions the database.*
 
 ## 💰 Cost Estimate
 

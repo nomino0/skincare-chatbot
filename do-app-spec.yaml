@@ -1,8 +1,8 @@
-# DigitalOcean App Platform Specification (Backend Only)
+# DigitalOcean App Platform Specification
 # Deploy with: doctl apps create --spec do-app-spec.yaml
 
-name: skinpredict-api
-region: fra  # Frankfurt (since your Spaces is in fra1)
+name: skinpredict
+region: fra
 
 services:
   # ===========================================
@@ -14,20 +14,15 @@ services:
       repository: skinpredict-api
       tag: latest
     instance_count: 1
-    instance_size_slug: basic-xs  # 1GB RAM - good for ML model
+    instance_size_slug: basic-xs
     http_port: 5000
     routes:
-      - path: /  # Serve API from root or /api depending on preference, but usually simpler to put at root for API-only apps
+      - path: /api
+      - path: /health
     envs:
       - key: FLASK_ENV
         value: production
       - key: DATABASE_URL
-        scope: RUN_TIME
-        type: SECRET
-      - key: GROQ_API_KEY
-        scope: RUN_TIME
-        type: SECRET
-      - key: GOOGLE_MAPS_API_KEY
         scope: RUN_TIME
         type: SECRET
       - key: ADMIN_SECRET_KEY
@@ -36,10 +31,21 @@ services:
       - key: SECRET_KEY
         scope: RUN_TIME
         type: SECRET
-      # Redis for async tasks
+      # Redis connection
       - key: REDIS_URL
         scope: RUN_TIME
         value: redis://${redis.username}:${redis.password}@${redis.hostname}:${redis.port}
+      # External APIs
+      - key: GROQ_API_KEY
+        scope: RUN_TIME
+        type: SECRET
+      - key: GOOGLE_MAPS_API_KEY
+        scope: RUN_TIME
+        type: SECRET
+      # CORS - Allow the frontend to access the API
+      - key: CORS_ORIGINS
+        scope: RUN_TIME
+        value: ${frontend.PUBLIC_URL}
     health_check:
       http_path: /health
       initial_delay_seconds: 60
@@ -48,10 +54,35 @@ services:
       success_threshold: 1
       failure_threshold: 3
 
+  # ===========================================
+  # Frontend Service (Next.js)
+  # ===========================================
+  - name: frontend
+    image:
+      registry_type: DOCR
+      repository: skinpredict-frontend
+      tag: latest
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    http_port: 3000
+    routes:
+      - path: /
+    envs:
+      - key: NEXT_PUBLIC_API_URL
+        value: ${api.PUBLIC_URL}
+      - key: NODE_ENV
+        value: production
+    health_check:
+      http_path: /
+      initial_delay_seconds: 30
+      period_seconds: 30
+      timeout_seconds: 10
+
 # ===========================================
-# Managed Database
+# Managed Databases & Services
 # ===========================================
 databases:
+  # PostgreSQL
   - name: db
     engine: PG
     version: "15"
@@ -61,11 +92,10 @@ databases:
     db_user: skinpredict
     size: db-s-1vcpu-1gb
 
-# ===========================================
-# Redis (for Celery)
-# ===========================================
-# Optional: Add Managed Redis if you want async tasks in production
-# Remove if not needed to save cost (~$15/mo)
-# services:
-#   - name: redis
-#     ...
+  # Redis (for Celery Tasks) - Optional, enable if budget allows ($15/mo)
+  - name: redis
+    engine: REDIS
+    version: "7"
+    production: false
+    cluster_name: skinpredict-redis
+    size: db-s-1vcpu-1gb
