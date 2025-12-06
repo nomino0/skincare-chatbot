@@ -1,0 +1,49 @@
+# DVC Pipeline for SkinPredict ML Training
+# Run with: dvc repro
+
+stages:
+  prepare:
+    cmd: python api/prepare_data.py
+    deps:
+      - api/prepare_data.py
+      - api/data/raw
+    params:
+      - api/params.yaml:
+          - img_size
+          - split_ratio
+          - random_seed
+    outs:
+      - api/data/processed
+
+  train:
+    cmd: python api/train.py
+    deps:
+      - api/train.py
+      - api/data/processed
+    params:
+      - api/params.yaml:
+          - batch_size
+          - epochs
+          - learning_rate
+          - img_size
+    outs:
+      - api/models/model.h5:
+          persist: true
+    metrics:
+      - api/metrics.json:
+          cache: false
+
+  evaluate:
+    cmd: python api/evaluate.py
+    deps:
+      - api/evaluate.py
+      - api/models/model.h5
+      - api/data/processed
+    metrics:
+      - api/evaluation_metrics.json:
+          cache: false
+    plots:
+      - api/plots/confusion_matrix.png:
+          cache: false
+      - api/plots/roc_curve.png:
+          cache: false

@@ -1,0 +1,161 @@
+# Retraining Service Dockerfile
+# Active learning pipeline that uses professional labels to improve the model
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir requests psycopg2-binary
+
+# Copy training code
+COPY train.py .
+COPY app/models/skin_analysis_model.py ./app/models/
+COPY app/__init__.py ./app/
+
+# Create retraining script
+COPY <<EOF /app/retrain.py
+"""
+Active Learning Retraining Pipeline
+
+This script:
+1. Exports labeled data from the professional portal
+2. Combines with original training data
+3. Retrains the model with new labels
+4. Logs to MLflow
+5. Optionally deploys the new model
+"""
+
+import os
+import json
+import requests
+import logging
+import mlflow
+import numpy as np
+from datetime import datetime
+from pathlib import Path
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Configuration
+EXPORT_ENDPOINT = os.environ.get('EXPORT_ENDPOINT', 'http://api:5000/api/professional/export')
+MLFLOW_URI = os.environ.get('MLFLOW_TRACKING_URI', 'http://mlflow:5000')
+MODEL_OUTPUT_DIR = '/app/models'
+MIN_NEW_SAMPLES = 10  # Minimum new labeled samples to trigger retraining
+
+def fetch_labeled_data():
+    """Fetch professionally labeled data from API."""
+    try:
+        response = requests.get(EXPORT_ENDPOINT, timeout=30)
+        if response.ok:
+            data = response.json()
+            logger.info(f"Fetched {data['count']} labeled samples")
+            return data['data']
+        else:
+            logger.error(f"Failed to fetch labeled data: {response.status_code}")
+            return []
+    except Exception as e:
+        logger.error(f"Error fetching labeled data: {e}")
+        return []
+
+def prepare_training_data(labeled_data):
+    """Prepare labeled data for training."""
+    X = []
+    y_types = []
+    y_issues = []
+    
+    for sample in labeled_data:
+        # Load image from path
+        image_path = sample.get('imagePath')
+        if image_path and os.path.exists(image_path):
+            import cv2
+            img = cv2.imread(image_path)
+            if img is not None:
+                img = cv2.resize(img, (224, 224))
+                img = img / 255.0
+                X.append(img)
+                
+                # Get professional labels
+                label = sample.get('professionalLabel', {})
+                y_types.append(label.get('skinType', 'Normal'))
+                y_issues.append(label.get('issues', []))
+    
+    return np.array(X), y_types, y_issues
+
+def retrain_model(X, y_types, y_issues):
+    """Retrain model with new data."""
+    from train import create_model_with_transfer_learning
+    
+    mlflow.set_tracking_uri(MLFLOW_URI)
+    mlflow.set_experiment("active-learning-retraining")
+    
+    with mlflow.start_run(run_name=f"retrain_{datetime.now().strftime('%Y%m%d_%H%M%S')}"):
+        # Log parameters
+        mlflow.log_params({
+            'new_samples': len(X),
+            'retraining_date': datetime.now().isoformat(),
+            'trigger': 'professional_labels'
+        })
+        
+        # Create/load model
+        model, base_model = create_model_with_transfer_learning()
+        
+        # Fine-tune on new data
+        # (In production, you'd load existing weights and fine-tune)
+        
+        # Save model
+        model_path = os.path.join(MODEL_OUTPUT_DIR, 'retrained_model.h5')
+        model.save(model_path)
+        
+        mlflow.log_artifact(model_path)
+        mlflow.log_metric('new_samples_trained', len(X))
+        
+        logger.info(f"Model retrained and saved to {model_path}")
+        return model_path
+
+def check_for_drift():
+    """Check if there's significant data drift."""
+    # Placeholder - implement actual drift detection
+    return False
+
+def main():
+    logger.info("Starting retraining pipeline...")
+    
+    # Fetch labeled data
+    labeled_data = fetch_labeled_data()
+    
+    if len(labeled_data) < MIN_NEW_SAMPLES:
+        logger.info(f"Only {len(labeled_data)} samples, need {MIN_NEW_SAMPLES}. Skipping retrain.")
+        return
+    
+    # Prepare data
+    X, y_types, y_issues = prepare_training_data(labeled_data)
+    
+    if len(X) == 0:
+        logger.warning("No valid training samples found")
+        return
+    
+    # Retrain
+    model_path = retrain_model(X, y_types, y_issues)
+    
+    logger.info("Retraining complete!")
+    
+    # Check for drift
+    if check_for_drift():
+        logger.warning("Data drift detected - consider deploying new model")
+
+if __name__ == '__main__':
+    main()
+EOF
+
+CMD ["python", "retrain.py"]

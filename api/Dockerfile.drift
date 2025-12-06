@@ -1,0 +1,211 @@
+# Data Drift Detection Service Dockerfile
+# Monitors for data drift and triggers retraining when needed
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies
+RUN pip install --no-cache-dir \
+    numpy \
+    pandas \
+    scipy \
+    scikit-learn \
+    requests \
+    psycopg2-binary \
+    mlflow
+
+# Create drift detection script
+COPY <<EOF /app/drift_detector.py
+"""
+Data Drift Detection Service
+
+Monitors predictions and detects when the data distribution
+shifts significantly from training data.
+
+Triggers:
+- Statistical shift in prediction distributions
+- Increase in low-confidence predictions
+- Changes in input image characteristics
+"""
+
+import os
+import time
+import json
+import logging
+import requests
+import numpy as np
+from datetime import datetime, timedelta
+from scipy import stats
+from collections import defaultdict
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Configuration
+CHECK_INTERVAL = int(os.environ.get('CHECK_INTERVAL', 3600))  # seconds
+DB_URL = os.environ.get('DATABASE_URL')
+API_URL = os.environ.get('API_URL', 'http://api:5000')
+MLFLOW_URI = os.environ.get('MLFLOW_TRACKING_URI', 'http://mlflow:5000')
+
+# Thresholds
+CONFIDENCE_THRESHOLD = 0.6  # Alert if avg confidence drops below
+DISTRIBUTION_SHIFT_THRESHOLD = 0.05  # p-value for chi-square test
+LOW_CONFIDENCE_RATIO_THRESHOLD = 0.3  # Alert if >30% predictions are low confidence
+
+# Reference distribution (from training)
+REFERENCE_DISTRIBUTION = {
+    'Oily': 0.33,
+    'Dry': 0.33,
+    'Normal': 0.34
+}
+
+class DriftDetector:
+    def __init__(self):
+        self.prediction_history = defaultdict(list)
+        self.confidence_history = []
+        self.alert_count = 0
+        
+    def fetch_recent_predictions(self, hours=24):
+        """Fetch predictions from the last N hours."""
+        try:
+            # In production, query database directly
+            response = requests.get(f"{API_URL}/api/professional/stats")
+            if response.ok:
+                return response.json()
+            return {}
+        except Exception as e:
+            logger.error(f"Failed to fetch predictions: {e}")
+            return {}
+    
+    def check_distribution_drift(self, predictions):
+        """Check if prediction distribution has shifted significantly."""
+        if not predictions:
+            return False, None
+            
+        # Count predictions by category
+        counts = defaultdict(int)
+        for pred in predictions:
+            skin_type = pred.get('skinType', 'Unknown')
+            counts[skin_type] += 1
+        
+        total = sum(counts.values())
+        if total < 30:  # Need minimum samples
+            return False, None
+            
+        # Calculate observed distribution
+        observed = []
+        expected = []
+        for skin_type, expected_ratio in REFERENCE_DISTRIBUTION.items():
+            observed.append(counts.get(skin_type, 0))
+            expected.append(total * expected_ratio)
+        
+        # Chi-square test
+        chi2, p_value = stats.chisquare(observed, expected)
+        
+        drift_detected = p_value < DISTRIBUTION_SHIFT_THRESHOLD
+        
+        return drift_detected, {
+            'chi2': chi2,
+            'p_value': p_value,
+            'observed': dict(counts),
+            'expected': REFERENCE_DISTRIBUTION
+        }
+    
+    def check_confidence_drift(self, predictions):
+        """Check if model confidence is declining."""
+        if not predictions:
+            return False, None
+            
+        confidences = []
+        for pred in predictions:
+            conf = pred.get('confidence', 0)
+            if conf:
+                confidences.append(conf)
+        
+        if len(confidences) < 10:
+            return False, None
+            
+        avg_confidence = np.mean(confidences)
+        low_conf_ratio = sum(1 for c in confidences if c < CONFIDENCE_THRESHOLD) / len(confidences)
+        
+        drift_detected = (
+            avg_confidence < CONFIDENCE_THRESHOLD or 
+            low_conf_ratio > LOW_CONFIDENCE_RATIO_THRESHOLD
+        )
+        
+        return drift_detected, {
+            'avg_confidence': avg_confidence,
+            'low_confidence_ratio': low_conf_ratio,
+            'sample_size': len(confidences)
+        }
+    
+    def trigger_retraining(self, reason, details):
+        """Trigger the retraining pipeline."""
+        logger.warning(f"Triggering retraining due to: {reason}")
+        logger.info(f"Details: {json.dumps(details)}")
+        
+        # Log to MLflow
+        try:
+            import mlflow
+            mlflow.set_tracking_uri(MLFLOW_URI)
+            mlflow.set_experiment("drift-detection")
+            
+            with mlflow.start_run(run_name=f"drift_{datetime.now().strftime('%Y%m%d_%H%M%S')}"):
+                mlflow.log_params({
+                    'trigger_reason': reason,
+                    'timestamp': datetime.now().isoformat()
+                })
+                for key, value in details.items():
+                    if isinstance(value, (int, float)):
+                        mlflow.log_metric(key, value)
+        except Exception as e:
+            logger.error(f"Failed to log to MLflow: {e}")
+        
+        # Could trigger Docker retraining service here
+        # subprocess.run(['docker-compose', '--profile', 'retraining', 'up', '-d'])
+        
+        self.alert_count += 1
+    
+    def run_checks(self):
+        """Run all drift checks."""
+        logger.info("Running drift detection checks...")
+        
+        stats = self.fetch_recent_predictions()
+        
+        # Get recent predictions (placeholder - in production, fetch from DB)
+        predictions = []  # Would be populated from database
+        
+        # Check distribution drift
+        dist_drift, dist_details = self.check_distribution_drift(predictions)
+        if dist_drift:
+            self.trigger_retraining("distribution_drift", dist_details)
+        
+        # Check confidence drift
+        conf_drift, conf_details = self.check_confidence_drift(predictions)
+        if conf_drift:
+            self.trigger_retraining("confidence_drift", conf_details)
+        
+        logger.info(f"Drift checks complete. Alerts triggered: {self.alert_count}")
+    
+    def run(self):
+        """Main monitoring loop."""
+        logger.info(f"Starting drift detector. Check interval: {CHECK_INTERVAL}s")
+        
+        while True:
+            try:
+                self.run_checks()
+            except Exception as e:
+                logger.error(f"Error in drift check: {e}")
+            
+            time.sleep(CHECK_INTERVAL)
+
+def main():
+    detector = DriftDetector()
+    detector.run()
+
+if __name__ == '__main__':
+    main()
+EOF
+
+CMD ["python", "drift_detector.py"]

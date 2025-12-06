@@ -54,6 +54,12 @@ def create_app(config_name=None):
     # Store services in app context for access in routes
     app.services = services
     
+    # Initialize database
+    _initialize_database(app)
+    
+    # Initialize agent tools with services
+    _initialize_agent(app, services)
+    
     # Register API routes
     register_blueprints(app)
     
@@ -135,8 +141,14 @@ def _initialize_services(app, config):
         confidence_threshold=config.MODEL_CONFIDENCE_THRESHOLD
     )
     services['skin_model'] = skin_model
-    
-    fairface_model = FairFaceModel(model_path=config.FAIRFACE_MODEL_PATH)
+    # FairFace model is optional - gracefully handle if not configured
+    fairface_model = None
+    if config.FAIRFACE_MODEL_PATH:
+        from pathlib import Path as PathLib
+        fairface_path = PathLib(config.FAIRFACE_MODEL_PATH)
+        fairface_model = FairFaceModel(model_path=fairface_path)
+    else:
+        app.logger.info("FairFace model not configured - demographics will use defaults")
     services['fairface_model'] = fairface_model
     
     # Initialize business services
@@ -178,6 +190,29 @@ def _initialize_services(app, config):
     
     app.logger.info("All services initialized successfully")
     return services
+
+
+def _initialize_database(app):
+    """Initialize database tables."""
+    try:
+        from .database import init_db
+        init_db()
+        app.logger.info("Database initialized successfully")
+    except Exception as e:
+        app.logger.error(f"Database initialization failed: {e}")
+
+
+def _initialize_agent(app, services):
+    """Initialize LangGraph agent with service dependencies."""
+    try:
+        from .agent import set_services
+        set_services(
+            analysis_service=services.get('analysis_service'),
+            product_service=services.get('product_service')
+        )
+        app.logger.info("Agent tools initialized successfully")
+    except Exception as e:
+        app.logger.error(f"Agent initialization failed: {e}")
 
 
 def _register_error_handlers(app):

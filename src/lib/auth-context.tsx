@@ -18,19 +18,54 @@ async function getFirebaseAuth() {
 // Define a type for the auth context
 type AuthContextType = {
   currentUser: User | null;
+  userRole: 'user' | 'admin' | 'professional' | null;
+  optOutDataCollection: boolean;
   loading: boolean;
+  refreshRole: () => Promise<void>;
+  updateProfile: (data: { optOutDataCollection: boolean }) => Promise<void>;
 };
 
 // Create the context with default values
 const AuthContext = createContext<AuthContextType>({
   currentUser: null,
+  userRole: null,
+  optOutDataCollection: false,
   loading: true,
+  refreshRole: async () => {},
+  updateProfile: async () => {},
 });
 
 // Context Provider component
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [userRole, setUserRole] = useState<'user' | 'admin' | 'professional' | null>(null);
+  const [optOutDataCollection, setOptOutDataCollection] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
+
+  const fetchUserRole = async (user: User) => {
+    try {
+      const token = await user.getIdToken();
+      const response = await fetch('http://localhost:5000/api/user/profile', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        setUserRole(data.role);
+        setOptOutDataCollection(data.optOutDataCollection || false);
+      } else {
+        console.error('Failed to fetch user role');
+        setUserRole('user'); // Default to user on error
+        setOptOutDataCollection(false);
+      }
+    } catch (error) {
+      console.error('Error fetching user role:', error);
+      setUserRole('user');
+      setOptOutDataCollection(false);
+    }
+  };
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -38,7 +73,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    let unsubscribe: (() => void) | undefined;    // Set up auth state listener
+    let unsubscribe: (() => void) | undefined;
+    
     const setupAuth = async () => {
       const firebaseAuth = await getFirebaseAuth();
       if (!firebaseAuth || !firebaseAuth.auth) {
@@ -46,8 +82,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      unsubscribe = firebaseAuth.onAuthStateChanged((user: User | null) => {
+      unsubscribe = firebaseAuth.onAuthStateChanged(async (user: User | null) => {
         setCurrentUser(user);
+        
+        if (user) {
+          await fetchUserRole(user);
+        } else {
+          setUserRole(null);
+          setOptOutDataCollection(false);
+        }
+        
         setLoading(false);
       });
     };
@@ -59,8 +103,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  const refreshRole = async () => {
+    if (currentUser) {
+      await fetchUserRole(currentUser);
+    }
+  };
+
+  const updateProfile = async (data: { optOutDataCollection: boolean }) => {
+    if (!currentUser) return;
+    
+    try {
+      const token = await currentUser.getIdToken();
+      const response = await fetch('http://localhost:5000/api/user/profile', {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      
+      if (response.ok) {
+        const responseData = await response.json();
+        setOptOutDataCollection(responseData.optOutDataCollection);
+      } else {
+        throw new Error('Failed to update profile');
+      }
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      throw error;
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ currentUser, loading }}>
+    <AuthContext.Provider value={{ currentUser, userRole, optOutDataCollection, loading, refreshRole, updateProfile }}>
       {children}
     </AuthContext.Provider>
   );

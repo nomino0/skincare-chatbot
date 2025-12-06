@@ -1573,3 +1573,293 @@ ValueError: Analysis failed: No face detected in the image
 2025-11-24 17:29:48,178 - __main__ - INFO - Environment: development
 2025-11-24 17:29:48,217 - werkzeug - WARNING -  * Debugger is active!
 2025-11-24 17:29:48,233 - werkzeug - INFO -  * Debugger PIN: 523-896-134
+2025-12-06 07:05:42,925 - __main__ - ERROR - Failed to start server: No module named 'celery'
+2025-12-06 07:06:36,509 - app - INFO - Initializing utilities...
+2025-12-06 07:06:36,617 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:06:36,618 - app - INFO - Initializing AI models...
+2025-12-06 07:06:36,619 - app.models.skin_analysis_model - ERROR - Error loading skin analysis model: 'NoneType' object has no attribute 'get'
+2025-12-06 07:06:36,619 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:06:36,620 - app - INFO - Initializing business services...
+2025-12-06 07:06:36,620 - app - INFO - All services initialized successfully
+2025-12-06 07:06:36,788 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:06:36,789 - app - INFO - Database initialized successfully
+2025-12-06 07:06:36,795 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:06:36,805 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:06:36,806 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:06:36,806 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:06:36,806 - __main__ - INFO - Debug mode: True
+2025-12-06 07:06:36,807 - __main__ - INFO - Environment: development
+2025-12-06 07:06:37,704 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.254.240.211:5000
+2025-12-06 07:06:37,705 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-06 07:06:37,710 - werkzeug - INFO -  * Restarting with stat
+2025-12-06 07:06:48,214 - app - INFO - Initializing utilities...
+2025-12-06 07:06:48,258 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:06:48,258 - app - INFO - Initializing AI models...
+2025-12-06 07:06:48,259 - app.models.skin_analysis_model - ERROR - Error loading skin analysis model: 'str' object has no attribute 'get'
+2025-12-06 07:06:48,259 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:06:48,260 - app - INFO - Initializing business services...
+2025-12-06 07:06:48,260 - app - INFO - All services initialized successfully
+2025-12-06 07:06:48,265 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:06:48,266 - app - INFO - Database initialized successfully
+2025-12-06 07:06:48,272 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:06:48,284 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:06:48,285 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:06:48,285 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:06:48,285 - __main__ - INFO - Debug mode: True
+2025-12-06 07:06:48,286 - __main__ - INFO - Environment: development
+2025-12-06 07:06:48,316 - werkzeug - WARNING -  * Debugger is active!
+2025-12-06 07:06:48,331 - werkzeug - INFO -  * Debugger PIN: 636-306-072
+2025-12-06 07:07:14,536 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:07:14] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-12-06 07:07:14,799 - app.routes.analysis_routes - ERROR - Analysis service not available
+2025-12-06 07:07:14,800 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:07:14] "[35m[1mPOST /api/analyze HTTP/1.1[0m" 500 -
+2025-12-06 07:08:26,760 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\5eme SDIA\\Projects\\SkinPredict\\api\\app\\config\\config.py', reloading
+2025-12-06 07:08:27,601 - werkzeug - INFO -  * Restarting with stat
+2025-12-06 07:08:38,635 - app - INFO - Initializing utilities...
+2025-12-06 07:08:38,683 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:08:38,684 - app - INFO - Initializing AI models...
+2025-12-06 07:08:38,684 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:09:00,975 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:09:00,985 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:09:00,986 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:09:00,986 - app - INFO - Initializing business services...
+2025-12-06 07:09:00,987 - app - INFO - All services initialized successfully
+2025-12-06 07:09:00,989 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:09:00,990 - app - INFO - Database initialized successfully
+2025-12-06 07:09:00,996 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:09:01,006 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:09:01,007 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:09:01,007 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:09:01,008 - __main__ - INFO - Debug mode: True
+2025-12-06 07:09:01,009 - __main__ - INFO - Environment: development
+2025-12-06 07:09:01,036 - werkzeug - WARNING -  * Debugger is active!
+2025-12-06 07:09:01,054 - werkzeug - INFO -  * Debugger PIN: 636-306-072
+2025-12-06 07:10:07,603 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:10:07] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-12-06 07:10:07,853 - app.routes.analysis_routes - ERROR - Analysis service not available
+2025-12-06 07:10:07,854 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:10:07] "[35m[1mPOST /api/analyze HTTP/1.1[0m" 500 -
+2025-12-06 07:10:55,603 - app - INFO - Initializing utilities...
+2025-12-06 07:10:55,639 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:10:55,639 - app - INFO - Initializing AI models...
+2025-12-06 07:10:55,640 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:11:06,530 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:11:06,536 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:11:06,537 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:11:06,537 - app - INFO - Initializing business services...
+2025-12-06 07:11:06,538 - app - INFO - All services initialized successfully
+2025-12-06 07:11:06,541 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:11:06,542 - app - INFO - Database initialized successfully
+2025-12-06 07:11:06,548 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:11:06,558 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:11:06,559 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:11:06,559 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:11:06,560 - __main__ - INFO - Debug mode: True
+2025-12-06 07:11:06,560 - __main__ - INFO - Environment: development
+2025-12-06 07:11:07,446 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.254.240.211:5000
+2025-12-06 07:11:07,447 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-06 07:11:07,450 - werkzeug - INFO -  * Restarting with stat
+2025-12-06 07:11:17,339 - app - INFO - Initializing utilities...
+2025-12-06 07:11:17,374 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:11:17,375 - app - INFO - Initializing AI models...
+2025-12-06 07:11:17,376 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:11:25,013 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:11:25,020 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:11:25,020 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:11:25,021 - app - INFO - Initializing business services...
+2025-12-06 07:11:25,022 - app - INFO - All services initialized successfully
+2025-12-06 07:11:25,025 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:11:25,026 - app - INFO - Database initialized successfully
+2025-12-06 07:11:25,030 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:11:25,041 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:11:25,042 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:11:25,042 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:11:25,043 - __main__ - INFO - Debug mode: True
+2025-12-06 07:11:25,043 - __main__ - INFO - Environment: development
+2025-12-06 07:11:25,067 - werkzeug - WARNING -  * Debugger is active!
+2025-12-06 07:11:25,079 - werkzeug - INFO -  * Debugger PIN: 636-306-072
+2025-12-06 07:11:26,258 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:11:26] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+2025-12-06 07:11:26,261 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:11:26] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+2025-12-06 07:11:26,265 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:11:26] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+2025-12-06 07:11:26,271 - app.utils.auth_middleware - INFO - Firebase Admin initialized with default credentials
+2025-12-06 07:11:29,442 - app.utils.auth_middleware - ERROR - Token verification failed: A project ID is required to access the auth service.
+            1. Use a service account credential, or
+            2. set the project ID explicitly via Firebase App options, or
+            3. set the project ID via the GOOGLE_CLOUD_PROJECT environment variable.
+2025-12-06 07:11:29,444 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:11:29] "[31m[1mGET /api/user/profile HTTP/1.1[0m" 401 -
+2025-12-06 07:11:31,117 - app.utils.auth_middleware - ERROR - Token verification failed: A project ID is required to access the auth service.
+            1. Use a service account credential, or
+            2. set the project ID explicitly via Firebase App options, or
+            3. set the project ID via the GOOGLE_CLOUD_PROJECT environment variable.
+2025-12-06 07:11:31,119 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:11:31] "[31m[1mGET /api/user/profile HTTP/1.1[0m" 401 -
+2025-12-06 07:11:41,375 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:11:41] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-12-06 07:11:41,636 - app.routes.analysis_routes - ERROR - Analysis service not available
+2025-12-06 07:11:41,637 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:11:41] "[35m[1mPOST /api/analyze HTTP/1.1[0m" 500 -
+2025-12-06 07:14:28,687 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\5eme SDIA\\Projects\\SkinPredict\\api\\app\\routes\\analysis_routes.py', reloading
+2025-12-06 07:14:30,362 - werkzeug - INFO -  * Restarting with stat
+2025-12-06 07:14:41,725 - app - INFO - Initializing utilities...
+2025-12-06 07:14:41,762 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:14:41,762 - app - INFO - Initializing AI models...
+2025-12-06 07:14:41,763 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:14:50,364 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:14:50,373 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:14:50,374 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:14:50,374 - app - INFO - Initializing business services...
+2025-12-06 07:14:50,375 - app - INFO - All services initialized successfully
+2025-12-06 07:14:50,380 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:14:50,380 - app - INFO - Database initialized successfully
+2025-12-06 07:14:50,386 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:14:50,398 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:14:50,398 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:14:50,399 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:14:50,399 - __main__ - INFO - Debug mode: True
+2025-12-06 07:14:50,400 - __main__ - INFO - Environment: development
+2025-12-06 07:14:50,426 - werkzeug - WARNING -  * Debugger is active!
+2025-12-06 07:14:50,440 - werkzeug - INFO -  * Debugger PIN: 636-306-072
+2025-12-06 07:15:54,756 - app - INFO - Initializing utilities...
+2025-12-06 07:15:54,795 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:15:54,796 - app - INFO - Initializing AI models...
+2025-12-06 07:15:54,797 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:16:03,405 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:16:03,415 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:16:03,415 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:16:03,416 - app - INFO - Initializing business services...
+2025-12-06 07:16:03,417 - app - INFO - All services initialized successfully
+2025-12-06 07:16:03,420 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:16:03,421 - app - INFO - Database initialized successfully
+2025-12-06 07:16:03,427 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:16:03,437 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:16:03,438 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:16:03,438 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:16:03,439 - __main__ - INFO - Debug mode: True
+2025-12-06 07:16:03,440 - __main__ - INFO - Environment: development
+2025-12-06 07:16:04,338 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.254.240.211:5000
+2025-12-06 07:16:04,339 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-06 07:16:04,342 - werkzeug - INFO -  * Restarting with stat
+2025-12-06 07:16:15,905 - app - INFO - Initializing utilities...
+2025-12-06 07:16:15,949 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:16:15,950 - app - INFO - Initializing AI models...
+2025-12-06 07:16:15,951 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:16:28,464 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:16:28,472 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:16:28,473 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:16:28,474 - app - INFO - Initializing business services...
+2025-12-06 07:16:28,474 - app - INFO - All services initialized successfully
+2025-12-06 07:16:28,477 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:16:28,478 - app - INFO - Database initialized successfully
+2025-12-06 07:16:28,484 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:16:28,500 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:16:28,500 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:16:28,501 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:16:28,501 - __main__ - INFO - Debug mode: True
+2025-12-06 07:16:28,501 - __main__ - INFO - Environment: development
+2025-12-06 07:16:28,528 - werkzeug - WARNING -  * Debugger is active!
+2025-12-06 07:16:28,544 - werkzeug - INFO -  * Debugger PIN: 636-306-072
+2025-12-06 07:16:29,887 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:16:29] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+2025-12-06 07:16:29,894 - app.utils.auth_middleware - INFO - Firebase Admin initialized with default credentials
+2025-12-06 07:16:33,016 - app.utils.auth_middleware - ERROR - Token verification failed: A project ID is required to access the auth service.
+            1. Use a service account credential, or
+            2. set the project ID explicitly via Firebase App options, or
+            3. set the project ID via the GOOGLE_CLOUD_PROJECT environment variable.
+2025-12-06 07:16:33,018 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:16:33] "[31m[1mGET /api/user/profile HTTP/1.1[0m" 401 -
+2025-12-06 07:16:47,381 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:16:47] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-12-06 07:16:48,568 - app.utils.image_processing - INFO - Face detected and cropped: 252x252 at (91, 129)
+2025-12-06 07:16:51,936 - app.services.analysis_service - ERROR - Error in skin analysis: 'NoneType' object has no attribute 'is_model_loaded'
+2025-12-06 07:16:51,937 - app.routes.analysis_routes - ERROR - Error analyzing skin: Analysis failed: 'NoneType' object has no attribute 'is_model_loaded'
+Traceback (most recent call last):
+  File "D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\app\services\analysis_service.py", line 85, in analyze_skin
+    return self._analyze_with_local_models(face)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\app\services\analysis_service.py", line 147, in _analyze_with_local_models
+    if self.fairface_model.is_model_loaded():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'is_model_loaded'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\app\routes\analysis_routes.py", line 41, in analyze_skin
+    result = analysis_service.analyze_skin(data['image'], use_groq=use_groq)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\app\services\analysis_service.py", line 89, in analyze_skin
+    raise ValueError(f"Analysis failed: {e}")
+ValueError: Analysis failed: 'NoneType' object has no attribute 'is_model_loaded'
+2025-12-06 07:16:51,942 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:16:51] "[35m[1mPOST /api/analyze HTTP/1.1[0m" 500 -
+2025-12-06 07:18:15,288 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\5eme SDIA\\Projects\\SkinPredict\\api\\app\\services\\analysis_service.py', reloading
+2025-12-06 07:18:16,720 - werkzeug - INFO -  * Restarting with stat
+2025-12-06 07:18:27,588 - app - INFO - Initializing utilities...
+2025-12-06 07:18:27,649 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:18:27,649 - app - INFO - Initializing AI models...
+2025-12-06 07:18:27,651 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:18:36,206 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:18:36,215 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:18:36,216 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:18:36,217 - app - INFO - Initializing business services...
+2025-12-06 07:18:36,218 - app - INFO - All services initialized successfully
+2025-12-06 07:18:36,221 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:18:36,221 - app - INFO - Database initialized successfully
+2025-12-06 07:18:36,231 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:18:36,242 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:18:36,242 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:18:36,242 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:18:36,244 - __main__ - INFO - Debug mode: True
+2025-12-06 07:18:36,244 - __main__ - INFO - Environment: development
+2025-12-06 07:18:36,272 - werkzeug - WARNING -  * Debugger is active!
+2025-12-06 07:18:36,288 - werkzeug - INFO -  * Debugger PIN: 636-306-072
+2025-12-06 07:19:58,561 - app - INFO - Initializing utilities...
+2025-12-06 07:19:58,596 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:19:58,597 - app - INFO - Initializing AI models...
+2025-12-06 07:19:58,598 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:20:07,512 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:20:07,518 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:20:07,519 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:20:07,519 - app - INFO - Initializing business services...
+2025-12-06 07:20:07,520 - app - INFO - All services initialized successfully
+2025-12-06 07:20:07,524 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:20:07,525 - app - INFO - Database initialized successfully
+2025-12-06 07:20:07,531 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:20:07,545 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:20:07,545 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:20:07,546 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:20:07,547 - __main__ - INFO - Debug mode: True
+2025-12-06 07:20:07,547 - __main__ - INFO - Environment: development
+2025-12-06 07:20:08,451 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.254.240.211:5000
+2025-12-06 07:20:08,451 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-06 07:20:08,456 - werkzeug - INFO -  * Restarting with stat
+2025-12-06 07:20:20,931 - app - INFO - Initializing utilities...
+2025-12-06 07:20:20,982 - app.utils.image_processing - INFO - Face detection cascade loaded successfully
+2025-12-06 07:20:20,984 - app - INFO - Initializing AI models...
+2025-12-06 07:20:20,985 - app.models.skin_analysis_model - INFO - Attempting to load skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:20:30,814 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-06 07:20:30,823 - app.models.skin_analysis_model - INFO - Successfully loaded skin analysis model from: D:\Tek-UP\5eme SDIA\Projects\SkinPredict\api\models\multitask_skin_model.h5
+2025-12-06 07:20:30,824 - app - INFO - FairFace model not configured - demographics will use defaults
+2025-12-06 07:20:30,824 - app - INFO - Initializing business services...
+2025-12-06 07:20:30,825 - app - INFO - All services initialized successfully
+2025-12-06 07:20:30,828 - app.database - INFO - Database initialized successfully.
+2025-12-06 07:20:30,828 - app - INFO - Database initialized successfully
+2025-12-06 07:20:30,838 - app - ERROR - Agent initialization failed: No module named 'langchain_core'
+2025-12-06 07:20:30,853 - app - INFO - All API blueprints registered successfully
+2025-12-06 07:20:30,853 - app - INFO - SkinPredict API application created successfully
+2025-12-06 07:20:30,854 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-12-06 07:20:30,855 - __main__ - INFO - Debug mode: True
+2025-12-06 07:20:30,855 - __main__ - INFO - Environment: development
+2025-12-06 07:20:30,889 - werkzeug - WARNING -  * Debugger is active!
+2025-12-06 07:20:30,904 - werkzeug - INFO -  * Debugger PIN: 636-306-072
+2025-12-06 07:21:35,333 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:21:35] "OPTIONS /api/analyze HTTP/1.1" 200 -
+2025-12-06 07:21:36,297 - app.utils.image_processing - INFO - Face detected and cropped: 234x234 at (133, 119)
+2025-12-06 07:21:38,777 - app.services.analysis_service - INFO - FairFace model not available - using default demographics
+2025-12-06 07:21:38,783 - app.routes.analysis_routes - WARNING - Failed to save scan data: save_scan_to_db() got an unexpected keyword argument 'skin_type'
+2025-12-06 07:21:38,785 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:21:38] "POST /api/analyze HTTP/1.1" 200 -
+2025-12-06 07:21:42,608 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:21:42] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-12-06 07:21:42,930 - app.services.chat_service - INFO - Classified intent: skin_analysis
+2025-12-06 07:21:48,091 - werkzeug - INFO - 127.0.0.1 - - [06/Dec/2025 07:21:48] "POST /api/chat HTTP/1.1" 200 -
+2025-12-06 07:24:32,132 - werkzeug - INFO -  * Detected change in 'D:\\Tek-UP\\5eme SDIA\\Projects\\SkinPredict\\api\\app\\routes\\analysis_routes.py', reloading

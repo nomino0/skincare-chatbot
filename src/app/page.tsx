@@ -5,12 +5,20 @@ import { useSearchParams } from 'next/navigation';
 import WebcamCapture from '../components/WebcamCapture';
 import Chatbot from '../components/Chatbot';
 import { analyzeSkin, SkinPredictionResult } from '../services/api';
-import { ArrowPathIcon, CameraIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, CameraIcon, CheckCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '@/lib/auth-context';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { getScanHistoryById } from '@/lib/firebase';
+import axios from 'axios';
+
+// Error type for better error handling
+interface AnalysisError {
+  type: 'no_face' | 'server_error' | 'network_error' | 'unknown';
+  message: string;
+  suggestion: string;
+}
 
 export default function Home() {
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
@@ -18,8 +26,9 @@ export default function Home() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isWebcamActive, setIsWebcamActive] = useState(true);
   const [isHistoryScan, setIsHistoryScan] = useState<boolean>(false);
+  const [analysisError, setAnalysisError] = useState<AnalysisError | null>(null);
   const searchParams = useSearchParams();
-  const { currentUser, loading } = useAuth();
+  const { currentUser, userRole, loading } = useAuth();
   
   // Load scan history data
   const loadHistoryScan = async (scanId: string) => {
@@ -51,10 +60,49 @@ export default function Home() {
     }
   }, [searchParams, currentUser]);
   
+  // Parse error from API response
+  const parseError = (error: any): AnalysisError => {
+    if (axios.isAxiosError(error)) {
+      const message = error.response?.data?.message || error.response?.data?.error || error.message;
+      
+      // Check for specific error types
+      if (message?.toLowerCase().includes('no face detected') || message?.toLowerCase().includes('face')) {
+        return {
+          type: 'no_face',
+          message: 'No face detected in the image',
+          suggestion: 'Please ensure your face is clearly visible, well-lit, and centered in the frame. Try removing glasses or accessories that may cover your face.'
+        };
+      }
+      
+      if (error.response?.status === 500) {
+        return {
+          type: 'server_error',
+          message: 'Server error occurred',
+          suggestion: 'Our servers are experiencing issues. Please try again in a few moments.'
+        };
+      }
+      
+      if (error.code === 'ECONNABORTED' || error.code === 'ERR_NETWORK') {
+        return {
+          type: 'network_error',
+          message: 'Network connection error',
+          suggestion: 'Please check your internet connection and try again.'
+        };
+      }
+    }
+    
+    return {
+      type: 'unknown',
+      message: 'An unexpected error occurred',
+      suggestion: 'Please try again. If the problem persists, contact support.'
+    };
+  };
+  
   const handleCapture = async (imageSrc: string) => {
     setCapturedImage(imageSrc);
     setIsWebcamActive(false);
     setIsAnalyzing(true);
+    setAnalysisError(null); // Clear previous errors
     
     try {
       // Remove data:image/jpeg;base64, prefix
@@ -63,7 +111,8 @@ export default function Home() {
       setSkinResults(results);
     } catch (error) {
       console.error('Error analyzing skin:', error);
-      // Handle error
+      const parsedError = parseError(error);
+      setAnalysisError(parsedError);
     } finally {
       setIsAnalyzing(false);
     }
@@ -72,6 +121,7 @@ export default function Home() {
   const handleReset = () => {
     setCapturedImage(null);
     setSkinResults(null);
+    setAnalysisError(null);
     setIsWebcamActive(true);
   };
   
@@ -147,10 +197,43 @@ export default function Home() {
       <div className="container mx-auto px-4 py-8">
         <header className="text-center mb-8">
           <h1 className="text-3xl font-bold text-primary mb-2">Skin Analyzer</h1>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Capture your face to analyze your skin type and get personalized recommendations from our AI dermatology assistant.
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-4">
+            Take a clear photo of your face for instant AI skin analysis and personalized recommendations.
           </p>
+          
+          {/* Portal Links */}
+          <div className="flex justify-center gap-4">
+            {userRole === 'admin' && (
+              <Button asChild variant="outline" size="sm">
+                <Link href="/admin">Admin Portal</Link>
+              </Button>
+            )}
+            {(userRole === 'professional' || userRole === 'admin') && (
+              <Button asChild variant="outline" size="sm">
+                <Link href="/professional">Professional Portal</Link>
+              </Button>
+            )}
+          </div>
         </header>
+
+        {analysisError && (
+          <div className="max-w-2xl mx-auto mb-8 bg-destructive/10 border border-destructive/20 rounded-lg p-4 flex items-start gap-3">
+            <ExclamationTriangleIcon className="h-6 w-6 text-destructive shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-destructive mb-1">{analysisError.message}</h3>
+              <p className="text-sm text-foreground/80 mb-2">{analysisError.suggestion}</p>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => setAnalysisError(null)}
+                className="text-xs h-8 border-destructive/30 hover:bg-destructive/10"
+              >
+                Dismiss
+              </Button>
+            </div>
+          </div>
+        )}
+
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-md border border-slate-200 dark:border-slate-800">

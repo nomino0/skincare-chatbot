@@ -12,6 +12,7 @@ class Config:
     
     # Basic Flask settings
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key-here-change-in-production'
+    ADMIN_SECRET_KEY = os.environ.get('ADMIN_SECRET_KEY', 'skinpredict_admin_secret')
     
     # API settings
     HOST = os.environ.get('HOST', '0.0.0.0')
@@ -22,20 +23,6 @@ class Config:
     CORS_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
     
     # External API settings
-    GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
-    GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
-    EXTERNAL_API_TIMEOUT = 30
-    
-    # Model settings
-    BASE_DIR = Path(__file__).parent.parent.parent
-    MODEL_PATHS = {
-        'skin_analysis': str(BASE_DIR / 'multitask_skin_model.h5')
-    }
-    FAIRFACE_MODEL_PATH = str(BASE_DIR / 'fairface_model.pkl')
-    MODEL_CONFIDENCE_THRESHOLD = 0.5
-    
-    # Product recommendation settings
-    MAX_PRODUCT_RECOMMENDATIONS = 10
     
     # Email settings (optional)
     EMAIL_HOST = os.environ.get('EMAIL_HOST')
@@ -59,6 +46,19 @@ class DevelopmentConfig(Config):
     DEBUG = True
     LOG_LEVEL = 'DEBUG'
     ENV = 'development'
+    GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
+    EXTERNAL_API_TIMEOUT = int(os.environ.get('EXTERNAL_API_TIMEOUT', 10))
+    # Default model paths for development
+    MODEL_PATHS = {
+        'skin_analysis': os.path.join(Path(__file__).parent.parent.parent, 'models', 'multitask_skin_model.h5')
+    }
+    MODEL_CONFIDENCE_THRESHOLD = float(os.environ.get('MODEL_CONFIDENCE_THRESHOLD', 0.5))
+    FAIRFACE_MODEL_PATH = os.environ.get('FAIRFACE_MODEL_PATH')
+    MAX_PRODUCT_RECOMMENDATIONS = int(os.environ.get('MAX_PRODUCT_RECOMMENDATIONS', 5))
+    GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
+    # Use eager mode for local development (no Redis required)
+    CELERY_TASK_ALWAYS_EAGER = True
+    CELERY_TASK_EAGER_PROPAGATES = True
 
 
 class ProductionConfig(Config):
@@ -66,6 +66,13 @@ class ProductionConfig(Config):
     DEBUG = False
     LOG_LEVEL = 'INFO'
     ENV = 'production'
+    GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
+    EXTERNAL_API_TIMEOUT = int(os.environ.get('EXTERNAL_API_TIMEOUT', 10))
+    MODEL_PATHS = os.environ.get('MODEL_PATHS')
+    MODEL_CONFIDENCE_THRESHOLD = float(os.environ.get('MODEL_CONFIDENCE_THRESHOLD', 0.5))
+    FAIRFACE_MODEL_PATH = os.environ.get('FAIRFACE_MODEL_PATH')
+    MAX_PRODUCT_RECOMMENDATIONS = int(os.environ.get('MAX_PRODUCT_RECOMMENDATIONS', 5))
+    GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
     
     @staticmethod
     def init_app(app):

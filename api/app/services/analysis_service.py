@@ -143,8 +143,9 @@ class AnalysisService:
                 "skinIssues": []
             })
         
+        
         # Get demographic prediction (optional - will work without FairFace model)
-        if self.fairface_model.is_model_loaded():
+        if self.fairface_model and self.fairface_model.is_model_loaded():
             demographics = self.fairface_model.predict(face)
             if demographics:
                 results["demographics"] = demographics

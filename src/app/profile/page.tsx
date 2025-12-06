@@ -19,7 +19,7 @@ export default function ProfilePage() {
 }
 
 function ProfileContent() {
-  const { currentUser } = useAuth();
+  const { currentUser, optOutDataCollection, updateProfile } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [verificationSent, setVerificationSent] = useState(false);
@@ -36,6 +36,18 @@ function ProfileContent() {
       console.error('Error sending verification email:', error);
     } finally {
       setVerificationLoading(false);
+    }
+  };
+
+  const handleToggleOptOut = async () => {
+    try {
+      setLoading(true);
+      await updateProfile({ optOutDataCollection: !optOutDataCollection });
+    } catch (error) {
+      console.error('Failed to update privacy settings', error);
+      alert('Failed to update privacy settings');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -129,6 +141,35 @@ function ProfileContent() {
               </div>
             </div>
           </div>
+
+          <div className="mt-8 border-t border-slate-200 dark:border-slate-800 pt-6">
+            <h3 className="text-lg font-medium mb-4">Data Privacy & Settings</h3>
+            <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+              <div className="flex-1 pr-4">
+                <p className="font-medium">Data Collection for AI Improvement</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                  Allow your skin analysis data to be used to improve our AI models.
+                  We de-identify all data before use.
+                  {optOutDataCollection ? (
+                    <span className="block mt-1 text-amber-600 dark:text-amber-400 font-medium">
+                      You have opted out of data collection.
+                    </span>
+                  ) : (
+                    <span className="block mt-1 text-green-600 dark:text-green-400 font-medium">
+                      Data collection is enabled. Thank you for contributing!
+                    </span>
+                  )}
+                </p>
+              </div>
+              <Button
+                variant={optOutDataCollection ? "outline" : "default"}
+                onClick={handleToggleOptOut}
+                disabled={loading}
+              >
+                {optOutDataCollection ? 'Enable Collection' : 'Opt Out'}
+              </Button>
+            </div>
+          </div>
           
           <div className="mt-8 flex justify-end space-x-3">
             <Button 
@@ -137,11 +178,7 @@ function ProfileContent() {
             >
               Back to Home
             </Button>
-            <Button
-              onClick={() => router.push('/settings')}
-            >
-              Edit Profile
-            </Button>          </div>
+          </div>
         </div>
         
         {/* Scan History Dashboard */}

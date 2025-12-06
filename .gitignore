@@ -44,3 +44,39 @@ next-env.d.ts
 # test
 __tests__
 
+# MLOps - Data & Models (tracked by DVC, not Git)
+api/data/raw/
+api/data/processed/
+api/uploads/
+api/models/*.h5
+api/models/*.pkl
+
+# Keep model structure but ignore large files
+*.h5
+*.pkl
+*.joblib
+*.onnx
+*.pb
+
+# MLflow artifacts
+mlruns/
+mlartifacts/
+
+# DVC - ignore cache but NOT .dvc files (those go to Git)
+.dvc/cache
+.dvc/tmp
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+api/app.log
