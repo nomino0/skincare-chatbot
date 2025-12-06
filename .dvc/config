@@ -1,4 +1,7 @@
+[core]
+    remote = digitalocean
 ['remote "storage"']
     url = ../dvc_storage
-[core]
-    remote = storage
+['remote "digitalocean"']
+    url = s3://skinpredict-data/dvc-storage
+    endpointurl = https://fra1.digitaloceanspaces.com
