@@ -132,6 +132,9 @@ jobs:
   # ====================
   # Deploy (on main)
   # ====================
+  # ====================
+  # Deploy to DigitalOcean
+  # ====================
   deploy:
     needs: [build, build-frontend]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -141,14 +144,30 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Deploy notification
-      run: |
-        echo "🚀 Ready to deploy to production"
-        echo "Configure your deployment target (DigitalOcean, AWS, etc.)"
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
         
-    # Uncomment and configure for your deployment target:
-    # - name: Deploy to DigitalOcean
-    #   uses: digitalocean/action-doctl@v2
-    #   with:
-    #     token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-    # - run: doctl apps create-deployment ${{ secrets.DO_APP_ID }}
+    - name: Build and Push Backend
+      run: |
+        doctl registry login --expiry-seconds 1200
+        docker build -t registry.digitalocean.com/skinpredict-registry/skinpredict-api:latest ./api
+        docker push registry.digitalocean.com/skinpredict-registry/skinpredict-api:latest
+        
+    - name: Build and Push Frontend
+      run: |
+        docker build -t registry.digitalocean.com/skinpredict-registry/skinpredict-frontend:latest -f Dockerfile .
+        docker push registry.digitalocean.com/skinpredict-registry/skinpredict-frontend:latest
+        
+    - name: Deploy to App Platform
+      run: |
+        # Check if app exists, update if yes, create if no
+        if doctl apps list --format Name --no-header | grep -q "^skinpredict$"; then
+          # App exists, get ID and update
+          APP_ID=$(doctl apps list --format ID,Name --no-header | grep "skinpredict" | awk '{print $1}')
+          doctl apps update $APP_ID --spec do-app-spec.yaml
+        else
+          # Create new app
+          doctl apps create --spec do-app-spec.yaml
+        fi
