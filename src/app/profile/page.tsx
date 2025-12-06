@@ -5,7 +5,6 @@ import { useAuth } from '@/lib/auth-context';
 import { sendVerificationEmail } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import * as Avatar from "@radix-ui/react-avatar";
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import ScanHistoryDashboard from '@/components/ScanHistoryDashboard';
