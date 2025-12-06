@@ -1,0 +1,32 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.gitignore
+.DS_Store
+# Ignore data and heavy models (DVC handles data, models are downloaded/copied specifically if needed)
+data/
+# But if you are purposely copying models in Dockerfile, keep them. 
+# Usually best to ignore local models and download them, OR keep them if small.
+# Given your config has MODEL_PATHS, check if you need them.
+# For now, let's assume we ignore `uploads`
+uploads/
+.pytest_cache/
+.dvc/
+dvc.yaml
+dvc.lock

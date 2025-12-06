@@ -1,0 +1,31 @@
+# Core Flask dependencies
+Flask==2.3.3
+Flask-CORS==4.0.0
+
+# AI/ML Dependencies - CPU Optimized for DigitalOcean
+tensorflow-cpu==2.13.0
+# Torch CPU version is handled by the extra-index-url in Dockerfile or pip install command usually, 
+# but for simplicity we keep the name and rely on the environment being linux-cpu if possible, 
+# or specify the index url.
+torch==2.0.1 --index-url https://download.pytorch.org/whl/cpu
+torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cpu
+numpy==1.24.3
+
+# Web Scraping
+beautifulsoup4==4.12.2
+
+# Email
+email-validator==2.0.0
+
+# Utilities
+python-dateutil==2.8.2
+urllib3==2.0.7
+
+# Production Server
+gunicorn==21.2.0
+redis==5.0.1
+
+# Other
+transformers==4.31.0
+onnxruntime==1.15.1
+celery==5.3.4
