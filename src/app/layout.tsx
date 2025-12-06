@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ClientLayout from "@/components/fixed-client-layout";
 
 // Load the Inter font with specific configuration
 const inter = Inter({ 
@@ -25,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body className={`font-sans ${inter.className}`} suppressHydrationWarning>
-        <ClientLayout>{children}</ClientLayout>
+        {children}
       </body>
     </html>
   );
