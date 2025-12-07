@@ -151,7 +151,9 @@ jobs:
         
     - name: Build and Push Backend
       run: |
-        doctl registry login --expiry-seconds 1200
+        # Explicit Docker Login using the token
+        echo "${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}" | docker login registry.digitalocean.com -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} --password-stdin
+        
         docker build -t registry.digitalocean.com/skinpredict-registry/skinpredict-api:latest ./api
         docker push registry.digitalocean.com/skinpredict-registry/skinpredict-api:latest
         
@@ -162,12 +164,10 @@ jobs:
         
     - name: Deploy to App Platform
       run: |
-        # Check if app exists, update if yes, create if no
+        # Check if app exists
         if doctl apps list --format Name --no-header | grep -q "^skinpredict$"; then
-          # App exists, get ID and update
           APP_ID=$(doctl apps list --format ID,Name --no-header | grep "skinpredict" | awk '{print $1}')
           doctl apps update $APP_ID --spec do-app-spec.yaml
         else
-          # Create new app
           doctl apps create --spec do-app-spec.yaml
         fi
