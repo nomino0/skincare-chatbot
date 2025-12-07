@@ -87,7 +87,6 @@ databases:
     engine: PG
     version: "15"
     production: false
-    cluster_name: skinpredict-db
     db_name: skinpredict
     db_user: skinpredict
     size: db-s-1vcpu-1gb
@@ -97,5 +96,4 @@ databases:
     engine: REDIS
     version: "7"
     production: true
-    cluster_name: skinpredict-redis
     size: db-s-1vcpu-1gb
