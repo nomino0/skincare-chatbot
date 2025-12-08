@@ -21,3 +21,5 @@ EXPOSE 5000
 
 # Run the application
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "server:app"]
+
+ENV FIREBASE_ADMIN_CREDENTIALS=serviceAccountKey.json
