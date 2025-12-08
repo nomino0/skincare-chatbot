@@ -151,14 +151,16 @@ def _initialize_services(app, config):
         confidence_threshold=config.MODEL_CONFIDENCE_THRESHOLD
     )
     services['skin_model'] = skin_model
-    # FairFace model is optional - gracefully handle if not configured
+    
+    # FairFace model is DISABLED to save memory and startup time
     fairface_model = None
-    if config.FAIRFACE_MODEL_PATH:
-        from pathlib import Path as PathLib
-        fairface_path = PathLib(config.FAIRFACE_MODEL_PATH)
-        fairface_model = FairFaceModel(model_path=fairface_path)
-    else:
-        app.logger.info("FairFace model not configured - demographics will use defaults")
+    # if config.FAIRFACE_MODEL_PATH:
+    #     from pathlib import Path as PathLib
+    #     fairface_path = PathLib(config.FAIRFACE_MODEL_PATH)
+    #     fairface_model = FairFaceModel(model_path=fairface_path)
+    # else:
+    #     app.logger.info("FairFace model not configured - demographics will use defaults")
+    
     services['fairface_model'] = fairface_model
     
     # Initialize business services
