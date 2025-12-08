@@ -164,10 +164,13 @@ jobs:
         
     - name: Deploy to App Platform
       run: |
-        # Check if app exists
-        if doctl apps list --format Name --no-header | grep -q "^skinpredict$"; then
-          APP_ID=$(doctl apps list --format ID,Name --no-header | grep "skinpredict" | awk '{print $1}')
+        # Check if app exists using exact name match
+        APP_ID=$(doctl apps list --format ID,Name --no-header | awk '$2 == "skinpredict" {print $1}')
+        
+        if [ -n "$APP_ID" ]; then
+          echo "App found with ID: $APP_ID. Updating..."
           doctl apps update $APP_ID --spec do-app-spec.yaml
         else
+          echo "App 'skinpredict' not found. Creating..."
           doctl apps create --spec do-app-spec.yaml
         fi
