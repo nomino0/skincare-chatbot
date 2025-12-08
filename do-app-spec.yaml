@@ -112,6 +112,6 @@ databases:
     version: "15"
     production: true
     cluster_name: skinpredict-db-prod
-    db_name: skinpredict
-    db_user: skinpredict
+    db_name: defaultdb
+    db_user: doadmin
     size: db-s-1vcpu-1gb
