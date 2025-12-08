@@ -31,10 +31,7 @@ services:
       - key: SECRET_KEY
         scope: RUN_TIME
         type: SECRET
-      # Redis connection
-      - key: REDIS_URL
-        scope: RUN_TIME
-        value: redis://${redis.username}:${redis.password}@${redis.hostname}:${redis.port}
+
       # External APIs
       - key: GROQ_API_KEY
         scope: RUN_TIME
@@ -90,12 +87,4 @@ databases:
     cluster_name: skinpredict-db-prod
     db_name: skinpredict
     db_user: skinpredict
-    size: db-s-1vcpu-1gb
-
-  # Redis (for Celery Tasks)
-  - name: redis
-    engine: REDIS
-    version: "7"
-    production: true
-    cluster_name: skinpredict-redis-prod
     size: db-s-1vcpu-1gb
