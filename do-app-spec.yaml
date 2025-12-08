@@ -83,7 +83,7 @@ databases:
   - name: db
     engine: PG
     version: "15"
-    production: false
+    production: true
     cluster_name: skinpredict-db-prod
     db_name: skinpredict
     db_user: skinpredict
