@@ -46,6 +46,26 @@ services:
       - key: GOOGLE_MAPS_API_KEY
         scope: RUN_TIME
         type: SECRET
+      
+      # DigitalOcean Spaces (S3 Compatible)
+      - key: AWS_ACCESS_KEY_ID
+        scope: RUN_TIME
+        type: SECRET
+      - key: AWS_SECRET_ACCESS_KEY
+        scope: RUN_TIME
+        type: SECRET
+      - key: AWS_ENDPOINT_URL
+        value: https://fra1.digitaloceanspaces.com
+      - key: AWS_BUCKET_NAME
+        value: skinpredict-data
+      - key: AWS_REGION
+        value: fra1
+        
+      # Firebase Credentials (JSON content)
+      - key: FIREBASE_CREDENTIALS_JSON
+        scope: RUN_TIME
+        type: SECRET
+
       # CORS - Allow the frontend to access the API
       - key: CORS_ORIGINS
         scope: RUN_TIME

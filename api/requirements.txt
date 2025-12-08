@@ -35,3 +35,4 @@ redis==5.0.1
 transformers==4.31.0
 onnxruntime==1.15.1
 celery==5.3.4
+boto3==1.28.0

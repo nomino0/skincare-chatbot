@@ -44,6 +44,13 @@ def create_app(config_name=None):
     
     # Set up logging
     _setup_logging(app)
+
+    # Setup credentials from env vars if needed (for cloud deployment)
+    try:
+        from .utils.setup_credentials import setup_firebase_credentials
+        setup_firebase_credentials()
+    except ImportError:
+        pass
     
     # Initialize CORS
     CORS(app, origins=config.CORS_ORIGINS)
