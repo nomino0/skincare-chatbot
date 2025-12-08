@@ -164,8 +164,12 @@ jobs:
         
     - name: Deploy to App Platform
       run: |
-        # Check if app exists using exact name match
-        APP_ID=$(doctl apps list --format ID,Name --no-header | awk '$2 == "skinpredict" {print $1}')
+        # Debug: List all apps to help troubleshoot
+        echo "Current Apps on DigitalOcean:"
+        doctl apps list --format ID,Name --no-header
+
+        # Check if app exists (loose match to be safe)
+        APP_ID=$(doctl apps list --format ID,Name --no-header | grep "skinpredict" | awk '{print $1}' | head -n 1)
         
         if [ -n "$APP_ID" ]; then
           echo "App found with ID: $APP_ID. Updating..."
