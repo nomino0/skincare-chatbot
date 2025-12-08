@@ -18,7 +18,7 @@ export default function ProfilePage() {
 }
 
 function ProfileContent() {
-  const { currentUser, optOutDataCollection, updateProfile } = useAuth();
+  const { currentUser, optOutDataCollection, updateProfile, userRole } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [verificationSent, setVerificationSent] = useState(false);
@@ -141,6 +141,7 @@ function ProfileContent() {
             </div>
           </div>
 
+          {userRole === 'user' && (
           <div className="mt-8 border-t border-slate-200 dark:border-slate-800 pt-6">
             <h3 className="text-lg font-medium mb-4">Data Privacy & Settings</h3>
             <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
@@ -169,19 +170,24 @@ function ProfileContent() {
               </Button>
             </div>
           </div>
+          )}
           
           <div className="mt-8 flex justify-end space-x-3">
             <Button 
               variant="outline" 
-              onClick={() => router.push('/')}
+              onClick={() => {
+                if (userRole === 'admin') router.push('/admin');
+                else if (userRole === 'professional') router.push('/professional');
+                else router.push('/');
+              }}
             >
-              Back to Home
+              {userRole === 'user' ? 'Back to Home' : 'Back to Dashboard'}
             </Button>
           </div>
         </div>
         
-        {/* Scan History Dashboard */}
-        <ScanHistoryDashboard />
+        {/* Scan History Dashboard - Only for regular users */}
+        {userRole === 'user' && <ScanHistoryDashboard />}
       </div>
     </div>
   );

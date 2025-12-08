@@ -17,7 +17,7 @@ export function UserMenu() {
   const [mounted, setMounted] = useState(false);
   
   // Use the auth context
-  const { currentUser, loading: authLoading } = useAuth();
+  const { currentUser, userRole, loading: authLoading } = useAuth();
   
   // Mount effect - only run on client
   useEffect(() => { 
@@ -81,6 +81,30 @@ export function UserMenu() {
                   Your Profile
                 </DropdownMenu.Item>
               </Link>
+              {userRole === 'admin' && (
+                <Link href="/admin" passHref>
+                  <DropdownMenu.Item
+                    className={cn(
+                      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors",
+                      "focus:bg-slate-100 focus:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50"
+                    )}
+                  >
+                    Admin Dashboard
+                  </DropdownMenu.Item>
+                </Link>
+              )}
+              {userRole === 'professional' && (
+                <Link href="/professional" passHref>
+                  <DropdownMenu.Item
+                    className={cn(
+                      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors",
+                      "focus:bg-slate-100 focus:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50"
+                    )}
+                  >
+                    Professional Dashboard
+                  </DropdownMenu.Item>
+                </Link>
+              )}
               <DropdownMenu.Separator className="my-1 h-px bg-slate-200 dark:bg-slate-800" />
               <DropdownMenu.Item
                 className={cn(

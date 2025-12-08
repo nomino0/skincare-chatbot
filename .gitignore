@@ -80,3 +80,8 @@ __pycache__/
 # Logs
 *.log
 api/app.log
+
+# Secrets
+serviceAccountKey.json
+api/serviceAccountKey.json
+

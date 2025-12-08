@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAuthClient } from '@/lib/firebase';
 
 // Base URL for the API
-const API_URL = 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 // Create axios instance with interceptor for Firebase auth
 const apiClient = axios.create({
@@ -347,11 +347,58 @@ export const getAdminSubmissions = async (
     }
 };
 
+export const getAdminStats = async () => {
+    try {
+        const response = await apiClient.get('/api/admin/stats');
+        return response.data;
+    } catch (error) {
+        console.error('Error getting admin stats:', error);
+        throw error;
+    }
+};
+
+export const createProfessional = async (data: { email: string; password: string; displayName: string }) => {
+    try {
+        const response = await apiClient.post('/api/admin/create-professional', data);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating professional:', error);
+        throw error;
+    }
+};
+
 export const submitLabel = async (label: LabelSubmission): Promise<void> => {
     try {
         await apiClient.post(`/api/admin/label`, label);
     } catch (error) {
         console.error('Error submitting label:', error);
+        throw error;
+    }
+};
+
+export interface UserProfile {
+    uid: string;
+    email: string;
+    role: string;
+    optOutDataCollection: boolean;
+    createdAt: string | null;
+}
+
+export const getAllUsers = async (): Promise<UserProfile[]> => {
+    try {
+        const response = await apiClient.get('/api/admin/users');
+        return response.data;
+    } catch (error) {
+        console.error('Error getting users:', error);
+        throw error;
+    }
+};
+
+export const updateUserRole = async (targetUid: string, role: string): Promise<void> => {
+    try {
+        await apiClient.post('/api/admin/users/role', { targetUid, role });
+    } catch (error) {
+        console.error('Error updating user role:', error);
         throw error;
     }
 };

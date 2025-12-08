@@ -3,6 +3,8 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import NavbarWrapper from "@/components/navbar-wrapper";
 import React, { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@/lib/auth-context";
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -10,10 +12,22 @@ interface ClientLayoutProps {
 
 export default function ClientLayout({ children }: ClientLayoutProps) {
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const { userRole, loading } = useAuth();
   
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Strict Admin Routing: Admin can ONLY go to /admin*
+  useEffect(() => {
+    if (!loading && userRole === 'admin') {
+      if (!pathname.startsWith('/admin')) {
+        router.replace('/admin');
+      }
+    }
+  }, [pathname, userRole, loading, router]);
   
   if (!mounted) {
     // Return a minimal layout as a placeholder during server rendering

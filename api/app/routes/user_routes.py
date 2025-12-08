@@ -2,7 +2,7 @@
 User routes for profile and role management.
 """
 
-from flask import Blueprint, request, jsonify, g
+from flask import Blueprint, request, jsonify, g, current_app
 from ..utils.auth_middleware import require_auth
 from ..database import SessionLocal
 from ..models.sql_models import User
@@ -13,29 +13,53 @@ logger = logging.getLogger(__name__)
 
 @user_bp.route('/user/profile', methods=['GET'])
 @require_auth
-def get_user_profile():
+def get_user_profile(current_user):
     """
     Get current user profile and role.
     Creates user if not exists.
     """
     try:
-        firebase_uid = g.user['uid']
-        email = g.user.get('email')
+        firebase_uid = current_user['uid']
+        email = current_user.get('email')
         
         db = SessionLocal()
         try:
             user = db.query(User).filter(User.firebase_uid == firebase_uid).first()
             
-            if not user:
-                # Create new user
-                user = User(
-                    firebase_uid=firebase_uid,
-                    email=email,
-                    role='user'  # Default role
-                )
-                db.add(user)
+            # Check if we need to upgrade existing user to admin
+            admin_email = current_app.config.get('ADMIN_EMAIL')
+            if user and admin_email and user.email and user.email.lower() == admin_email.lower() and user.role != 'admin':
+                user.role = 'admin'
                 db.commit()
-                logger.info(f"Created new user: {email}")
+                logger.info(f"Upgraded existing user {user.email} to admin role")
+            
+            if not user:
+                # Check if user exists by email (e.g. pre-created admin)
+                if email:
+                    user = db.query(User).filter(User.email == email).first()
+                    if user:
+                        # Update firebase_uid for existing user
+                        user.firebase_uid = firebase_uid
+                        db.commit()
+                        logger.info(f"Linked existing user {email} to firebase uid {firebase_uid}")
+                
+                if not user:
+                    # Check if this is the admin email from config
+                    admin_email = current_app.config.get('ADMIN_EMAIL')
+                    role = 'user'
+                    if admin_email and email and email.lower() == admin_email.lower():
+                        role = 'admin'
+                        logger.info(f"Assigning admin role to {email}")
+
+                    # Create new user
+                    user = User(
+                        firebase_uid=firebase_uid,
+                        email=email,
+                        role=role
+                    )
+                    db.add(user)
+                    db.commit()
+                    logger.info(f"Created new user: {email} with role {role}")
             
             return jsonify({
                 'uid': user.firebase_uid,
@@ -54,12 +78,12 @@ def get_user_profile():
 
 @user_bp.route('/user/profile', methods=['PUT'])
 @require_auth
-def update_user_profile():
+def update_user_profile(current_user):
     """
     Update user profile settings (e.g. opt-out).
     """
     try:
-        firebase_uid = g.user['uid']
+        firebase_uid = current_user['uid']
         data = request.get_json()
         
         db = SessionLocal()
@@ -85,7 +109,7 @@ def update_user_profile():
 
 @user_bp.route('/user/role', methods=['POST'])
 @require_auth
-def update_user_role():
+def update_user_role(current_user):
     """
     Update user role (Admin only - simplified for demo).
     In production, this should be strictly protected.
@@ -105,7 +129,7 @@ def update_user_role():
         if secret != admin_secret:
              return jsonify({'error': 'Unauthorized'}), 403
              
-        firebase_uid = g.user['uid']
+        firebase_uid = current_user['uid']
         
         db = SessionLocal()
         try:

@@ -3,6 +3,8 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User } from 'firebase/auth';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 // Helper to get auth from firebase.tsx
 async function getFirebaseAuth() {
   if (typeof window === 'undefined') return null;
@@ -21,7 +23,7 @@ type AuthContextType = {
   userRole: 'user' | 'admin' | 'professional' | null;
   optOutDataCollection: boolean;
   loading: boolean;
-  refreshRole: () => Promise<void>;
+  refreshRole: () => Promise<'user' | 'admin' | 'professional' | null>;
   updateProfile: (data: { optOutDataCollection: boolean }) => Promise<void>;
 };
 
@@ -31,7 +33,7 @@ const AuthContext = createContext<AuthContextType>({
   userRole: null,
   optOutDataCollection: false,
   loading: true,
-  refreshRole: async () => {},
+  refreshRole: async () => null,
   updateProfile: async () => {},
 });
 
@@ -45,7 +47,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const fetchUserRole = async (user: User) => {
     try {
       const token = await user.getIdToken();
-      const response = await fetch('http://localhost:5000/api/user/profile', {
+      const response = await fetch(`${API_URL}/api/user/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -55,15 +57,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const data = await response.json();
         setUserRole(data.role);
         setOptOutDataCollection(data.optOutDataCollection || false);
+        return data.role;
       } else {
         console.error('Failed to fetch user role');
         setUserRole('user'); // Default to user on error
         setOptOutDataCollection(false);
+        return 'user';
       }
     } catch (error) {
       console.error('Error fetching user role:', error);
       setUserRole('user');
       setOptOutDataCollection(false);
+      return 'user';
     }
   };
 
@@ -105,8 +110,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const refreshRole = async () => {
     if (currentUser) {
-      await fetchUserRole(currentUser);
+      return await fetchUserRole(currentUser);
     }
+    return null;
   };
 
   const updateProfile = async (data: { optOutDataCollection: boolean }) => {
@@ -114,7 +120,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     
     try {
       const token = await currentUser.getIdToken();
-      const response = await fetch('http://localhost:5000/api/user/profile', {
+      const response = await fetch(`${API_URL}/api/user/profile`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

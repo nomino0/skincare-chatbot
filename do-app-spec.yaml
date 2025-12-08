@@ -31,6 +31,13 @@ services:
       - key: SECRET_KEY
         scope: RUN_TIME
         type: SECRET
+      # Admin Auto-Correction
+      - key: ADMIN_EMAIL
+        scope: RUN_TIME
+        type: SECRET
+      - key: ADMIN_PASSWORD
+        scope: RUN_TIME
+        type: SECRET
 
       # External APIs
       - key: GROQ_API_KEY

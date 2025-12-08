@@ -6,6 +6,7 @@ import { signInWithEmail, signInWithGoogle } from '@/services/auth';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AuthGuard } from '@/components/AuthGuard';
+import { useAuth } from '@/lib/auth-context';
 
 export default function LoginPage() {
   return (
@@ -21,6 +22,7 @@ function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { refreshRole } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,9 +32,21 @@ function LoginForm() {
     try {
       await signInWithEmail(email, password);
       
-      const redirectPath = localStorage.getItem('redirectAfterLogin') || '/';
+      // Refresh role to ensure we have the latest permissions
+      const role = await refreshRole();
+      
+      const redirectPath = localStorage.getItem('redirectAfterLogin');
       localStorage.removeItem('redirectAfterLogin');
-      router.push(redirectPath);
+      
+      if (redirectPath) {
+        router.push(redirectPath);
+      } else if (role === 'admin') {
+        router.push('/admin');
+      } else if (role === 'professional') {
+        router.push('/professional');
+      } else {
+        router.push('/');
+      }
     } catch (err: any) {
       setError(err.message || 'An unexpected error occurred. Please try again.');
       setLoading(false);
@@ -46,9 +60,21 @@ function LoginForm() {
     try {
       await signInWithGoogle();
       
-      const redirectPath = localStorage.getItem('redirectAfterLogin') || '/';
+      // Refresh role to ensure we have the latest permissions
+      const role = await refreshRole();
+      
+      const redirectPath = localStorage.getItem('redirectAfterLogin');
       localStorage.removeItem('redirectAfterLogin');
-      router.push(redirectPath);
+      
+      if (redirectPath) {
+        router.push(redirectPath);
+      } else if (role === 'admin') {
+        router.push('/admin');
+      } else if (role === 'professional') {
+        router.push('/professional');
+      } else {
+        router.push('/');
+      }
     } catch (err: any) {
       setError(err.message || 'An unexpected error occurred. Please try again.');
       setLoading(false);

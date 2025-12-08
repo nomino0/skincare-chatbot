@@ -28,10 +28,12 @@ class Scan(Base):
     __tablename__ = "scans"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(String, nullable=True)  # Can be anonymous
     scan_id = Column(String, unique=True, index=True) # Timestamp-based ID from frontend
     image_path = Column(String) # Path to image in storage (local/S3)
     
+    # Link to User via Firebase UID
+    user_id = Column(String, ForeignKey("users.firebase_uid"), nullable=True)
+
     # Store JSON results
     skin_type_result = Column(JSON) # {type: "Oily", confidence: 90}
     skin_issues_result = Column(JSON) # [{name: "Acne", confidence: 80}]
@@ -39,6 +41,7 @@ class Scan(Base):
     
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     
+    user = relationship("User", back_populates="scans")
     chat_messages = relationship("ChatMessage", back_populates="scan")
     professional_label = relationship("ProfessionalLabel", back_populates="scan", uselist=False)
 

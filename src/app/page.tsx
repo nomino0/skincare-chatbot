@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import WebcamCapture from '../components/WebcamCapture';
 import Chatbot from '../components/Chatbot';
 import { analyzeSkin, SkinPredictionResult } from '../services/api';
@@ -47,8 +47,20 @@ function HomeContent() {
   const [isHistoryScan, setIsHistoryScan] = useState<boolean>(false);
   const [analysisError, setAnalysisError] = useState<AnalysisError | null>(null);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const { currentUser, userRole, loading } = useAuth();
-  
+
+  // Redirect admins and professionals to their portals
+  useEffect(() => {
+    if (!loading && currentUser) {
+      if (userRole === 'admin') {
+        router.push('/admin');
+      } else if (userRole === 'professional') {
+        router.push('/professional');
+      }
+    }
+  }, [currentUser, userRole, loading, router]);
+
   // Load scan history data
   const loadHistoryScan = async (scanId: string) => {
     if (!currentUser) return;
@@ -78,6 +90,11 @@ function HomeContent() {
       loadHistoryScan(scanId);
     }
   }, [searchParams, currentUser]);
+
+  // Prevent rendering for non-user roles while redirecting
+  if (currentUser && (userRole === 'admin' || userRole === 'professional')) {
+    return <HomeLoading />;
+  }
   
   // Parse error from API response
   const parseError = (error: any): AnalysisError => {

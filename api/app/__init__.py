@@ -56,6 +56,9 @@ def create_app(config_name=None):
     
     # Initialize database
     _initialize_database(app)
+
+    # Auto-create admin if configured
+    _create_initial_admin(app)
     
     # Initialize agent tools with services
     _initialize_agent(app, services)
@@ -213,6 +216,40 @@ def _initialize_agent(app, services):
         app.logger.info("Agent tools initialized successfully")
     except Exception as e:
         app.logger.error(f"Agent initialization failed: {e}")
+
+
+def _create_initial_admin(app):
+    """Create initial admin user if configured in environment."""
+    if not app.config.get('ADMIN_EMAIL') or not app.config.get('ADMIN_PASSWORD'):
+        return
+
+    try:
+        from .database import get_db
+        from .models.sql_models import User
+        
+        # Use a new context for this operation
+        with app.app_context():
+            # Get session from generator
+            db = next(get_db())
+            try:
+                email = app.config['ADMIN_EMAIL']
+                admin = db.query(User).filter_by(email=email).first()
+                if not admin:
+                    app.logger.info(f"Creating initial admin user: {email}")
+                    new_admin = User(
+                        email=email,
+                        role='admin',
+                        firebase_uid=f"admin_{email}" # Placeholder UID for non-firebase auth
+                    )
+                    db.add(new_admin)
+                    db.commit()
+                    app.logger.info("Initial admin created successfully")
+            except Exception as e:
+                 app.logger.error(f"Failed to create initial admin: {e}")
+            finally:
+                db.close()
+    except Exception as e:
+        app.logger.error(f"Error in admin initialization: {e}")
 
 
 def _register_error_handlers(app):

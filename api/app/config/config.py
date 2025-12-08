@@ -13,6 +13,8 @@ class Config:
     # Basic Flask settings
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key-here-change-in-production'
     ADMIN_SECRET_KEY = os.environ.get('ADMIN_SECRET_KEY', 'skinpredict_admin_secret')
+    ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL')
+    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')
     
     # API settings
     HOST = os.environ.get('HOST', '0.0.0.0')

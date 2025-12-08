@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { RoleProtectedRoute } from '@/components/RoleProtectedRoute';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 interface ScanData {
   scanId: string;
   timestamp: string;
@@ -59,7 +61,7 @@ export default function ProfessionalPortal() {
 
   const fetchScans = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/professional/scans?status=${statusFilter}`);
+      const response = await fetch(`${API_URL}/api/professional/scans?status=${statusFilter}`);
       if (response.ok) {
         const data = await response.json();
         setScans(data.scans || []);
@@ -73,7 +75,7 @@ export default function ProfessionalPortal() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/professional/stats');
+      const response = await fetch(`${API_URL}/api/professional/stats`);
       if (response.ok) {
         const data = await response.json();
         setStats(data);
@@ -85,7 +87,7 @@ export default function ProfessionalPortal() {
 
   const fetchScanDetail = async (scanId: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/professional/scans/${scanId}`);
+      const response = await fetch(`${API_URL}/api/professional/scans/${scanId}`);
       if (response.ok) {
         const data = await response.json();
         setScanImage(data.imageBase64);
@@ -132,7 +134,7 @@ export default function ProfessionalPortal() {
     
     setIsSaving(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/professional/scans/${selectedScan.scanId}/label`, {
+      const response = await fetch(`${API_URL}/api/professional/scans/${selectedScan.scanId}/label`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(labelForm)
@@ -156,16 +158,14 @@ export default function ProfessionalPortal() {
     <RoleProtectedRoute allowedRoles={['professional', 'admin']}>
       <div className="min-h-screen bg-background">
         {/* Header */}
-        <header className="border-b border-border bg-card">
+        <header className="border-b border-border">
           <div className="container mx-auto px-4 py-4">
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-2xl font-bold text-primary">Professional Portal</h1>
                 <p className="text-sm text-muted-foreground">Dermatologist Review Dashboard</p>
               </div>
-              <Link href="/">
-                <Button variant="outline">← Back to App</Button>
-              </Link>
+              
             </div>
           </div>
         </header>
@@ -378,7 +378,7 @@ export default function ProfessionalPortal() {
           <div className="mt-8 text-center">
             <Button
               variant="outline"
-              onClick={() => window.open('http://localhost:5000/api/professional/export', '_blank')}
+              onClick={() => window.open(`${API_URL}/api/professional/export`, '_blank')}
             >
               📥 Export Labeled Data (for Retraining)
             </Button>
